@@ -119,7 +119,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ScheduledCompletion" Nullable="false" />
+          <Property Type="DateTime" Name="ScheduledCompletion" Nullable="false" Precision="0" />
           <Property Type="Int32" Name="ProjectId" Nullable="false" />
           <NavigationProperty Name="Project" Relationship="SopheonModel.FK_Gates_Projects" FromRole="Gate" ToRole="Project" />
         </EntityType>
@@ -196,7 +196,7 @@
           <ConnectorPoint PointX="6.5" PointY="3.297841796875" />
           <ConnectorPoint PointX="6.5" PointY="4.125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="SopheonModel.Gate" Width="1.5" PointX="8" PointY="4.125" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="SopheonModel.Gate" Width="1.5" PointX="9.625" PointY="1.25" Height="1.9802864583333335" />
         <AssociationConnector Association="SopheonModel.FK_Gates_Projects" >
           <ConnectorPoint PointX="7.25" PointY="5.1151432291666659" />
           <ConnectorPoint PointX="8" PointY="5.1151432291666659" />

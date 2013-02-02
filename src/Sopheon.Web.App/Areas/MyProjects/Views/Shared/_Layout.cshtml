@@ -1,13 +1,17 @@
-﻿<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+﻿
+@RenderBody()
+@section styles{
+	
+	@{ 
+	 @Styles.Render("~/Content/my-projects/css")
+	 @RenderSection("styles", false) 
+	}
+}
+@section scripts{
+	
+	@{
+	 @Scripts.Render("~/bundles/my-projects")
+	  @RenderSection("scripts", false) 
+	 }
+}
+@RenderBody()

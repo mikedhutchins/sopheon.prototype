@@ -1334,11 +1334,18 @@ a:active {
     padding: 5px;
     text-align: left;
 }
-
+.small-tile {
+    background-color: #1F5685;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+}
 .info-tile {
     color: #808080;
     background-color: white;
     height: auto;
+    display: inline;
 }
 
 .button-tile {
@@ -1365,4 +1372,33 @@ a:active {
     clear: both;
     overflow: auto;
     height: 590px;
+}
+.console {
+    max-height: 100px;
+    overflow: auto;
+    font-size: 8px;
+    color: white;
+    background: black;
+    border-radius: 20px;
+}
+.primary-panel-nav {
+    padding: 10px;
+    border-radius: 5px;
+    width: 97%;
+    background: white;
+    text-align: left;
+}
+.primary-panel-nav ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+.primary-panel-nav li{
+    display: inline
+
+}
+#mainOperationBody {
+    clear: both;
+    overflow: auto;
+    height: 540px;
+    margin-top: 10px;
 }

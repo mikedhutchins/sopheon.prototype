@@ -49,9 +49,10 @@ namespace Sopheon.Web.App.Areas.MyProjects.Controllers
 
         public ActionResult Index()
         {
-			var response = _myProjectsManager.GetMyProcessTemplates(new GetMyProcessTemplatesRequest { });
+			var response = _myProjectsManager.GetMyProcessTemplates(new GetMyProcessTemplatesRequest { })
+                .ToUi((r) => RenderPartialViewToString("Index", r));
 
-            return View(response);
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -194,6 +194,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\captcha.js" />
+    <Content Include="Scripts\jquery.scrollTo-min.js" />
+    <Content Include="Scripts\jquery.scrollTo.js" />
     <Content Include="Scripts\my-projects.js" />
     <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
     <Content Include="Scripts\sangre.bootstrap-adaptor.js" />
@@ -300,6 +302,7 @@
     <Content Include="Views\Templates\Modal.cshtml" />
     <Content Include="Views\Shared\_LayoutPanel.cshtml" />
     <Content Include="Views\Home\MainNav.cshtml" />
+    <Content Include="Views\Home\MainBody.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -4,8 +4,20 @@
 @using Sopheon.Web.App.Models;
 <div class="w960px" id="sopheon-main">
     <div id="inner-container">
-        @{ Html.RenderPartial("MainNav", new PanelViewModel { Id = "mainNav", CssClasses = new List<string>() { "" } }); }
+        @{ Html.RenderPartial("MainNav", new PanelViewModel { Id = "mainNav", CssClasses = new List<string>() { "" }, HideNav = true }); }
         @{ Html.RenderPartial("MainBody", new PanelViewModel { Id = "mainBody", CssClasses = new List<string>() { "" } }); }
         <div class="clear"></div>
     </div>
 </div>
+@section styles{
+	
+	@{ 
+	 @Styles.Render("~/Content/my-projects/css")
+	}
+}
+@section scripts{
+	
+	@{
+	 @Scripts.Render("~/bundles/my-projects")
+	 }
+}

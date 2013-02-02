@@ -49,7 +49,7 @@
     </Key>
     <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Type="DateTime" Name="ScheduledCompletion" Nullable="false" />
+    <Property Type="DateTime" Name="ScheduledCompletion" Nullable="false" Precision="0" />
     <Property Type="Int32" Name="ProjectId" Nullable="false" />
     <NavigationProperty Name="Project" Relationship="SopheonModel.FK_Gates_Projects" FromRole="Gate" ToRole="Project" />
   </EntityType>

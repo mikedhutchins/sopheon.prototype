@@ -385,7 +385,7 @@
 		, common: { RESIZE: 'WIN-RESIZE' }
 		, events: []
 		, on: function (options) {
-			var s = this;
+		    var s = this;
 			options.key.split(' ').select(function () {
 				var o = $.extend({ func: function () { }, scope: this, key: 'none', fault: true, source: 'anon' }, options);
 				o.key = this;
@@ -407,18 +407,21 @@
 		, fire: function (eventKey) {
 			var args = Array.prototype.slice.call(arguments, 1);
 			var arr = this.get(eventKey);
+			var allArr = this.get('*');
 			if ($.isFunction(sangre.event.debug)) {
 				sangre.event.debug(eventKey, args);
 			}
 			sangre.msg.console("sangre.event {key} is firing: ".bind({ key: eventKey }));
-			$(arr).each(function (idx) {
-				var s = this;
-				var p = sangre.m.getProcessor(sangre.m.getOpState(eventKey));
-				p.then(function () {
-					s.func.apply(s.scope, args);
-				})
-				;
-			});
+			var f = function (idx) {
+			    var s = this;
+			    var p = sangre.m.getProcessor(sangre.m.getOpState(eventKey));
+			    p.then(function () {
+			        s.func.apply(s.scope, args);
+			    })
+			    ;
+			};
+			$(arr).each(f);
+			$(allArr).each(f);
 		}
 	};
 	sangre.inits.push(sangre.event);
@@ -478,6 +481,12 @@
 					this.state = sangre.m.state.CRASH;
 					this.messages.push(msg);
 				}
+                , getMessages: function () {
+                    return c.messages !== undefined && c.messages.length > 0 ? c.messages.join('|') : '';
+                }
+                , getString: function () {
+                    return '<div>key={key}, step={step}, state={state}, msg={getMessages}</div>'.bind(c);
+                }
 			};
 			return c;
 		}
@@ -778,7 +787,7 @@
 					var s = this;
 					sangre.m.getProcessor(sangre.m.getOpState('scroll'), function (ex) { }, function (ex) { })
 					.then(function (r) {
-					    $(config.container).scrollTo(config['scroll-target'], config['scroll-duration'], {});
+					    $(config['scroll-container']).scrollTo(config['scroll-target'], config['scroll-duration'], {});
 					    if (config['scroll-meth'] !== undefined) {
 					        var func = eval(config['scroll-meth'].toString());
 							if ($.isFunction(func)) {
@@ -913,22 +922,33 @@
 			return sangre.u.getMeth('sangre-event-change', function (sel) {
 				var config = sangre.util.getAtts(sel,
 					[
-						{ key: 'eventkey', def: '' }
+						{ key: 'eventkey', def: '*' }
 						, { key: 'selector', def: '' }
 						, { key: 'attribute', def: 'html' }
 						, { key: 'processor', def: function (val) { return val; }, transform: 'eval' }
 						, { key: 'method', def: function () { } }
 					]);
+
 				sangre.event.on({ key: config.eventkey
 					, func: function (value) {
 						if ($(sel).length == 0) return;
 						value = config.processor.call($(sel)[0], value);
+						var stringValue = '';
+						if (value.messages !== undefined) {
+						    stringValue = value.getString();
+						}
 						var el = $(sel);
 						if (config.selector != '') {
 							el = $(sel).find(config.selector);
 						}
+						if (config.attribute == 'prepend') {
+						    sangre.ml.prepend(el, stringValue);
+						}
+						if (config.attribute == 'append') {
+						    sangre.ml.append(el, stringValue);
+						}
 						if (config.attribute == 'html') {
-							sangre.ml.html(el, value);
+						    sangre.ml.html(el, stringValue);
 						}
 						else {
 							el.attr(config.attribute, value);

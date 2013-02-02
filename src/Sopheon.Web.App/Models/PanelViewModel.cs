@@ -22,6 +22,12 @@ namespace Sopheon.Web.App.Models
 
         public StringDictionary Attributes { get; set; }
 
+        public string PrimaryNavigationView { get; set; }
+
+        public string SecondaryNavigationView { get; set; }
+
+        public bool HideNav { get; set; }
+
         public string AttributeMl
         {
             get
