@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorpGameDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="CorpGameDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CollegeSetups" EntityType="CorpGameDataModel.CollegeSetup" />
+    <EntitySet Name="Instances" EntityType="CorpGameDataModel.Instance" />
+    <EntitySet Name="Registers" EntityType="CorpGameDataModel.Register" />
+    <EntitySet Name="CollegeGames" EntityType="CorpGameDataModel.CollegeGame" />
+    <EntitySet Name="CollegeInstructors" EntityType="CorpGameDataModel.CollegeInstructor" />
+    <EntitySet Name="Facilitators" EntityType="CorpGameDataModel.Facilitator" />
+    <EntitySet Name="Games" EntityType="CorpGameDataModel.Game" />
+    <EntitySet Name="Response_L1" EntityType="CorpGameDataModel.Response_L1" />
+    <EntitySet Name="Securities" EntityType="CorpGameDataModel.Security" />
+    <EntitySet Name="SimGradeScales" EntityType="CorpGameDataModel.SimGradeScale" />
+    <EntitySet Name="StudentCourses" EntityType="CorpGameDataModel.StudentCourse" />
+    <EntitySet Name="ScoreFormulas" EntityType="CorpGameDataModel.ScoreFormula" />
+    <EntitySet Name="ScorePages" EntityType="CorpGameDataModel.ScorePage" />
+    <AssociationSet Name="FK_ScoreFormulas_ScorePages" Association="CorpGameDataModel.FK_ScoreFormulas_ScorePages">
+      <End Role="ScorePage" EntitySet="ScorePages" />
+      <End Role="ScoreFormula" EntitySet="ScoreFormulas" />
+    </AssociationSet>
+    <EntitySet Name="v_Response_L1_Scores" EntityType="CorpGameDataModel.v_Response_L1_Scores" />
+    <EntitySet Name="Dilemmas" EntityType="CorpGameDataModel.Dilemma" />
+  </EntityContainer>
+  <EntityType Name="CollegeSetup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Eli" Type="Boolean" />
+    <Property Name="HotTopicModules" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="GameTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RegistrationCode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="MasteryModules" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Memo" Type="Boolean" />
+    <Property Name="SetupDate" Type="DateTime" />
+    <Property Name="EstimatedStudents" Type="Int32" />
+    <Property Name="RetailAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SalesPerson" Type="Int32" Nullable="false" />
+    <Property Name="Instructor" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="CourseStart" Type="DateTime" />
+    <Property Name="CourseEnd" Type="DateTime" />
+    <Property Name="OrganizationId" Type="Guid" />
+    <Property Name="InstructorName" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="DateCreated" Type="DateTime" />
+    <Property Name="DateModified" Type="DateTime" />
+    <Property Name="CreatedBy" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="PaymentType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instance">
+    <Key>
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Name="GameCode" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+    <Property Name="Game" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+    <Property Name="Prepaid" Type="Boolean" Nullable="false" />
+    <Property Name="Demo" Type="Boolean" Nullable="false" />
+    <Property Name="Instructor" Type="String" Nullable="false" MaxLength="130" Unicode="true" FixedLength="false" />
+    <Property Name="Rounds" Type="Int32" Nullable="false" />
+    <Property Name="Partial" Type="Boolean" Nullable="false" />
+    <Property Name="Memo" Type="Boolean" Nullable="false" />
+    <Property Name="CourseNumber" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="TagType" Type="Int32" Nullable="false" />
+    <Property Name="OrganizationID" Type="Guid" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" />
+    <Property Name="EndDate" Type="DateTime" />
+    <Property Name="MaximumSize" Type="Int32" />
+    <Property Name="sequence" Type="Int32" />
+    <Property Name="TopLevelGameCode" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+    <Property Name="Archived" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="Vertical" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CollegeSetupId" Type="Int32" Nullable="false" />
+    <Property Name="DilemmaA" Type="Int32" Nullable="false" />
+    <Property Name="DilemmaB" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="130" Unicode="true" FixedLength="false" />
+    <Property Name="Game" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="163" Unicode="true" FixedLength="false" />
+    <Property Name="GameCode" Type="String" Nullable="false" MaxLength="8" Unicode="true" FixedLength="false" />
+    <Property Name="RegistrationDate" Type="DateTime" Nullable="false" />
+    <Property Name="CompletionDate" Type="DateTime" />
+    <Property Name="EnrollmentCode" Type="String" MaxLength="25" Unicode="true" FixedLength="true" />
+    <Property Name="CurrentPage" Type="Int32" />
+    <Property Name="CurrentRound" Type="Int32" />
+    <Property Name="CurrentRole" Type="Int32" />
+    <Property Name="CurrentRolePage" Type="Int32" />
+    <Property Name="NotesTitle1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NotesText1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="NotesTitle2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NotesText2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="NotesTitle3" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NotesText3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="NotesTitle4" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NotesText4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="NotesTitle5" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NotesText5" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="GameLog" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="RegisterID" Type="Guid" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="255" Unicode="true" FixedLength="true" />
+    <Property Name="company" Type="String" MaxLength="255" Unicode="true" FixedLength="true" />
+    <Property Name="phone" Type="String" MaxLength="255" Unicode="true" FixedLength="true" />
+  </EntityType>
+  <EntityType Name="CollegeGame">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CollegeSetupId" />
+    <Property Type="String" Name="System" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="StartDate" />
+    <Property Type="String" Name="GameCode" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CourseRegistration" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Module" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CollegeInstructor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CollegeSetupId" />
+    <Property Type="String" Name="CourseRegistration" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Instructor" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Archived" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="Boolean" Name="isPrimary" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facilitator">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Instructor" />
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="130" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Instructor" Nullable="false" MaxLength="130" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="OrganizationID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Game1" />
+    </Key>
+    <Property Type="String" Name="Game1" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="HotTopic" Nullable="false" />
+    <Property Type="String" Name="ModuleName" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="TopicDilemma" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="rounds" />
+    <Property Type="String" Name="show_in_game_creator" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="DilemmaA" Nullable="false" />
+    <Property Type="Int32" Name="DilemmaB" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Response_L1">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="163" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Round" Nullable="false" />
+    <Property Type="Int32" Name="IssuesA" />
+    <Property Type="String" Name="IssuesAValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="StakeholdersA" />
+    <Property Type="String" Name="StakeholdersAValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Duties" />
+    <Property Type="Int32" Name="DutiesValue" />
+    <Property Type="Int32" Name="RightsOption" />
+    <Property Type="String" Name="RightsOptionValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ImpactsBit1" />
+    <Property Type="Int32" Name="ImpactsBit2" />
+    <Property Type="Int32" Name="CriteriaBit1" />
+    <Property Type="Int32" Name="CriteriaBit2" />
+    <Property Type="Int32" Name="CriteriaBit3" />
+    <Property Type="Int32" Name="CriteriaBit4" />
+    <Property Type="Int32" Name="ResultsBit1" />
+    <Property Type="Int32" Name="ResultsBit2" />
+    <Property Type="Int32" Name="ResultsBit3" />
+    <Property Type="Int32" Name="ResultsOption" />
+    <Property Type="Int32" Name="OptionA" />
+    <Property Type="Int32" Name="MemoToA" />
+    <Property Type="String" Name="MemoTitleA" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MemoTextA" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BonusA" />
+    <Property Type="Int32" Name="BonusMaximumA" />
+    <Property Type="Int32" Name="IssuesB" />
+    <Property Type="Int32" Name="StakeholdersB" />
+    <Property Type="Int32" Name="Liberties" />
+    <Property Type="Int32" Name="Actions" />
+    <Property Type="Int32" Name="RelationshipsOption" />
+    <Property Type="Int32" Name="Competencies" />
+    <Property Type="Int32" Name="CompetentOptions" />
+    <Property Type="Int32" Name="ReputationOption" />
+    <Property Type="Int32" Name="OptionB" />
+    <Property Type="Int32" Name="MemoToB" />
+    <Property Type="String" Name="MemoTitleB" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MemoTextB" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BonusPage" />
+    <Property Type="Int32" Name="Bonus" />
+    <Property Type="Int32" Name="BonusMaximum" />
+    <Property Type="String" Name="GameCode" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ImpactsValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CriteriaValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ResultsValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ResultsOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="OptionAValue" />
+    <Property Type="Int32" Name="MemoToAValue" />
+    <Property Type="Int32" Name="MemoTitleAValue" />
+    <Property Type="Int32" Name="MemoTextAValue" />
+    <Property Type="Int32" Name="BonusAValue" />
+    <Property Type="Int32" Name="BonusMaximumAValue" />
+    <Property Type="Int32" Name="IssuesBValue" />
+    <Property Type="Int32" Name="StakeholdersBValue" />
+    <Property Type="Int32" Name="LibertiesValue" />
+    <Property Type="Int32" Name="ActionsValue" />
+    <Property Type="String" Name="RelationshipsOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CompetenciesValue" />
+    <Property Type="Int32" Name="CompetentOptionsValue" />
+    <Property Type="String" Name="ReputationOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="OptionBValue" />
+    <Property Type="Int32" Name="MemoToBValue" />
+    <Property Type="Int32" Name="MemoTitleBValue" />
+    <Property Type="Int32" Name="MemoTextBValue" />
+  </EntityType>
+  <EntityType Name="Security">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="130" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ExternalTag" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MiddleInitial" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SimGradeScale">
+    <Key>
+      <PropertyRef Name="GradeScaleId" />
+      <PropertyRef Name="GadeLetter" />
+      <PropertyRef Name="TopScale" />
+      <PropertyRef Name="BottomScale" />
+      <PropertyRef Name="Percentage" />
+    </Key>
+    <Property Type="Int32" Name="GradeScaleId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="GadeLetter" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="TopScale" Nullable="false" />
+    <Property Type="Int32" Name="BottomScale" Nullable="false" />
+    <Property Type="Decimal" Name="Percentage" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="StudentCourse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Email" MaxLength="130" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="CourseRegistration" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Paid" />
+    <Property Type="Int32" Name="CollegeSetupId" />
+    <Property Type="String" Name="EnrollmentCode" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="RegistrationDate" />
+  </EntityType>
+  <EntityType Name="ScoreFormula">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Score" Nullable="false" />
+    <Property Type="String" Name="ExpectedValue" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ScorePageId" Nullable="false" />
+    <NavigationProperty Name="ScorePage" Relationship="CorpGameDataModel.FK_ScoreFormulas_ScorePages" FromRole="ScoreFormula" ToRole="ScorePage" />
+    <Property Type="String" Name="Label" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ScorePage">
+    <Key>
+      <PropertyRef Name="ScorePageId" />
+    </Key>
+    <Property Type="Int32" Name="ScorePageId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ColumnName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ScoreFunction" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PageNumber" />
+    <Property Type="String" Name="XmlFile" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="XmlFile2" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="XmlFile3" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Weight" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="BitValueCount" />
+    <Property Type="String" Name="ViewPage" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ScoreFormulas" Relationship="CorpGameDataModel.FK_ScoreFormulas_ScorePages" FromRole="ScorePage" ToRole="ScoreFormula" />
+    <Property Type="String" Name="DilemmaSection" MaxLength="1" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ScoreFormulas_ScorePages">
+    <End Type="CorpGameDataModel.ScorePage" Role="ScorePage" Multiplicity="1" />
+    <End Type="CorpGameDataModel.ScoreFormula" Role="ScoreFormula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScorePage">
+        <PropertyRef Name="ScorePageId" />
+      </Principal>
+      <Dependent Role="ScoreFormula">
+        <PropertyRef Name="ScorePageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_Response_L1_Scores">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Round" />
+      <PropertyRef Name="IssuesAScore" />
+      <PropertyRef Name="IssuesAMaximum" />
+      <PropertyRef Name="IssuesACurrent" />
+      <PropertyRef Name="StakeholdersAScore" />
+      <PropertyRef Name="StakeholdersAMaximum" />
+      <PropertyRef Name="StakeholdersACurrent" />
+      <PropertyRef Name="DutiesScore" />
+      <PropertyRef Name="DutiesMaximum" />
+      <PropertyRef Name="DutiesCurrent" />
+      <PropertyRef Name="RightsOptionScore" />
+      <PropertyRef Name="RightsOptionMaximum" />
+      <PropertyRef Name="RightsOptionCurrent" />
+      <PropertyRef Name="GameCode" />
+      <PropertyRef Name="ImpactsScore" />
+      <PropertyRef Name="ImpactsMaximum" />
+      <PropertyRef Name="ImpactsCurrent" />
+      <PropertyRef Name="CriteriaScore" />
+      <PropertyRef Name="CriteriaMaximum" />
+      <PropertyRef Name="CriteriaCurrent" />
+      <PropertyRef Name="ResultsScore" />
+      <PropertyRef Name="ResultsMaximum" />
+      <PropertyRef Name="ResultsCurrent" />
+      <PropertyRef Name="ResultsOptionScore" />
+      <PropertyRef Name="ResultsOptionMaximum" />
+      <PropertyRef Name="ResultsOptionCurrent" />
+      <PropertyRef Name="OptionAScore" />
+      <PropertyRef Name="OptionAMaximum" />
+      <PropertyRef Name="OptionACurrent" />
+      <PropertyRef Name="MemoToAScore" />
+      <PropertyRef Name="MemoToAMaximum" />
+      <PropertyRef Name="MemoToACurrent" />
+      <PropertyRef Name="MemoTitleAScore" />
+      <PropertyRef Name="MemoTitleAMaximum" />
+      <PropertyRef Name="MemoTitleACurrent" />
+      <PropertyRef Name="MemoTextAScore" />
+      <PropertyRef Name="MemoTextAMaximum" />
+      <PropertyRef Name="MemoTextACurrent" />
+      <PropertyRef Name="BonusAScore" />
+      <PropertyRef Name="BonusAMaximum" />
+      <PropertyRef Name="BonusACurrent" />
+      <PropertyRef Name="BonusMaximumAScore" />
+      <PropertyRef Name="BonusMaximumAMaximum" />
+      <PropertyRef Name="BonusMaximumACurrent" />
+      <PropertyRef Name="IssuesBScore" />
+      <PropertyRef Name="IssuesBMaximum" />
+      <PropertyRef Name="IssuesBCurrent" />
+      <PropertyRef Name="StakeholdersBScore" />
+      <PropertyRef Name="StakeholdersBMaximum" />
+      <PropertyRef Name="StakeholdersBCurrent" />
+      <PropertyRef Name="LibertiesScore" />
+      <PropertyRef Name="LibertiesMaximum" />
+      <PropertyRef Name="LibertiesCurrent" />
+      <PropertyRef Name="ActionsScore" />
+      <PropertyRef Name="ActionsMaximum" />
+      <PropertyRef Name="ActionsCurrent" />
+      <PropertyRef Name="RelationshipsOptionScore" />
+      <PropertyRef Name="RelationshipsOptionMaximum" />
+      <PropertyRef Name="RelationshipsOptionCurrent" />
+      <PropertyRef Name="CompetenciesScore" />
+      <PropertyRef Name="CompetenciesMaximum" />
+      <PropertyRef Name="CompetenciesCurrent" />
+      <PropertyRef Name="CompetentOptionsScore" />
+      <PropertyRef Name="CompetentOptionsMaximum" />
+      <PropertyRef Name="CompetentOptionsCurrent" />
+      <PropertyRef Name="ReputationOptionScore" />
+      <PropertyRef Name="ReputationOptionMaximum" />
+      <PropertyRef Name="ReputationOptionCurrent" />
+      <PropertyRef Name="OptionBScore" />
+      <PropertyRef Name="OptionBMaximum" />
+      <PropertyRef Name="OptionBCurrent" />
+      <PropertyRef Name="MemoToBScore" />
+      <PropertyRef Name="MemoToBMaximum" />
+      <PropertyRef Name="MemoToBCurrent" />
+      <PropertyRef Name="MemoTitleBScore" />
+      <PropertyRef Name="MemoTitleBMaximum" />
+      <PropertyRef Name="MemoTitleBCurrent" />
+      <PropertyRef Name="MemoTextBScore" />
+      <PropertyRef Name="MemoTextBMaximum" />
+      <PropertyRef Name="MemoTextBCurrent" />
+    </Key>
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="163" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Round" Nullable="false" />
+    <Property Type="Int32" Name="IssuesA" />
+    <Property Type="String" Name="IssuesAValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="IssuesAScore" Nullable="false" />
+    <Property Type="Int32" Name="IssuesAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="IssuesACurrent" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersA" />
+    <Property Type="String" Name="StakeholdersAValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="StakeholdersAScore" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersACurrent" Nullable="false" />
+    <Property Type="Int32" Name="Duties" />
+    <Property Type="Int32" Name="DutiesValue" />
+    <Property Type="Int32" Name="DutiesScore" Nullable="false" />
+    <Property Type="Int32" Name="DutiesMaximum" Nullable="false" />
+    <Property Type="Int32" Name="DutiesCurrent" Nullable="false" />
+    <Property Type="Int32" Name="RightsOption" />
+    <Property Type="String" Name="RightsOptionValue" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="RightsOptionScore" Nullable="false" />
+    <Property Type="Int32" Name="RightsOptionMaximum" Nullable="false" />
+    <Property Type="Int32" Name="RightsOptionCurrent" Nullable="false" />
+    <Property Type="Int32" Name="ImpactsBit1" />
+    <Property Type="Int32" Name="ImpactsBit2" />
+    <Property Type="Int32" Name="CriteriaBit1" />
+    <Property Type="Int32" Name="CriteriaBit2" />
+    <Property Type="Int32" Name="CriteriaBit3" />
+    <Property Type="Int32" Name="CriteriaBit4" />
+    <Property Type="Int32" Name="ResultsBit1" />
+    <Property Type="Int32" Name="ResultsBit2" />
+    <Property Type="Int32" Name="ResultsBit3" />
+    <Property Type="Int32" Name="ResultsOption" />
+    <Property Type="Int32" Name="OptionA" />
+    <Property Type="Int32" Name="MemoToA" />
+    <Property Type="String" Name="MemoTitleA" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MemoTextA" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BonusA" />
+    <Property Type="Int32" Name="BonusMaximumA" />
+    <Property Type="Int32" Name="IssuesB" />
+    <Property Type="Int32" Name="StakeholdersB" />
+    <Property Type="Int32" Name="Liberties" />
+    <Property Type="Int32" Name="Actions" />
+    <Property Type="Int32" Name="RelationshipsOption" />
+    <Property Type="Int32" Name="Competencies" />
+    <Property Type="Int32" Name="CompetentOptions" />
+    <Property Type="Int32" Name="ReputationOption" />
+    <Property Type="Int32" Name="OptionB" />
+    <Property Type="Int32" Name="MemoToB" />
+    <Property Type="String" Name="MemoTitleB" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MemoTextB" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="BonusPage" />
+    <Property Type="Int32" Name="Bonus" />
+    <Property Type="Int32" Name="BonusMaximum" />
+    <Property Type="String" Name="GameCode" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ImpactsValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ImpactsScore" Nullable="false" />
+    <Property Type="Int32" Name="ImpactsMaximum" Nullable="false" />
+    <Property Type="Int32" Name="ImpactsCurrent" Nullable="false" />
+    <Property Type="String" Name="CriteriaValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="CriteriaScore" Nullable="false" />
+    <Property Type="Int32" Name="CriteriaMaximum" Nullable="false" />
+    <Property Type="Int32" Name="CriteriaCurrent" Nullable="false" />
+    <Property Type="String" Name="ResultsValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ResultsScore" Nullable="false" />
+    <Property Type="Int32" Name="ResultsMaximum" Nullable="false" />
+    <Property Type="Int32" Name="ResultsCurrent" Nullable="false" />
+    <Property Type="String" Name="ResultsOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ResultsOptionScore" Nullable="false" />
+    <Property Type="Int32" Name="ResultsOptionMaximum" Nullable="false" />
+    <Property Type="Int32" Name="ResultsOptionCurrent" Nullable="false" />
+    <Property Type="Int32" Name="OptionAValue" />
+    <Property Type="Int32" Name="OptionAScore" Nullable="false" />
+    <Property Type="Int32" Name="OptionAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="OptionACurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoToAValue" />
+    <Property Type="Int32" Name="MemoToAScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoToAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoToACurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleAValue" />
+    <Property Type="Int32" Name="MemoTitleAScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleACurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextAValue" />
+    <Property Type="Int32" Name="MemoTextAScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextACurrent" Nullable="false" />
+    <Property Type="Int32" Name="BonusAValue" />
+    <Property Type="Int32" Name="BonusAScore" Nullable="false" />
+    <Property Type="Int32" Name="BonusAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="BonusACurrent" Nullable="false" />
+    <Property Type="Int32" Name="BonusMaximumAValue" />
+    <Property Type="Int32" Name="BonusMaximumAScore" Nullable="false" />
+    <Property Type="Int32" Name="BonusMaximumAMaximum" Nullable="false" />
+    <Property Type="Int32" Name="BonusMaximumACurrent" Nullable="false" />
+    <Property Type="Int32" Name="IssuesBValue" />
+    <Property Type="Int32" Name="IssuesBScore" Nullable="false" />
+    <Property Type="Int32" Name="IssuesBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="IssuesBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersBValue" />
+    <Property Type="Int32" Name="StakeholdersBScore" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="StakeholdersBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="LibertiesValue" />
+    <Property Type="Int32" Name="LibertiesScore" Nullable="false" />
+    <Property Type="Int32" Name="LibertiesMaximum" Nullable="false" />
+    <Property Type="Int32" Name="LibertiesCurrent" Nullable="false" />
+    <Property Type="Int32" Name="ActionsValue" />
+    <Property Type="Int32" Name="ActionsScore" Nullable="false" />
+    <Property Type="Int32" Name="ActionsMaximum" Nullable="false" />
+    <Property Type="Int32" Name="ActionsCurrent" Nullable="false" />
+    <Property Type="String" Name="RelationshipsOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="RelationshipsOptionScore" Nullable="false" />
+    <Property Type="Int32" Name="RelationshipsOptionMaximum" Nullable="false" />
+    <Property Type="Int32" Name="RelationshipsOptionCurrent" Nullable="false" />
+    <Property Type="Int32" Name="CompetenciesValue" />
+    <Property Type="Int32" Name="CompetenciesScore" Nullable="false" />
+    <Property Type="Int32" Name="CompetenciesMaximum" Nullable="false" />
+    <Property Type="Int32" Name="CompetenciesCurrent" Nullable="false" />
+    <Property Type="Int32" Name="CompetentOptionsValue" />
+    <Property Type="Int32" Name="CompetentOptionsScore" Nullable="false" />
+    <Property Type="Int32" Name="CompetentOptionsMaximum" Nullable="false" />
+    <Property Type="Int32" Name="CompetentOptionsCurrent" Nullable="false" />
+    <Property Type="String" Name="ReputationOptionValue" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ReputationOptionScore" Nullable="false" />
+    <Property Type="Int32" Name="ReputationOptionMaximum" Nullable="false" />
+    <Property Type="Int32" Name="ReputationOptionCurrent" Nullable="false" />
+    <Property Type="Int32" Name="OptionBValue" />
+    <Property Type="Int32" Name="OptionBScore" Nullable="false" />
+    <Property Type="Int32" Name="OptionBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="OptionBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoToBValue" />
+    <Property Type="Int32" Name="MemoToBScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoToBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoToBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleBValue" />
+    <Property Type="Int32" Name="MemoTitleBScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoTitleBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextBValue" />
+    <Property Type="Int32" Name="MemoTextBScore" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextBMaximum" Nullable="false" />
+    <Property Type="Int32" Name="MemoTextBCurrent" Nullable="false" />
+    <Property Type="Int32" Name="TotalMaximum" />
+    <Property Type="Int32" Name="TotalScores" />
+    <Property Type="Int32" Name="DilemmaAScore" />
+    <Property Type="Int32" Name="DilemmaBScore" />
+    <Property Type="Decimal" Name="DilemmaAPercentage" Precision="13" Scale="2" />
+    <Property Type="Decimal" Name="DilemmaBPercentage" Precision="13" Scale="2" />
+    <Property Type="Decimal" Name="TotalPercentage" Precision="13" Scale="2" />
+    <Property Type="String" Name="DilemmaALetterGrade" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="DilemmaBLetterGrade" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TotalLetterGrade" MaxLength="2" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Dilemma">
+    <Key>
+      <PropertyRef Name="DilemmaId" />
+    </Key>
+    <Property Type="Int32" Name="DilemmaId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="DilemmaA" Nullable="false" />
+    <Property Type="Int32" Name="SkillLevel" Nullable="false" />
+  </EntityType>
+</Schema>

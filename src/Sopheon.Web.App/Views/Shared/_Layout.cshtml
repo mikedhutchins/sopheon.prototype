@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	@RenderSection("styles", false)
+	@RenderSection("headerScripts", false)
+	@Styles.Render("~/Content/base/css")
+	@Styles.Render("~/Content/bootstrap")
+</head>
+<body>
+	<div id="main" class="b-light ">
+		@RenderBody()
+	</div>
+	<div class="ta-left" id="SystemTemplates">
+		<!-- Section for templates to be used for system behaviors -->
+		@{ Html.RenderPartial("~/Views/Shared/Templates.cshtml"); }
+		@if (IsSectionDefined("templates")) { RenderSection("templates"); }
+	</div>
+	@Scripts.Render("~/bundles/jquery", "~/bundles/jqueryui", "~/bundles/bootstrap", "~/bundles/sangre")
+	@RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,18 @@
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";	
+}
+@section styles{
+	
+	@{ 
+	 @Styles.Render("~/Content/my-projects/css")
+	 @RenderSection("styles", false) 
+	}
+}
+@section scripts{
+	
+	@{
+	 @Scripts.Render("~/bundles/my-projects")
+	  @RenderSection("scripts", false) 
+	 }
+}
+@RenderBody()

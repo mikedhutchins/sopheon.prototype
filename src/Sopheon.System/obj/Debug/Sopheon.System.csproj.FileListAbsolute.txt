@@ -1,0 +1,17 @@
+C:\meat\teq\gp_1.1.0\Sopheon.System\bin\Debug\Sopheon.System.dll
+C:\meat\teq\gp_1.1.0\Sopheon.System\bin\Debug\Sopheon.System.pdb
+C:\meat\teq\gp_1.1.0\Sopheon.System\obj\Debug\Sopheon.System.dll
+C:\meat\teq\gp_1.1.0\Sopheon.System\obj\Debug\Sopheon.System.pdb
+C:\meat\teq\gp_1.1.0\Sopheon.System\bin\Debug\StructureMap.dll
+C:\meat\teq\gp_1.1.0\Sopheon.System\obj\Debug\Sopheon.System.csprojResolveAssemblyReference.cache
+C:\_code\eg_code\trunk\Sopheon.System\bin\Debug\Sopheon.System.dll
+C:\_code\eg_code\trunk\Sopheon.System\bin\Debug\Sopheon.System.pdb
+C:\_code\eg_code\trunk\Sopheon.System\obj\Debug\ResolveAssemblyReference.cache
+C:\_code\eg_code\trunk\Sopheon.System\obj\Debug\Sopheon.System.dll
+C:\_code\eg_code\trunk\Sopheon.System\obj\Debug\Sopheon.System.pdb
+C:\meat\git\Sopheon\Sopheon.System\bin\Debug\Sopheon.System.dll
+C:\meat\git\Sopheon\Sopheon.System\bin\Debug\Sopheon.System.pdb
+C:\meat\git\Sopheon\Sopheon.System\bin\Debug\StructureMap.dll
+C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.dll
+C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.pdb
+C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.csprojResolveAssemblyReference.cache

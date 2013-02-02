@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SopheonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SopheonModelStoreContainer">
+    <EntitySet Name="Gates" EntityType="SopheonModel.Store.Gates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProcessTemplates" EntityType="SopheonModel.Store.ProcessTemplates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Projects" EntityType="SopheonModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Gates_Projects" Association="SopheonModel.Store.FK_Gates_Projects">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Gates" EntitySet="Gates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Projects_ProcessTemplates" Association="SopheonModel.Store.FK_Projects_ProcessTemplates">
+      <End Role="ProcessTemplates" EntitySet="ProcessTemplates" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Gates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ScheduledCompletion" Type="date" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessTemplates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="TemplateId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Gates_Projects">
+    <End Role="Projects" Type="SopheonModel.Store.Projects" Multiplicity="1" />
+    <End Role="Gates" Type="SopheonModel.Store.Gates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gates">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Projects_ProcessTemplates">
+    <End Role="ProcessTemplates" Type="SopheonModel.Store.ProcessTemplates" Multiplicity="1" />
+    <End Role="Projects" Type="SopheonModel.Store.Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessTemplates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="TemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

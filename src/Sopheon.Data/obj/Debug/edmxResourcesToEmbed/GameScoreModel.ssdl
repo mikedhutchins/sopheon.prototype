@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CorpGameDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CorpGameDataModelStoreContainer">
+    <EntitySet Name="CollegeGames" EntityType="CorpGameDataModel.Store.CollegeGames" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CollegeInstructor" EntityType="CorpGameDataModel.Store.CollegeInstructor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CollegeSetup" EntityType="CorpGameDataModel.Store.CollegeSetup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Dilemma" EntityType="CorpGameDataModel.Store.Dilemma" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Facilitator" EntityType="CorpGameDataModel.Store.Facilitator" store:Type="Tables" store:Schema="dbo" store:Name="Facilitator">
+      <DefiningQuery>SELECT 
+      [Facilitator].[Email] AS [Email], 
+      [Facilitator].[Instructor] AS [Instructor], 
+      [Facilitator].[OrganizationID] AS [OrganizationID]
+      FROM [dbo].[Facilitator] AS [Facilitator]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Game" EntityType="CorpGameDataModel.Store.Game" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Instance" EntityType="CorpGameDataModel.Store.Instance" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Register" EntityType="CorpGameDataModel.Store.Register" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Response_L1" EntityType="CorpGameDataModel.Store.Response_L1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Security" EntityType="CorpGameDataModel.Store.Security" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SimGradeScale" EntityType="CorpGameDataModel.Store.SimGradeScale" store:Type="Tables" store:Schema="dbo" store:Name="SimGradeScale">
+      <DefiningQuery>SELECT 
+      [SimGradeScale].[GradeScaleId] AS [GradeScaleId], 
+      [SimGradeScale].[GadeLetter] AS [GadeLetter], 
+      [SimGradeScale].[TopScale] AS [TopScale], 
+      [SimGradeScale].[BottomScale] AS [BottomScale], 
+      [SimGradeScale].[Percentage] AS [Percentage]
+      FROM [dbo].[SimGradeScale] AS [SimGradeScale]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentCourse" EntityType="CorpGameDataModel.Store.StudentCourse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ScoreFormulas" EntityType="CorpGameDataModel.Store.ScoreFormulas" store:Type="Tables" Schema="game" />
+    <EntitySet Name="ScorePages" EntityType="CorpGameDataModel.Store.ScorePages" store:Type="Tables" Schema="game" />
+    <EntitySet Name="v_Response_L1_Scores" EntityType="CorpGameDataModel.Store.v_Response_L1_Scores" store:Type="Views" store:Schema="dbo" store:Name="v_Response_L1_Scores">
+      <DefiningQuery>SELECT 
+      [v_Response_L1_Scores].[UserName] AS [UserName], 
+      [v_Response_L1_Scores].[Round] AS [Round], 
+      [v_Response_L1_Scores].[IssuesA] AS [IssuesA], 
+      [v_Response_L1_Scores].[IssuesAValue] AS [IssuesAValue], 
+      [v_Response_L1_Scores].[IssuesAScore] AS [IssuesAScore], 
+      [v_Response_L1_Scores].[IssuesAMaximum] AS [IssuesAMaximum], 
+      [v_Response_L1_Scores].[IssuesACurrent] AS [IssuesACurrent], 
+      [v_Response_L1_Scores].[StakeholdersA] AS [StakeholdersA], 
+      [v_Response_L1_Scores].[StakeholdersAValue] AS [StakeholdersAValue], 
+      [v_Response_L1_Scores].[StakeholdersAScore] AS [StakeholdersAScore], 
+      [v_Response_L1_Scores].[StakeholdersAMaximum] AS [StakeholdersAMaximum], 
+      [v_Response_L1_Scores].[StakeholdersACurrent] AS [StakeholdersACurrent], 
+      [v_Response_L1_Scores].[Duties] AS [Duties], 
+      [v_Response_L1_Scores].[DutiesValue] AS [DutiesValue], 
+      [v_Response_L1_Scores].[DutiesScore] AS [DutiesScore], 
+      [v_Response_L1_Scores].[DutiesMaximum] AS [DutiesMaximum], 
+      [v_Response_L1_Scores].[DutiesCurrent] AS [DutiesCurrent], 
+      [v_Response_L1_Scores].[RightsOption] AS [RightsOption], 
+      [v_Response_L1_Scores].[RightsOptionValue] AS [RightsOptionValue], 
+      [v_Response_L1_Scores].[RightsOptionScore] AS [RightsOptionScore], 
+      [v_Response_L1_Scores].[RightsOptionMaximum] AS [RightsOptionMaximum], 
+      [v_Response_L1_Scores].[RightsOptionCurrent] AS [RightsOptionCurrent], 
+      [v_Response_L1_Scores].[ImpactsBit1] AS [ImpactsBit1], 
+      [v_Response_L1_Scores].[ImpactsBit2] AS [ImpactsBit2], 
+      [v_Response_L1_Scores].[CriteriaBit1] AS [CriteriaBit1], 
+      [v_Response_L1_Scores].[CriteriaBit2] AS [CriteriaBit2], 
+      [v_Response_L1_Scores].[CriteriaBit3] AS [CriteriaBit3], 
+      [v_Response_L1_Scores].[CriteriaBit4] AS [CriteriaBit4], 
+      [v_Response_L1_Scores].[ResultsBit1] AS [ResultsBit1], 
+      [v_Response_L1_Scores].[ResultsBit2] AS [ResultsBit2], 
+      [v_Response_L1_Scores].[ResultsBit3] AS [ResultsBit3], 
+      [v_Response_L1_Scores].[ResultsOption] AS [ResultsOption], 
+      [v_Response_L1_Scores].[OptionA] AS [OptionA], 
+      [v_Response_L1_Scores].[MemoToA] AS [MemoToA], 
+      [v_Response_L1_Scores].[MemoTitleA] AS [MemoTitleA], 
+      [v_Response_L1_Scores].[MemoTextA] AS [MemoTextA], 
+      [v_Response_L1_Scores].[BonusA] AS [BonusA], 
+      [v_Response_L1_Scores].[BonusMaximumA] AS [BonusMaximumA], 
+      [v_Response_L1_Scores].[IssuesB] AS [IssuesB], 
+      [v_Response_L1_Scores].[StakeholdersB] AS [StakeholdersB], 
+      [v_Response_L1_Scores].[Liberties] AS [Liberties], 
+      [v_Response_L1_Scores].[Actions] AS [Actions], 
+      [v_Response_L1_Scores].[RelationshipsOption] AS [RelationshipsOption], 
+      [v_Response_L1_Scores].[Competencies] AS [Competencies], 
+      [v_Response_L1_Scores].[CompetentOptions] AS [CompetentOptions], 
+      [v_Response_L1_Scores].[ReputationOption] AS [ReputationOption], 
+      [v_Response_L1_Scores].[OptionB] AS [OptionB], 
+      [v_Response_L1_Scores].[MemoToB] AS [MemoToB], 
+      [v_Response_L1_Scores].[MemoTitleB] AS [MemoTitleB], 
+      [v_Response_L1_Scores].[MemoTextB] AS [MemoTextB], 
+      [v_Response_L1_Scores].[BonusPage] AS [BonusPage], 
+      [v_Response_L1_Scores].[Bonus] AS [Bonus], 
+      [v_Response_L1_Scores].[BonusMaximum] AS [BonusMaximum], 
+      [v_Response_L1_Scores].[GameCode] AS [GameCode], 
+      [v_Response_L1_Scores].[ImpactsValue] AS [ImpactsValue], 
+      [v_Response_L1_Scores].[ImpactsScore] AS [ImpactsScore], 
+      [v_Response_L1_Scores].[ImpactsMaximum] AS [ImpactsMaximum], 
+      [v_Response_L1_Scores].[ImpactsCurrent] AS [ImpactsCurrent], 
+      [v_Response_L1_Scores].[CriteriaValue] AS [CriteriaValue], 
+      [v_Response_L1_Scores].[CriteriaScore] AS [CriteriaScore], 
+      [v_Response_L1_Scores].[CriteriaMaximum] AS [CriteriaMaximum], 
+      [v_Response_L1_Scores].[CriteriaCurrent] AS [CriteriaCurrent], 
+      [v_Response_L1_Scores].[ResultsValue] AS [ResultsValue], 
+      [v_Response_L1_Scores].[ResultsScore] AS [ResultsScore], 
+      [v_Response_L1_Scores].[ResultsMaximum] AS [ResultsMaximum], 
+      [v_Response_L1_Scores].[ResultsCurrent] AS [ResultsCurrent], 
+      [v_Response_L1_Scores].[ResultsOptionValue] AS [ResultsOptionValue], 
+      [v_Response_L1_Scores].[ResultsOptionScore] AS [ResultsOptionScore], 
+      [v_Response_L1_Scores].[ResultsOptionMaximum] AS [ResultsOptionMaximum], 
+      [v_Response_L1_Scores].[ResultsOptionCurrent] AS [ResultsOptionCurrent], 
+      [v_Response_L1_Scores].[OptionAValue] AS [OptionAValue], 
+      [v_Response_L1_Scores].[OptionAScore] AS [OptionAScore], 
+      [v_Response_L1_Scores].[OptionAMaximum] AS [OptionAMaximum], 
+      [v_Response_L1_Scores].[OptionACurrent] AS [OptionACurrent], 
+      [v_Response_L1_Scores].[MemoToAValue] AS [MemoToAValue], 
+      [v_Response_L1_Scores].[MemoToAScore] AS [MemoToAScore], 
+      [v_Response_L1_Scores].[MemoToAMaximum] AS [MemoToAMaximum], 
+      [v_Response_L1_Scores].[MemoToACurrent] AS [MemoToACurrent], 
+      [v_Response_L1_Scores].[MemoTitleAValue] AS [MemoTitleAValue], 
+      [v_Response_L1_Scores].[MemoTitleAScore] AS [MemoTitleAScore], 
+      [v_Response_L1_Scores].[MemoTitleAMaximum] AS [MemoTitleAMaximum], 
+      [v_Response_L1_Scores].[MemoTitleACurrent] AS [MemoTitleACurrent], 
+      [v_Response_L1_Scores].[MemoTextAValue] AS [MemoTextAValue], 
+      [v_Response_L1_Scores].[MemoTextAScore] AS [MemoTextAScore], 
+      [v_Response_L1_Scores].[MemoTextAMaximum] AS [MemoTextAMaximum], 
+      [v_Response_L1_Scores].[MemoTextACurrent] AS [MemoTextACurrent], 
+      [v_Response_L1_Scores].[BonusAValue] AS [BonusAValue], 
+      [v_Response_L1_Scores].[BonusAScore] AS [BonusAScore], 
+      [v_Response_L1_Scores].[BonusAMaximum] AS [BonusAMaximum], 
+      [v_Response_L1_Scores].[BonusACurrent] AS [BonusACurrent], 
+      [v_Response_L1_Scores].[BonusMaximumAValue] AS [BonusMaximumAValue], 
+      [v_Response_L1_Scores].[BonusMaximumAScore] AS [BonusMaximumAScore], 
+      [v_Response_L1_Scores].[BonusMaximumAMaximum] AS [BonusMaximumAMaximum], 
+      [v_Response_L1_Scores].[BonusMaximumACurrent] AS [BonusMaximumACurrent], 
+      [v_Response_L1_Scores].[IssuesBValue] AS [IssuesBValue], 
+      [v_Response_L1_Scores].[IssuesBScore] AS [IssuesBScore], 
+      [v_Response_L1_Scores].[IssuesBMaximum] AS [IssuesBMaximum], 
+      [v_Response_L1_Scores].[IssuesBCurrent] AS [IssuesBCurrent], 
+      [v_Response_L1_Scores].[StakeholdersBValue] AS [StakeholdersBValue], 
+      [v_Response_L1_Scores].[StakeholdersBScore] AS [StakeholdersBScore], 
+      [v_Response_L1_Scores].[StakeholdersBMaximum] AS [StakeholdersBMaximum], 
+      [v_Response_L1_Scores].[StakeholdersBCurrent] AS [StakeholdersBCurrent], 
+      [v_Response_L1_Scores].[LibertiesValue] AS [LibertiesValue], 
+      [v_Response_L1_Scores].[LibertiesScore] AS [LibertiesScore], 
+      [v_Response_L1_Scores].[LibertiesMaximum] AS [LibertiesMaximum], 
+      [v_Response_L1_Scores].[LibertiesCurrent] AS [LibertiesCurrent], 
+      [v_Response_L1_Scores].[ActionsValue] AS [ActionsValue], 
+      [v_Response_L1_Scores].[ActionsScore] AS [ActionsScore], 
+      [v_Response_L1_Scores].[ActionsMaximum] AS [ActionsMaximum], 
+      [v_Response_L1_Scores].[ActionsCurrent] AS [ActionsCurrent], 
+      [v_Response_L1_Scores].[RelationshipsOptionValue] AS [RelationshipsOptionValue], 
+      [v_Response_L1_Scores].[RelationshipsOptionScore] AS [RelationshipsOptionScore], 
+      [v_Response_L1_Scores].[RelationshipsOptionMaximum] AS [RelationshipsOptionMaximum], 
+      [v_Response_L1_Scores].[RelationshipsOptionCurrent] AS [RelationshipsOptionCurrent], 
+      [v_Response_L1_Scores].[CompetenciesValue] AS [CompetenciesValue], 
+      [v_Response_L1_Scores].[CompetenciesScore] AS [CompetenciesScore], 
+      [v_Response_L1_Scores].[CompetenciesMaximum] AS [CompetenciesMaximum], 
+      [v_Response_L1_Scores].[CompetenciesCurrent] AS [CompetenciesCurrent], 
+      [v_Response_L1_Scores].[CompetentOptionsValue] AS [CompetentOptionsValue], 
+      [v_Response_L1_Scores].[CompetentOptionsScore] AS [CompetentOptionsScore], 
+      [v_Response_L1_Scores].[CompetentOptionsMaximum] AS [CompetentOptionsMaximum], 
+      [v_Response_L1_Scores].[CompetentOptionsCurrent] AS [CompetentOptionsCurrent], 
+      [v_Response_L1_Scores].[ReputationOptionValue] AS [ReputationOptionValue], 
+      [v_Response_L1_Scores].[ReputationOptionScore] AS [ReputationOptionScore], 
+      [v_Response_L1_Scores].[ReputationOptionMaximum] AS [ReputationOptionMaximum], 
+      [v_Response_L1_Scores].[ReputationOptionCurrent] AS [ReputationOptionCurrent], 
+      [v_Response_L1_Scores].[OptionBValue] AS [OptionBValue], 
+      [v_Response_L1_Scores].[OptionBScore] AS [OptionBScore], 
+      [v_Response_L1_Scores].[OptionBMaximum] AS [OptionBMaximum], 
+      [v_Response_L1_Scores].[OptionBCurrent] AS [OptionBCurrent], 
+      [v_Response_L1_Scores].[MemoToBValue] AS [MemoToBValue], 
+      [v_Response_L1_Scores].[MemoToBScore] AS [MemoToBScore], 
+      [v_Response_L1_Scores].[MemoToBMaximum] AS [MemoToBMaximum], 
+      [v_Response_L1_Scores].[MemoToBCurrent] AS [MemoToBCurrent], 
+      [v_Response_L1_Scores].[MemoTitleBValue] AS [MemoTitleBValue], 
+      [v_Response_L1_Scores].[MemoTitleBScore] AS [MemoTitleBScore], 
+      [v_Response_L1_Scores].[MemoTitleBMaximum] AS [MemoTitleBMaximum], 
+      [v_Response_L1_Scores].[MemoTitleBCurrent] AS [MemoTitleBCurrent], 
+      [v_Response_L1_Scores].[MemoTextBValue] AS [MemoTextBValue], 
+      [v_Response_L1_Scores].[MemoTextBScore] AS [MemoTextBScore], 
+      [v_Response_L1_Scores].[MemoTextBMaximum] AS [MemoTextBMaximum], 
+      [v_Response_L1_Scores].[MemoTextBCurrent] AS [MemoTextBCurrent], 
+      [v_Response_L1_Scores].[TotalMaximum] AS [TotalMaximum], 
+      [v_Response_L1_Scores].[TotalScores] AS [TotalScores], 
+      [v_Response_L1_Scores].[DilemmaAScore] AS [DilemmaAScore], 
+      [v_Response_L1_Scores].[DilemmaBScore] AS [DilemmaBScore], 
+      [v_Response_L1_Scores].[DilemmaAPercentage] AS [DilemmaAPercentage], 
+      [v_Response_L1_Scores].[DilemmaBPercentage] AS [DilemmaBPercentage], 
+      [v_Response_L1_Scores].[TotalPercentage] AS [TotalPercentage], 
+      [v_Response_L1_Scores].[DilemmaALetterGrade] AS [DilemmaALetterGrade], 
+      [v_Response_L1_Scores].[DilemmaBLetterGrade] AS [DilemmaBLetterGrade], 
+      [v_Response_L1_Scores].[TotalLetterGrade] AS [TotalLetterGrade]
+      FROM [dbo].[v_Response_L1_Scores] AS [v_Response_L1_Scores]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ScoreFormulas_ScorePages" Association="CorpGameDataModel.Store.FK_ScoreFormulas_ScorePages">
+      <End Role="ScorePages" EntitySet="ScorePages" />
+      <End Role="ScoreFormulas" EntitySet="ScoreFormulas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CollegeGames">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CollegeSetupId" Type="int" />
+    <Property Name="System" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="GameCode" Type="nvarchar" MaxLength="32" />
+    <Property Name="CourseRegistration" Type="nvarchar" MaxLength="255" />
+    <Property Name="Module" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CollegeInstructor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CollegeSetupId" Type="int" />
+    <Property Name="CourseRegistration" Type="nvarchar" MaxLength="255" />
+    <Property Name="Instructor" Type="nvarchar" MaxLength="255" />
+    <Property Name="Archived" Type="bit" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="isPrimary" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CollegeSetup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CourseId" Type="nvarchar" MaxLength="255" />
+    <Property Name="Eli" Type="bit" />
+    <Property Name="HotTopicModules" Type="text" />
+    <Property Name="GameTotal" Type="money" />
+    <Property Name="RegistrationCode" Type="nvarchar" MaxLength="255" />
+    <Property Name="MasteryModules" Type="text" />
+    <Property Name="Memo" Type="bit" />
+    <Property Name="SetupDate" Type="datetime" />
+    <Property Name="EstimatedStudents" Type="int" />
+    <Property Name="RetailAmount" Type="money" />
+    <Property Name="SalesPerson" Type="int" Nullable="false" />
+    <Property Name="Instructor" Type="varchar" MaxLength="150" />
+    <Property Name="CourseStart" Type="datetime" />
+    <Property Name="CourseEnd" Type="datetime" />
+    <Property Name="OrganizationId" Type="uniqueidentifier" />
+    <Property Name="InstructorName" Type="varchar" MaxLength="150" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="DateModified" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="255" />
+    <Property Name="PaymentType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dilemma">
+    <Key>
+      <PropertyRef Name="DilemmaId" />
+    </Key>
+    <Property Name="DilemmaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="150" />
+    <Property Name="Description" Type="varchar" MaxLength="500" />
+    <Property Name="DilemmaA" Type="bit" Nullable="false" />
+    <Property Name="SkillLevel" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'CorpGameData.dbo.Facilitator' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Facilitator">
+    <Key>
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="Instructor" />
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="130" />
+    <Property Name="Instructor" Type="nvarchar" Nullable="false" MaxLength="130" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Game" />
+    </Key>
+    <Property Name="Game" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="HotTopic" Type="bit" Nullable="false" />
+    <Property Name="ModuleName" Type="nchar" MaxLength="255" />
+    <Property Name="TopicDilemma" Type="text" />
+    <Property Name="rounds" Type="int" />
+    <Property Name="show_in_game_creator" Type="char" MaxLength="1" />
+    <Property Name="DilemmaA" Type="int" Nullable="false" />
+    <Property Name="DilemmaB" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instance">
+    <Key>
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Name="GameCode" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="Game" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="Prepaid" Type="bit" Nullable="false" />
+    <Property Name="Demo" Type="bit" Nullable="false" />
+    <Property Name="Instructor" Type="nvarchar" Nullable="false" MaxLength="130" />
+    <Property Name="Rounds" Type="int" Nullable="false" />
+    <Property Name="Partial" Type="bit" Nullable="false" />
+    <Property Name="Memo" Type="bit" Nullable="false" />
+    <Property Name="CourseNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="TagType" Type="int" Nullable="false" />
+    <Property Name="OrganizationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="10" Scale="4" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="MaximumSize" Type="int" />
+    <Property Name="sequence" Type="int" />
+    <Property Name="TopLevelGameCode" Type="nvarchar" MaxLength="8" />
+    <Property Name="Archived" Type="char" MaxLength="1" />
+    <Property Name="Vertical" Type="nvarchar" MaxLength="50" />
+    <Property Name="CollegeSetupId" Type="int" Nullable="false" />
+    <Property Name="DilemmaA" Type="int" Nullable="false" />
+    <Property Name="DilemmaB" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="130" />
+    <Property Name="Game" Type="nvarchar" Nullable="false" MaxLength="32" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="163" />
+    <Property Name="GameCode" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletionDate" Type="datetime" />
+    <Property Name="EnrollmentCode" Type="nchar" MaxLength="25" />
+    <Property Name="CurrentPage" Type="int" />
+    <Property Name="CurrentRound" Type="int" />
+    <Property Name="CurrentRole" Type="int" />
+    <Property Name="CurrentRolePage" Type="int" />
+    <Property Name="NotesTitle1" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesText1" Type="text" />
+    <Property Name="NotesTitle2" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesText2" Type="text" />
+    <Property Name="NotesTitle3" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesText3" Type="text" />
+    <Property Name="NotesTitle4" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesText4" Type="text" />
+    <Property Name="NotesTitle5" Type="nvarchar" MaxLength="50" />
+    <Property Name="NotesText5" Type="text" />
+    <Property Name="GameLog" Type="text" />
+    <Property Name="RegisterID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="title" Type="nchar" MaxLength="255" />
+    <Property Name="company" Type="nchar" MaxLength="255" />
+    <Property Name="phone" Type="nchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Response_L1">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="GameCode" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="163" />
+    <Property Name="Round" Type="int" Nullable="false" />
+    <Property Name="IssuesA" Type="int" />
+    <Property Name="IssuesAValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="StakeholdersA" Type="int" />
+    <Property Name="StakeholdersAValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="Duties" Type="int" />
+    <Property Name="DutiesValue" Type="int" />
+    <Property Name="RightsOption" Type="int" />
+    <Property Name="RightsOptionValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="ImpactsBit1" Type="int" />
+    <Property Name="ImpactsBit2" Type="int" />
+    <Property Name="CriteriaBit1" Type="int" />
+    <Property Name="CriteriaBit2" Type="int" />
+    <Property Name="CriteriaBit3" Type="int" />
+    <Property Name="CriteriaBit4" Type="int" />
+    <Property Name="ResultsBit1" Type="int" />
+    <Property Name="ResultsBit2" Type="int" />
+    <Property Name="ResultsBit3" Type="int" />
+    <Property Name="ResultsOption" Type="int" />
+    <Property Name="OptionA" Type="int" />
+    <Property Name="MemoToA" Type="int" />
+    <Property Name="MemoTitleA" Type="nvarchar(max)" />
+    <Property Name="MemoTextA" Type="text" />
+    <Property Name="BonusA" Type="int" />
+    <Property Name="BonusMaximumA" Type="int" />
+    <Property Name="IssuesB" Type="int" />
+    <Property Name="StakeholdersB" Type="int" />
+    <Property Name="Liberties" Type="int" />
+    <Property Name="Actions" Type="int" />
+    <Property Name="RelationshipsOption" Type="int" />
+    <Property Name="Competencies" Type="int" />
+    <Property Name="CompetentOptions" Type="int" />
+    <Property Name="ReputationOption" Type="int" />
+    <Property Name="OptionB" Type="int" />
+    <Property Name="MemoToB" Type="int" />
+    <Property Name="MemoTitleB" Type="nvarchar(max)" />
+    <Property Name="MemoTextB" Type="text" />
+    <Property Name="BonusPage" Type="int" />
+    <Property Name="Bonus" Type="int" />
+    <Property Name="BonusMaximum" Type="int" />
+    <Property Name="GameCode" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="ImpactsValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="CriteriaValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResultsValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResultsOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptionAValue" Type="int" />
+    <Property Name="MemoToAValue" Type="int" />
+    <Property Name="MemoTitleAValue" Type="int" />
+    <Property Name="MemoTextAValue" Type="int" />
+    <Property Name="BonusAValue" Type="int" />
+    <Property Name="BonusMaximumAValue" Type="int" />
+    <Property Name="IssuesBValue" Type="int" />
+    <Property Name="StakeholdersBValue" Type="int" />
+    <Property Name="LibertiesValue" Type="int" />
+    <Property Name="ActionsValue" Type="int" />
+    <Property Name="RelationshipsOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompetenciesValue" Type="int" />
+    <Property Name="CompetentOptionsValue" Type="int" />
+    <Property Name="ReputationOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="OptionBValue" Type="int" />
+    <Property Name="MemoToBValue" Type="int" />
+    <Property Name="MemoTitleBValue" Type="int" />
+    <Property Name="MemoTextBValue" Type="int" />
+  </EntityType>
+  <EntityType Name="Security">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="130" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="16" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="120" />
+    <Property Name="ExternalTag" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="120" />
+    <Property Name="MiddleInitial" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'CorpGameData.dbo.SimGradeScale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="SimGradeScale">
+    <Key>
+      <PropertyRef Name="GradeScaleId" />
+      <PropertyRef Name="GadeLetter" />
+      <PropertyRef Name="TopScale" />
+      <PropertyRef Name="BottomScale" />
+      <PropertyRef Name="Percentage" />
+    </Key>
+    <Property Name="GradeScaleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GadeLetter" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="TopScale" Type="int" Nullable="false" />
+    <Property Name="BottomScale" Type="int" Nullable="false" />
+    <Property Name="Percentage" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="StudentCourse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="nvarchar" MaxLength="130" />
+    <Property Name="CourseRegistration" Type="nvarchar" MaxLength="255" />
+    <Property Name="Paid" Type="bit" />
+    <Property Name="CollegeSetupId" Type="int" />
+    <Property Name="EnrollmentCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="RegistrationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ScoreFormulas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="ExpectedValue" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ScorePageId" Type="int" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="ScorePages">
+    <Key>
+      <PropertyRef Name="ScorePageId" />
+    </Key>
+    <Property Name="ScorePageId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ColumnName" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="ScoreFunction" Type="nvarchar" />
+    <Property Name="PageNumber" Type="int" />
+    <Property Name="XmlFile" Type="varchar" MaxLength="150" />
+    <Property Name="XmlFile2" Type="varchar" MaxLength="150" />
+    <Property Name="XmlFile3" Type="varchar" MaxLength="150" />
+    <Property Name="Weight" Type="decimal" Scale="2" />
+    <Property Name="BitValueCount" Type="int" />
+    <Property Name="ViewPage" Type="varchar" MaxLength="150" />
+    <Property Name="DilemmaSection" Type="nvarchar" MaxLength="1" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'CorpGameData.dbo.v_Response_L1_Scores' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="v_Response_L1_Scores">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Round" />
+      <PropertyRef Name="IssuesAScore" />
+      <PropertyRef Name="IssuesAMaximum" />
+      <PropertyRef Name="IssuesACurrent" />
+      <PropertyRef Name="StakeholdersAScore" />
+      <PropertyRef Name="StakeholdersAMaximum" />
+      <PropertyRef Name="StakeholdersACurrent" />
+      <PropertyRef Name="DutiesScore" />
+      <PropertyRef Name="DutiesMaximum" />
+      <PropertyRef Name="DutiesCurrent" />
+      <PropertyRef Name="RightsOptionScore" />
+      <PropertyRef Name="RightsOptionMaximum" />
+      <PropertyRef Name="RightsOptionCurrent" />
+      <PropertyRef Name="GameCode" />
+      <PropertyRef Name="ImpactsScore" />
+      <PropertyRef Name="ImpactsMaximum" />
+      <PropertyRef Name="ImpactsCurrent" />
+      <PropertyRef Name="CriteriaScore" />
+      <PropertyRef Name="CriteriaMaximum" />
+      <PropertyRef Name="CriteriaCurrent" />
+      <PropertyRef Name="ResultsScore" />
+      <PropertyRef Name="ResultsMaximum" />
+      <PropertyRef Name="ResultsCurrent" />
+      <PropertyRef Name="ResultsOptionScore" />
+      <PropertyRef Name="ResultsOptionMaximum" />
+      <PropertyRef Name="ResultsOptionCurrent" />
+      <PropertyRef Name="OptionAScore" />
+      <PropertyRef Name="OptionAMaximum" />
+      <PropertyRef Name="OptionACurrent" />
+      <PropertyRef Name="MemoToAScore" />
+      <PropertyRef Name="MemoToAMaximum" />
+      <PropertyRef Name="MemoToACurrent" />
+      <PropertyRef Name="MemoTitleAScore" />
+      <PropertyRef Name="MemoTitleAMaximum" />
+      <PropertyRef Name="MemoTitleACurrent" />
+      <PropertyRef Name="MemoTextAScore" />
+      <PropertyRef Name="MemoTextAMaximum" />
+      <PropertyRef Name="MemoTextACurrent" />
+      <PropertyRef Name="BonusAScore" />
+      <PropertyRef Name="BonusAMaximum" />
+      <PropertyRef Name="BonusACurrent" />
+      <PropertyRef Name="BonusMaximumAScore" />
+      <PropertyRef Name="BonusMaximumAMaximum" />
+      <PropertyRef Name="BonusMaximumACurrent" />
+      <PropertyRef Name="IssuesBScore" />
+      <PropertyRef Name="IssuesBMaximum" />
+      <PropertyRef Name="IssuesBCurrent" />
+      <PropertyRef Name="StakeholdersBScore" />
+      <PropertyRef Name="StakeholdersBMaximum" />
+      <PropertyRef Name="StakeholdersBCurrent" />
+      <PropertyRef Name="LibertiesScore" />
+      <PropertyRef Name="LibertiesMaximum" />
+      <PropertyRef Name="LibertiesCurrent" />
+      <PropertyRef Name="ActionsScore" />
+      <PropertyRef Name="ActionsMaximum" />
+      <PropertyRef Name="ActionsCurrent" />
+      <PropertyRef Name="RelationshipsOptionScore" />
+      <PropertyRef Name="RelationshipsOptionMaximum" />
+      <PropertyRef Name="RelationshipsOptionCurrent" />
+      <PropertyRef Name="CompetenciesScore" />
+      <PropertyRef Name="CompetenciesMaximum" />
+      <PropertyRef Name="CompetenciesCurrent" />
+      <PropertyRef Name="CompetentOptionsScore" />
+      <PropertyRef Name="CompetentOptionsMaximum" />
+      <PropertyRef Name="CompetentOptionsCurrent" />
+      <PropertyRef Name="ReputationOptionScore" />
+      <PropertyRef Name="ReputationOptionMaximum" />
+      <PropertyRef Name="ReputationOptionCurrent" />
+      <PropertyRef Name="OptionBScore" />
+      <PropertyRef Name="OptionBMaximum" />
+      <PropertyRef Name="OptionBCurrent" />
+      <PropertyRef Name="MemoToBScore" />
+      <PropertyRef Name="MemoToBMaximum" />
+      <PropertyRef Name="MemoToBCurrent" />
+      <PropertyRef Name="MemoTitleBScore" />
+      <PropertyRef Name="MemoTitleBMaximum" />
+      <PropertyRef Name="MemoTitleBCurrent" />
+      <PropertyRef Name="MemoTextBScore" />
+      <PropertyRef Name="MemoTextBMaximum" />
+      <PropertyRef Name="MemoTextBCurrent" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="163" />
+    <Property Name="Round" Type="int" Nullable="false" />
+    <Property Name="IssuesA" Type="int" />
+    <Property Name="IssuesAValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="IssuesAScore" Type="int" Nullable="false" />
+    <Property Name="IssuesAMaximum" Type="int" Nullable="false" />
+    <Property Name="IssuesACurrent" Type="int" Nullable="false" />
+    <Property Name="StakeholdersA" Type="int" />
+    <Property Name="StakeholdersAValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="StakeholdersAScore" Type="int" Nullable="false" />
+    <Property Name="StakeholdersAMaximum" Type="int" Nullable="false" />
+    <Property Name="StakeholdersACurrent" Type="int" Nullable="false" />
+    <Property Name="Duties" Type="int" />
+    <Property Name="DutiesValue" Type="int" />
+    <Property Name="DutiesScore" Type="int" Nullable="false" />
+    <Property Name="DutiesMaximum" Type="int" Nullable="false" />
+    <Property Name="DutiesCurrent" Type="int" Nullable="false" />
+    <Property Name="RightsOption" Type="int" />
+    <Property Name="RightsOptionValue" Type="nvarchar" MaxLength="255" />
+    <Property Name="RightsOptionScore" Type="int" Nullable="false" />
+    <Property Name="RightsOptionMaximum" Type="int" Nullable="false" />
+    <Property Name="RightsOptionCurrent" Type="int" Nullable="false" />
+    <Property Name="ImpactsBit1" Type="int" />
+    <Property Name="ImpactsBit2" Type="int" />
+    <Property Name="CriteriaBit1" Type="int" />
+    <Property Name="CriteriaBit2" Type="int" />
+    <Property Name="CriteriaBit3" Type="int" />
+    <Property Name="CriteriaBit4" Type="int" />
+    <Property Name="ResultsBit1" Type="int" />
+    <Property Name="ResultsBit2" Type="int" />
+    <Property Name="ResultsBit3" Type="int" />
+    <Property Name="ResultsOption" Type="int" />
+    <Property Name="OptionA" Type="int" />
+    <Property Name="MemoToA" Type="int" />
+    <Property Name="MemoTitleA" Type="nvarchar(max)" />
+    <Property Name="MemoTextA" Type="text" />
+    <Property Name="BonusA" Type="int" />
+    <Property Name="BonusMaximumA" Type="int" />
+    <Property Name="IssuesB" Type="int" />
+    <Property Name="StakeholdersB" Type="int" />
+    <Property Name="Liberties" Type="int" />
+    <Property Name="Actions" Type="int" />
+    <Property Name="RelationshipsOption" Type="int" />
+    <Property Name="Competencies" Type="int" />
+    <Property Name="CompetentOptions" Type="int" />
+    <Property Name="ReputationOption" Type="int" />
+    <Property Name="OptionB" Type="int" />
+    <Property Name="MemoToB" Type="int" />
+    <Property Name="MemoTitleB" Type="nvarchar(max)" />
+    <Property Name="MemoTextB" Type="text" />
+    <Property Name="BonusPage" Type="int" />
+    <Property Name="Bonus" Type="int" />
+    <Property Name="BonusMaximum" Type="int" />
+    <Property Name="GameCode" Type="nvarchar" Nullable="false" MaxLength="8" />
+    <Property Name="ImpactsValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImpactsScore" Type="int" Nullable="false" />
+    <Property Name="ImpactsMaximum" Type="int" Nullable="false" />
+    <Property Name="ImpactsCurrent" Type="int" Nullable="false" />
+    <Property Name="CriteriaValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="CriteriaScore" Type="int" Nullable="false" />
+    <Property Name="CriteriaMaximum" Type="int" Nullable="false" />
+    <Property Name="CriteriaCurrent" Type="int" Nullable="false" />
+    <Property Name="ResultsValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResultsScore" Type="int" Nullable="false" />
+    <Property Name="ResultsMaximum" Type="int" Nullable="false" />
+    <Property Name="ResultsCurrent" Type="int" Nullable="false" />
+    <Property Name="ResultsOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ResultsOptionScore" Type="int" Nullable="false" />
+    <Property Name="ResultsOptionMaximum" Type="int" Nullable="false" />
+    <Property Name="ResultsOptionCurrent" Type="int" Nullable="false" />
+    <Property Name="OptionAValue" Type="int" />
+    <Property Name="OptionAScore" Type="int" Nullable="false" />
+    <Property Name="OptionAMaximum" Type="int" Nullable="false" />
+    <Property Name="OptionACurrent" Type="int" Nullable="false" />
+    <Property Name="MemoToAValue" Type="int" />
+    <Property Name="MemoToAScore" Type="int" Nullable="false" />
+    <Property Name="MemoToAMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoToACurrent" Type="int" Nullable="false" />
+    <Property Name="MemoTitleAValue" Type="int" />
+    <Property Name="MemoTitleAScore" Type="int" Nullable="false" />
+    <Property Name="MemoTitleAMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoTitleACurrent" Type="int" Nullable="false" />
+    <Property Name="MemoTextAValue" Type="int" />
+    <Property Name="MemoTextAScore" Type="int" Nullable="false" />
+    <Property Name="MemoTextAMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoTextACurrent" Type="int" Nullable="false" />
+    <Property Name="BonusAValue" Type="int" />
+    <Property Name="BonusAScore" Type="int" Nullable="false" />
+    <Property Name="BonusAMaximum" Type="int" Nullable="false" />
+    <Property Name="BonusACurrent" Type="int" Nullable="false" />
+    <Property Name="BonusMaximumAValue" Type="int" />
+    <Property Name="BonusMaximumAScore" Type="int" Nullable="false" />
+    <Property Name="BonusMaximumAMaximum" Type="int" Nullable="false" />
+    <Property Name="BonusMaximumACurrent" Type="int" Nullable="false" />
+    <Property Name="IssuesBValue" Type="int" />
+    <Property Name="IssuesBScore" Type="int" Nullable="false" />
+    <Property Name="IssuesBMaximum" Type="int" Nullable="false" />
+    <Property Name="IssuesBCurrent" Type="int" Nullable="false" />
+    <Property Name="StakeholdersBValue" Type="int" />
+    <Property Name="StakeholdersBScore" Type="int" Nullable="false" />
+    <Property Name="StakeholdersBMaximum" Type="int" Nullable="false" />
+    <Property Name="StakeholdersBCurrent" Type="int" Nullable="false" />
+    <Property Name="LibertiesValue" Type="int" />
+    <Property Name="LibertiesScore" Type="int" Nullable="false" />
+    <Property Name="LibertiesMaximum" Type="int" Nullable="false" />
+    <Property Name="LibertiesCurrent" Type="int" Nullable="false" />
+    <Property Name="ActionsValue" Type="int" />
+    <Property Name="ActionsScore" Type="int" Nullable="false" />
+    <Property Name="ActionsMaximum" Type="int" Nullable="false" />
+    <Property Name="ActionsCurrent" Type="int" Nullable="false" />
+    <Property Name="RelationshipsOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="RelationshipsOptionScore" Type="int" Nullable="false" />
+    <Property Name="RelationshipsOptionMaximum" Type="int" Nullable="false" />
+    <Property Name="RelationshipsOptionCurrent" Type="int" Nullable="false" />
+    <Property Name="CompetenciesValue" Type="int" />
+    <Property Name="CompetenciesScore" Type="int" Nullable="false" />
+    <Property Name="CompetenciesMaximum" Type="int" Nullable="false" />
+    <Property Name="CompetenciesCurrent" Type="int" Nullable="false" />
+    <Property Name="CompetentOptionsValue" Type="int" />
+    <Property Name="CompetentOptionsScore" Type="int" Nullable="false" />
+    <Property Name="CompetentOptionsMaximum" Type="int" Nullable="false" />
+    <Property Name="CompetentOptionsCurrent" Type="int" Nullable="false" />
+    <Property Name="ReputationOptionValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="ReputationOptionScore" Type="int" Nullable="false" />
+    <Property Name="ReputationOptionMaximum" Type="int" Nullable="false" />
+    <Property Name="ReputationOptionCurrent" Type="int" Nullable="false" />
+    <Property Name="OptionBValue" Type="int" />
+    <Property Name="OptionBScore" Type="int" Nullable="false" />
+    <Property Name="OptionBMaximum" Type="int" Nullable="false" />
+    <Property Name="OptionBCurrent" Type="int" Nullable="false" />
+    <Property Name="MemoToBValue" Type="int" />
+    <Property Name="MemoToBScore" Type="int" Nullable="false" />
+    <Property Name="MemoToBMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoToBCurrent" Type="int" Nullable="false" />
+    <Property Name="MemoTitleBValue" Type="int" />
+    <Property Name="MemoTitleBScore" Type="int" Nullable="false" />
+    <Property Name="MemoTitleBMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoTitleBCurrent" Type="int" Nullable="false" />
+    <Property Name="MemoTextBValue" Type="int" />
+    <Property Name="MemoTextBScore" Type="int" Nullable="false" />
+    <Property Name="MemoTextBMaximum" Type="int" Nullable="false" />
+    <Property Name="MemoTextBCurrent" Type="int" Nullable="false" />
+    <Property Name="TotalMaximum" Type="int" />
+    <Property Name="TotalScores" Type="int" />
+    <Property Name="DilemmaAScore" Type="int" />
+    <Property Name="DilemmaBScore" Type="int" />
+    <Property Name="DilemmaAPercentage" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="DilemmaBPercentage" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="TotalPercentage" Type="numeric" Precision="13" Scale="2" />
+    <Property Name="DilemmaALetterGrade" Type="varchar" MaxLength="2" />
+    <Property Name="DilemmaBLetterGrade" Type="varchar" MaxLength="2" />
+    <Property Name="TotalLetterGrade" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <Association Name="FK_ScoreFormulas_ScorePages">
+    <End Role="ScorePages" Type="CorpGameDataModel.Store.ScorePages" Multiplicity="1" />
+    <End Role="ScoreFormulas" Type="CorpGameDataModel.Store.ScoreFormulas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScorePages">
+        <PropertyRef Name="ScorePageId" />
+      </Principal>
+      <Dependent Role="ScoreFormulas">
+        <PropertyRef Name="ScorePageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

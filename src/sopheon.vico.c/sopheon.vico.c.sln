@@ -1,0 +1,50 @@
+
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Data", "..\Sopheon.Data\Sopheon.Data.csproj", "{5D538D82-610C-4F98-AAB8-4E1024C34926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Domain", "..\Sopheon.Domain\Sopheon.Domain.csproj", "{A67FE436-7548-422E-B90A-59C5E307B911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Repository", "..\Sopheon.Repository\Sopheon.Repository.csproj", "{413A31EC-8F6F-4529-B97C-9B856CE97FAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.System", "..\Sopheon.System\Sopheon.System.csproj", "{72067052-4DBD-4FEF-BDDB-6F8EB2BB776A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Web", "..\Sopheon.Web\Sopheon.Web.csproj", "{D108F657-17CE-4E3B-90EE-7BE2E2DDC54A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Web.App", "..\Sopheon.Web.App\Sopheon.Web.App.csproj", "{B7AF5C21-545D-4AA8-B40D-EC61C8AC4CAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D538D82-610C-4F98-AAB8-4E1024C34926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D538D82-610C-4F98-AAB8-4E1024C34926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D538D82-610C-4F98-AAB8-4E1024C34926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D538D82-610C-4F98-AAB8-4E1024C34926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A67FE436-7548-422E-B90A-59C5E307B911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67FE436-7548-422E-B90A-59C5E307B911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67FE436-7548-422E-B90A-59C5E307B911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67FE436-7548-422E-B90A-59C5E307B911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{413A31EC-8F6F-4529-B97C-9B856CE97FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413A31EC-8F6F-4529-B97C-9B856CE97FAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413A31EC-8F6F-4529-B97C-9B856CE97FAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413A31EC-8F6F-4529-B97C-9B856CE97FAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72067052-4DBD-4FEF-BDDB-6F8EB2BB776A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72067052-4DBD-4FEF-BDDB-6F8EB2BB776A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72067052-4DBD-4FEF-BDDB-6F8EB2BB776A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72067052-4DBD-4FEF-BDDB-6F8EB2BB776A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D108F657-17CE-4E3B-90EE-7BE2E2DDC54A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D108F657-17CE-4E3B-90EE-7BE2E2DDC54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D108F657-17CE-4E3B-90EE-7BE2E2DDC54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D108F657-17CE-4E3B-90EE-7BE2E2DDC54A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7AF5C21-545D-4AA8-B40D-EC61C8AC4CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7AF5C21-545D-4AA8-B40D-EC61C8AC4CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7AF5C21-545D-4AA8-B40D-EC61C8AC4CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7AF5C21-545D-4AA8-B40D-EC61C8AC4CAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

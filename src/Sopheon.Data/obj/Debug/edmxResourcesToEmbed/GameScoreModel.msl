@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CorpGameDataModelStoreContainer" CdmEntityContainer="CorpGameDataEntities">
+    <EntitySetMapping Name="CollegeSetups">
+      <EntityTypeMapping TypeName="CorpGameDataModel.CollegeSetup">
+        <MappingFragment StoreEntitySet="CollegeSetup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Eli" ColumnName="Eli" />
+          <ScalarProperty Name="HotTopicModules" ColumnName="HotTopicModules" />
+          <ScalarProperty Name="GameTotal" ColumnName="GameTotal" />
+          <ScalarProperty Name="RegistrationCode" ColumnName="RegistrationCode" />
+          <ScalarProperty Name="MasteryModules" ColumnName="MasteryModules" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="SetupDate" ColumnName="SetupDate" />
+          <ScalarProperty Name="EstimatedStudents" ColumnName="EstimatedStudents" />
+          <ScalarProperty Name="RetailAmount" ColumnName="RetailAmount" />
+          <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="CourseStart" ColumnName="CourseStart" />
+          <ScalarProperty Name="CourseEnd" ColumnName="CourseEnd" />
+          <ScalarProperty Name="OrganizationId" ColumnName="OrganizationId" />
+          <ScalarProperty Name="InstructorName" ColumnName="InstructorName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instances">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Instance">
+        <MappingFragment StoreEntitySet="Instance">
+          <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+          <ScalarProperty Name="Game" ColumnName="Game" />
+          <ScalarProperty Name="Prepaid" ColumnName="Prepaid" />
+          <ScalarProperty Name="Demo" ColumnName="Demo" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Rounds" ColumnName="Rounds" />
+          <ScalarProperty Name="Partial" ColumnName="Partial" />
+          <ScalarProperty Name="Memo" ColumnName="Memo" />
+          <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TagType" ColumnName="TagType" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="MaximumSize" ColumnName="MaximumSize" />
+          <ScalarProperty Name="sequence" ColumnName="sequence" />
+          <ScalarProperty Name="TopLevelGameCode" ColumnName="TopLevelGameCode" />
+          <ScalarProperty Name="Archived" ColumnName="Archived" />
+          <ScalarProperty Name="Vertical" ColumnName="Vertical" />
+          <ScalarProperty Name="CollegeSetupId" ColumnName="CollegeSetupId" />
+          <ScalarProperty Name="DilemmaA" ColumnName="DilemmaA" />
+          <ScalarProperty Name="DilemmaB" ColumnName="DilemmaB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Registers">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Register">
+        <MappingFragment StoreEntitySet="Register">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Game" ColumnName="Game" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="EnrollmentCode" ColumnName="EnrollmentCode" />
+          <ScalarProperty Name="CurrentPage" ColumnName="CurrentPage" />
+          <ScalarProperty Name="CurrentRound" ColumnName="CurrentRound" />
+          <ScalarProperty Name="CurrentRole" ColumnName="CurrentRole" />
+          <ScalarProperty Name="CurrentRolePage" ColumnName="CurrentRolePage" />
+          <ScalarProperty Name="NotesTitle1" ColumnName="NotesTitle1" />
+          <ScalarProperty Name="NotesText1" ColumnName="NotesText1" />
+          <ScalarProperty Name="NotesTitle2" ColumnName="NotesTitle2" />
+          <ScalarProperty Name="NotesText2" ColumnName="NotesText2" />
+          <ScalarProperty Name="NotesTitle3" ColumnName="NotesTitle3" />
+          <ScalarProperty Name="NotesText3" ColumnName="NotesText3" />
+          <ScalarProperty Name="NotesTitle4" ColumnName="NotesTitle4" />
+          <ScalarProperty Name="NotesText4" ColumnName="NotesText4" />
+          <ScalarProperty Name="NotesTitle5" ColumnName="NotesTitle5" />
+          <ScalarProperty Name="NotesText5" ColumnName="NotesText5" />
+          <ScalarProperty Name="GameLog" ColumnName="GameLog" />
+          <ScalarProperty Name="RegisterID" ColumnName="RegisterID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollegeGames">
+      <EntityTypeMapping TypeName="CorpGameDataModel.CollegeGame">
+        <MappingFragment StoreEntitySet="CollegeGames">
+          <ScalarProperty Name="Module" ColumnName="Module" />
+          <ScalarProperty Name="CourseRegistration" ColumnName="CourseRegistration" />
+          <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="System" ColumnName="System" />
+          <ScalarProperty Name="CollegeSetupId" ColumnName="CollegeSetupId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CollegeInstructors">
+      <EntityTypeMapping TypeName="CorpGameDataModel.CollegeInstructor">
+        <MappingFragment StoreEntitySet="CollegeInstructor">
+          <ScalarProperty Name="isPrimary" ColumnName="isPrimary" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Archived" ColumnName="Archived" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="CourseRegistration" ColumnName="CourseRegistration" />
+          <ScalarProperty Name="CollegeSetupId" ColumnName="CollegeSetupId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facilitators">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Facilitator">
+        <MappingFragment StoreEntitySet="Facilitator">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Game">
+        <MappingFragment StoreEntitySet="Game">
+          <ScalarProperty Name="DilemmaB" ColumnName="DilemmaB" />
+          <ScalarProperty Name="DilemmaA" ColumnName="DilemmaA" />
+          <ScalarProperty Name="show_in_game_creator" ColumnName="show_in_game_creator" />
+          <ScalarProperty Name="rounds" ColumnName="rounds" />
+          <ScalarProperty Name="TopicDilemma" ColumnName="TopicDilemma" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="HotTopic" ColumnName="HotTopic" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Game1" ColumnName="Game" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Response_L1">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Response_L1">
+        <MappingFragment StoreEntitySet="Response_L1">
+          <ScalarProperty Name="MemoTextBValue" ColumnName="MemoTextBValue" />
+          <ScalarProperty Name="MemoTitleBValue" ColumnName="MemoTitleBValue" />
+          <ScalarProperty Name="MemoToBValue" ColumnName="MemoToBValue" />
+          <ScalarProperty Name="OptionBValue" ColumnName="OptionBValue" />
+          <ScalarProperty Name="ReputationOptionValue" ColumnName="ReputationOptionValue" />
+          <ScalarProperty Name="CompetentOptionsValue" ColumnName="CompetentOptionsValue" />
+          <ScalarProperty Name="CompetenciesValue" ColumnName="CompetenciesValue" />
+          <ScalarProperty Name="RelationshipsOptionValue" ColumnName="RelationshipsOptionValue" />
+          <ScalarProperty Name="ActionsValue" ColumnName="ActionsValue" />
+          <ScalarProperty Name="LibertiesValue" ColumnName="LibertiesValue" />
+          <ScalarProperty Name="StakeholdersBValue" ColumnName="StakeholdersBValue" />
+          <ScalarProperty Name="IssuesBValue" ColumnName="IssuesBValue" />
+          <ScalarProperty Name="BonusMaximumAValue" ColumnName="BonusMaximumAValue" />
+          <ScalarProperty Name="BonusAValue" ColumnName="BonusAValue" />
+          <ScalarProperty Name="MemoTextAValue" ColumnName="MemoTextAValue" />
+          <ScalarProperty Name="MemoTitleAValue" ColumnName="MemoTitleAValue" />
+          <ScalarProperty Name="MemoToAValue" ColumnName="MemoToAValue" />
+          <ScalarProperty Name="OptionAValue" ColumnName="OptionAValue" />
+          <ScalarProperty Name="ResultsOptionValue" ColumnName="ResultsOptionValue" />
+          <ScalarProperty Name="ResultsValue" ColumnName="ResultsValue" />
+          <ScalarProperty Name="CriteriaValue" ColumnName="CriteriaValue" />
+          <ScalarProperty Name="ImpactsValue" ColumnName="ImpactsValue" />
+          <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+          <ScalarProperty Name="BonusMaximum" ColumnName="BonusMaximum" />
+          <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+          <ScalarProperty Name="BonusPage" ColumnName="BonusPage" />
+          <ScalarProperty Name="MemoTextB" ColumnName="MemoTextB" />
+          <ScalarProperty Name="MemoTitleB" ColumnName="MemoTitleB" />
+          <ScalarProperty Name="MemoToB" ColumnName="MemoToB" />
+          <ScalarProperty Name="OptionB" ColumnName="OptionB" />
+          <ScalarProperty Name="ReputationOption" ColumnName="ReputationOption" />
+          <ScalarProperty Name="CompetentOptions" ColumnName="CompetentOptions" />
+          <ScalarProperty Name="Competencies" ColumnName="Competencies" />
+          <ScalarProperty Name="RelationshipsOption" ColumnName="RelationshipsOption" />
+          <ScalarProperty Name="Actions" ColumnName="Actions" />
+          <ScalarProperty Name="Liberties" ColumnName="Liberties" />
+          <ScalarProperty Name="StakeholdersB" ColumnName="StakeholdersB" />
+          <ScalarProperty Name="IssuesB" ColumnName="IssuesB" />
+          <ScalarProperty Name="BonusMaximumA" ColumnName="BonusMaximumA" />
+          <ScalarProperty Name="BonusA" ColumnName="BonusA" />
+          <ScalarProperty Name="MemoTextA" ColumnName="MemoTextA" />
+          <ScalarProperty Name="MemoTitleA" ColumnName="MemoTitleA" />
+          <ScalarProperty Name="MemoToA" ColumnName="MemoToA" />
+          <ScalarProperty Name="OptionA" ColumnName="OptionA" />
+          <ScalarProperty Name="ResultsOption" ColumnName="ResultsOption" />
+          <ScalarProperty Name="ResultsBit3" ColumnName="ResultsBit3" />
+          <ScalarProperty Name="ResultsBit2" ColumnName="ResultsBit2" />
+          <ScalarProperty Name="ResultsBit1" ColumnName="ResultsBit1" />
+          <ScalarProperty Name="CriteriaBit4" ColumnName="CriteriaBit4" />
+          <ScalarProperty Name="CriteriaBit3" ColumnName="CriteriaBit3" />
+          <ScalarProperty Name="CriteriaBit2" ColumnName="CriteriaBit2" />
+          <ScalarProperty Name="CriteriaBit1" ColumnName="CriteriaBit1" />
+          <ScalarProperty Name="ImpactsBit2" ColumnName="ImpactsBit2" />
+          <ScalarProperty Name="ImpactsBit1" ColumnName="ImpactsBit1" />
+          <ScalarProperty Name="RightsOptionValue" ColumnName="RightsOptionValue" />
+          <ScalarProperty Name="RightsOption" ColumnName="RightsOption" />
+          <ScalarProperty Name="DutiesValue" ColumnName="DutiesValue" />
+          <ScalarProperty Name="Duties" ColumnName="Duties" />
+          <ScalarProperty Name="StakeholdersAValue" ColumnName="StakeholdersAValue" />
+          <ScalarProperty Name="StakeholdersA" ColumnName="StakeholdersA" />
+          <ScalarProperty Name="IssuesAValue" ColumnName="IssuesAValue" />
+          <ScalarProperty Name="IssuesA" ColumnName="IssuesA" />
+          <ScalarProperty Name="Round" ColumnName="Round" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Securities">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Security">
+        <MappingFragment StoreEntitySet="Security">
+          <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="ExternalTag" ColumnName="ExternalTag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SimGradeScales">
+      <EntityTypeMapping TypeName="CorpGameDataModel.SimGradeScale">
+        <MappingFragment StoreEntitySet="SimGradeScale">
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="BottomScale" ColumnName="BottomScale" />
+          <ScalarProperty Name="TopScale" ColumnName="TopScale" />
+          <ScalarProperty Name="GadeLetter" ColumnName="GadeLetter" />
+          <ScalarProperty Name="GradeScaleId" ColumnName="GradeScaleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentCourses">
+      <EntityTypeMapping TypeName="CorpGameDataModel.StudentCourse">
+        <MappingFragment StoreEntitySet="StudentCourse">
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="EnrollmentCode" ColumnName="EnrollmentCode" />
+          <ScalarProperty Name="CollegeSetupId" ColumnName="CollegeSetupId" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="CourseRegistration" ColumnName="CourseRegistration" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScoreFormulas">
+      <EntityTypeMapping TypeName="CorpGameDataModel.ScoreFormula">
+        <MappingFragment StoreEntitySet="ScoreFormulas">
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="ScorePageId" ColumnName="ScorePageId" />
+          <ScalarProperty Name="ExpectedValue" ColumnName="ExpectedValue" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScorePages">
+      <EntityTypeMapping TypeName="CorpGameDataModel.ScorePage">
+        <MappingFragment StoreEntitySet="ScorePages">
+          <ScalarProperty Name="DilemmaSection" ColumnName="DilemmaSection" />
+          <ScalarProperty Name="ViewPage" ColumnName="ViewPage" />
+          <ScalarProperty Name="BitValueCount" ColumnName="BitValueCount" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="XmlFile3" ColumnName="XmlFile3" />
+          <ScalarProperty Name="XmlFile2" ColumnName="XmlFile2" />
+          <ScalarProperty Name="XmlFile" ColumnName="XmlFile" />
+          <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
+          <ScalarProperty Name="ScoreFunction" ColumnName="ScoreFunction" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="ScorePageId" ColumnName="ScorePageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_Response_L1_Scores">
+      <EntityTypeMapping TypeName="CorpGameDataModel.v_Response_L1_Scores">
+        <MappingFragment StoreEntitySet="v_Response_L1_Scores">
+          <ScalarProperty Name="TotalLetterGrade" ColumnName="TotalLetterGrade" />
+          <ScalarProperty Name="DilemmaBLetterGrade" ColumnName="DilemmaBLetterGrade" />
+          <ScalarProperty Name="DilemmaALetterGrade" ColumnName="DilemmaALetterGrade" />
+          <ScalarProperty Name="TotalPercentage" ColumnName="TotalPercentage" />
+          <ScalarProperty Name="DilemmaBPercentage" ColumnName="DilemmaBPercentage" />
+          <ScalarProperty Name="DilemmaAPercentage" ColumnName="DilemmaAPercentage" />
+          <ScalarProperty Name="DilemmaBScore" ColumnName="DilemmaBScore" />
+          <ScalarProperty Name="DilemmaAScore" ColumnName="DilemmaAScore" />
+          <ScalarProperty Name="TotalScores" ColumnName="TotalScores" />
+          <ScalarProperty Name="TotalMaximum" ColumnName="TotalMaximum" />
+          <ScalarProperty Name="MemoTextBCurrent" ColumnName="MemoTextBCurrent" />
+          <ScalarProperty Name="MemoTextBMaximum" ColumnName="MemoTextBMaximum" />
+          <ScalarProperty Name="MemoTextBScore" ColumnName="MemoTextBScore" />
+          <ScalarProperty Name="MemoTextBValue" ColumnName="MemoTextBValue" />
+          <ScalarProperty Name="MemoTitleBCurrent" ColumnName="MemoTitleBCurrent" />
+          <ScalarProperty Name="MemoTitleBMaximum" ColumnName="MemoTitleBMaximum" />
+          <ScalarProperty Name="MemoTitleBScore" ColumnName="MemoTitleBScore" />
+          <ScalarProperty Name="MemoTitleBValue" ColumnName="MemoTitleBValue" />
+          <ScalarProperty Name="MemoToBCurrent" ColumnName="MemoToBCurrent" />
+          <ScalarProperty Name="MemoToBMaximum" ColumnName="MemoToBMaximum" />
+          <ScalarProperty Name="MemoToBScore" ColumnName="MemoToBScore" />
+          <ScalarProperty Name="MemoToBValue" ColumnName="MemoToBValue" />
+          <ScalarProperty Name="OptionBCurrent" ColumnName="OptionBCurrent" />
+          <ScalarProperty Name="OptionBMaximum" ColumnName="OptionBMaximum" />
+          <ScalarProperty Name="OptionBScore" ColumnName="OptionBScore" />
+          <ScalarProperty Name="OptionBValue" ColumnName="OptionBValue" />
+          <ScalarProperty Name="ReputationOptionCurrent" ColumnName="ReputationOptionCurrent" />
+          <ScalarProperty Name="ReputationOptionMaximum" ColumnName="ReputationOptionMaximum" />
+          <ScalarProperty Name="ReputationOptionScore" ColumnName="ReputationOptionScore" />
+          <ScalarProperty Name="ReputationOptionValue" ColumnName="ReputationOptionValue" />
+          <ScalarProperty Name="CompetentOptionsCurrent" ColumnName="CompetentOptionsCurrent" />
+          <ScalarProperty Name="CompetentOptionsMaximum" ColumnName="CompetentOptionsMaximum" />
+          <ScalarProperty Name="CompetentOptionsScore" ColumnName="CompetentOptionsScore" />
+          <ScalarProperty Name="CompetentOptionsValue" ColumnName="CompetentOptionsValue" />
+          <ScalarProperty Name="CompetenciesCurrent" ColumnName="CompetenciesCurrent" />
+          <ScalarProperty Name="CompetenciesMaximum" ColumnName="CompetenciesMaximum" />
+          <ScalarProperty Name="CompetenciesScore" ColumnName="CompetenciesScore" />
+          <ScalarProperty Name="CompetenciesValue" ColumnName="CompetenciesValue" />
+          <ScalarProperty Name="RelationshipsOptionCurrent" ColumnName="RelationshipsOptionCurrent" />
+          <ScalarProperty Name="RelationshipsOptionMaximum" ColumnName="RelationshipsOptionMaximum" />
+          <ScalarProperty Name="RelationshipsOptionScore" ColumnName="RelationshipsOptionScore" />
+          <ScalarProperty Name="RelationshipsOptionValue" ColumnName="RelationshipsOptionValue" />
+          <ScalarProperty Name="ActionsCurrent" ColumnName="ActionsCurrent" />
+          <ScalarProperty Name="ActionsMaximum" ColumnName="ActionsMaximum" />
+          <ScalarProperty Name="ActionsScore" ColumnName="ActionsScore" />
+          <ScalarProperty Name="ActionsValue" ColumnName="ActionsValue" />
+          <ScalarProperty Name="LibertiesCurrent" ColumnName="LibertiesCurrent" />
+          <ScalarProperty Name="LibertiesMaximum" ColumnName="LibertiesMaximum" />
+          <ScalarProperty Name="LibertiesScore" ColumnName="LibertiesScore" />
+          <ScalarProperty Name="LibertiesValue" ColumnName="LibertiesValue" />
+          <ScalarProperty Name="StakeholdersBCurrent" ColumnName="StakeholdersBCurrent" />
+          <ScalarProperty Name="StakeholdersBMaximum" ColumnName="StakeholdersBMaximum" />
+          <ScalarProperty Name="StakeholdersBScore" ColumnName="StakeholdersBScore" />
+          <ScalarProperty Name="StakeholdersBValue" ColumnName="StakeholdersBValue" />
+          <ScalarProperty Name="IssuesBCurrent" ColumnName="IssuesBCurrent" />
+          <ScalarProperty Name="IssuesBMaximum" ColumnName="IssuesBMaximum" />
+          <ScalarProperty Name="IssuesBScore" ColumnName="IssuesBScore" />
+          <ScalarProperty Name="IssuesBValue" ColumnName="IssuesBValue" />
+          <ScalarProperty Name="BonusMaximumACurrent" ColumnName="BonusMaximumACurrent" />
+          <ScalarProperty Name="BonusMaximumAMaximum" ColumnName="BonusMaximumAMaximum" />
+          <ScalarProperty Name="BonusMaximumAScore" ColumnName="BonusMaximumAScore" />
+          <ScalarProperty Name="BonusMaximumAValue" ColumnName="BonusMaximumAValue" />
+          <ScalarProperty Name="BonusACurrent" ColumnName="BonusACurrent" />
+          <ScalarProperty Name="BonusAMaximum" ColumnName="BonusAMaximum" />
+          <ScalarProperty Name="BonusAScore" ColumnName="BonusAScore" />
+          <ScalarProperty Name="BonusAValue" ColumnName="BonusAValue" />
+          <ScalarProperty Name="MemoTextACurrent" ColumnName="MemoTextACurrent" />
+          <ScalarProperty Name="MemoTextAMaximum" ColumnName="MemoTextAMaximum" />
+          <ScalarProperty Name="MemoTextAScore" ColumnName="MemoTextAScore" />
+          <ScalarProperty Name="MemoTextAValue" ColumnName="MemoTextAValue" />
+          <ScalarProperty Name="MemoTitleACurrent" ColumnName="MemoTitleACurrent" />
+          <ScalarProperty Name="MemoTitleAMaximum" ColumnName="MemoTitleAMaximum" />
+          <ScalarProperty Name="MemoTitleAScore" ColumnName="MemoTitleAScore" />
+          <ScalarProperty Name="MemoTitleAValue" ColumnName="MemoTitleAValue" />
+          <ScalarProperty Name="MemoToACurrent" ColumnName="MemoToACurrent" />
+          <ScalarProperty Name="MemoToAMaximum" ColumnName="MemoToAMaximum" />
+          <ScalarProperty Name="MemoToAScore" ColumnName="MemoToAScore" />
+          <ScalarProperty Name="MemoToAValue" ColumnName="MemoToAValue" />
+          <ScalarProperty Name="OptionACurrent" ColumnName="OptionACurrent" />
+          <ScalarProperty Name="OptionAMaximum" ColumnName="OptionAMaximum" />
+          <ScalarProperty Name="OptionAScore" ColumnName="OptionAScore" />
+          <ScalarProperty Name="OptionAValue" ColumnName="OptionAValue" />
+          <ScalarProperty Name="ResultsOptionCurrent" ColumnName="ResultsOptionCurrent" />
+          <ScalarProperty Name="ResultsOptionMaximum" ColumnName="ResultsOptionMaximum" />
+          <ScalarProperty Name="ResultsOptionScore" ColumnName="ResultsOptionScore" />
+          <ScalarProperty Name="ResultsOptionValue" ColumnName="ResultsOptionValue" />
+          <ScalarProperty Name="ResultsCurrent" ColumnName="ResultsCurrent" />
+          <ScalarProperty Name="ResultsMaximum" ColumnName="ResultsMaximum" />
+          <ScalarProperty Name="ResultsScore" ColumnName="ResultsScore" />
+          <ScalarProperty Name="ResultsValue" ColumnName="ResultsValue" />
+          <ScalarProperty Name="CriteriaCurrent" ColumnName="CriteriaCurrent" />
+          <ScalarProperty Name="CriteriaMaximum" ColumnName="CriteriaMaximum" />
+          <ScalarProperty Name="CriteriaScore" ColumnName="CriteriaScore" />
+          <ScalarProperty Name="CriteriaValue" ColumnName="CriteriaValue" />
+          <ScalarProperty Name="ImpactsCurrent" ColumnName="ImpactsCurrent" />
+          <ScalarProperty Name="ImpactsMaximum" ColumnName="ImpactsMaximum" />
+          <ScalarProperty Name="ImpactsScore" ColumnName="ImpactsScore" />
+          <ScalarProperty Name="ImpactsValue" ColumnName="ImpactsValue" />
+          <ScalarProperty Name="GameCode" ColumnName="GameCode" />
+          <ScalarProperty Name="BonusMaximum" ColumnName="BonusMaximum" />
+          <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+          <ScalarProperty Name="BonusPage" ColumnName="BonusPage" />
+          <ScalarProperty Name="MemoTextB" ColumnName="MemoTextB" />
+          <ScalarProperty Name="MemoTitleB" ColumnName="MemoTitleB" />
+          <ScalarProperty Name="MemoToB" ColumnName="MemoToB" />
+          <ScalarProperty Name="OptionB" ColumnName="OptionB" />
+          <ScalarProperty Name="ReputationOption" ColumnName="ReputationOption" />
+          <ScalarProperty Name="CompetentOptions" ColumnName="CompetentOptions" />
+          <ScalarProperty Name="Competencies" ColumnName="Competencies" />
+          <ScalarProperty Name="RelationshipsOption" ColumnName="RelationshipsOption" />
+          <ScalarProperty Name="Actions" ColumnName="Actions" />
+          <ScalarProperty Name="Liberties" ColumnName="Liberties" />
+          <ScalarProperty Name="StakeholdersB" ColumnName="StakeholdersB" />
+          <ScalarProperty Name="IssuesB" ColumnName="IssuesB" />
+          <ScalarProperty Name="BonusMaximumA" ColumnName="BonusMaximumA" />
+          <ScalarProperty Name="BonusA" ColumnName="BonusA" />
+          <ScalarProperty Name="MemoTextA" ColumnName="MemoTextA" />
+          <ScalarProperty Name="MemoTitleA" ColumnName="MemoTitleA" />
+          <ScalarProperty Name="MemoToA" ColumnName="MemoToA" />
+          <ScalarProperty Name="OptionA" ColumnName="OptionA" />
+          <ScalarProperty Name="ResultsOption" ColumnName="ResultsOption" />
+          <ScalarProperty Name="ResultsBit3" ColumnName="ResultsBit3" />
+          <ScalarProperty Name="ResultsBit2" ColumnName="ResultsBit2" />
+          <ScalarProperty Name="ResultsBit1" ColumnName="ResultsBit1" />
+          <ScalarProperty Name="CriteriaBit4" ColumnName="CriteriaBit4" />
+          <ScalarProperty Name="CriteriaBit3" ColumnName="CriteriaBit3" />
+          <ScalarProperty Name="CriteriaBit2" ColumnName="CriteriaBit2" />
+          <ScalarProperty Name="CriteriaBit1" ColumnName="CriteriaBit1" />
+          <ScalarProperty Name="ImpactsBit2" ColumnName="ImpactsBit2" />
+          <ScalarProperty Name="ImpactsBit1" ColumnName="ImpactsBit1" />
+          <ScalarProperty Name="RightsOptionCurrent" ColumnName="RightsOptionCurrent" />
+          <ScalarProperty Name="RightsOptionMaximum" ColumnName="RightsOptionMaximum" />
+          <ScalarProperty Name="RightsOptionScore" ColumnName="RightsOptionScore" />
+          <ScalarProperty Name="RightsOptionValue" ColumnName="RightsOptionValue" />
+          <ScalarProperty Name="RightsOption" ColumnName="RightsOption" />
+          <ScalarProperty Name="DutiesCurrent" ColumnName="DutiesCurrent" />
+          <ScalarProperty Name="DutiesMaximum" ColumnName="DutiesMaximum" />
+          <ScalarProperty Name="DutiesScore" ColumnName="DutiesScore" />
+          <ScalarProperty Name="DutiesValue" ColumnName="DutiesValue" />
+          <ScalarProperty Name="Duties" ColumnName="Duties" />
+          <ScalarProperty Name="StakeholdersACurrent" ColumnName="StakeholdersACurrent" />
+          <ScalarProperty Name="StakeholdersAMaximum" ColumnName="StakeholdersAMaximum" />
+          <ScalarProperty Name="StakeholdersAScore" ColumnName="StakeholdersAScore" />
+          <ScalarProperty Name="StakeholdersAValue" ColumnName="StakeholdersAValue" />
+          <ScalarProperty Name="StakeholdersA" ColumnName="StakeholdersA" />
+          <ScalarProperty Name="IssuesACurrent" ColumnName="IssuesACurrent" />
+          <ScalarProperty Name="IssuesAMaximum" ColumnName="IssuesAMaximum" />
+          <ScalarProperty Name="IssuesAScore" ColumnName="IssuesAScore" />
+          <ScalarProperty Name="IssuesAValue" ColumnName="IssuesAValue" />
+          <ScalarProperty Name="IssuesA" ColumnName="IssuesA" />
+          <ScalarProperty Name="Round" ColumnName="Round" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dilemmas">
+      <EntityTypeMapping TypeName="CorpGameDataModel.Dilemma">
+        <MappingFragment StoreEntitySet="Dilemma">
+          <ScalarProperty Name="SkillLevel" ColumnName="SkillLevel" />
+          <ScalarProperty Name="DilemmaA" ColumnName="DilemmaA" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DilemmaId" ColumnName="DilemmaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

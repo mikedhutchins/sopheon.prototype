@@ -1,0 +1,16 @@
+﻿@using Sopheon.Domain.Responses;
+@model GetMyProcessTemplatesResponse
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Areas/MyProjects/Views/Shared/_LayoutMain.cshtml";
+	var list = Model.Templates;
+}
+<div class="w100 ta-left">
+	<div class="w40 p5 left">
+		@{ Html.RenderPartial("ProcessTemplateList", list); }
+	</div>
+	<div class="w60 bl-light p5 left">
+		d
+	</div>
+	<div class="clear"></div>
+</div>
