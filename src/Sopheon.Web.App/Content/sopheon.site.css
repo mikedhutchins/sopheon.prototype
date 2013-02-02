@@ -1312,3 +1312,57 @@ a:active {
 	text-decoration: underline;
 }
 .cursor { cursor: pointer; }
+
+#sopheon-main {
+    min-height: 610px;
+    overflow: hidden;
+}
+
+#inner-container {
+    width: 8000px;
+    height: 600px;
+}
+
+.main-tile {
+    width: 410px;
+    margin: 10px;
+    height: 100px;
+    float: left;
+    border-radius: 10px;
+    background-color: #1F5685;
+    color: white;
+    padding: 5px;
+    text-align: left;
+}
+
+.info-tile {
+    color: #808080;
+    background-color: white;
+    height: auto;
+}
+
+.button-tile {
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.sopheon-panel {
+    width: 940px;
+    margin-top: 10px;
+    background-color: orange;
+    border-radius: 10px;
+    height: 600px;
+    padding: 10px;
+}
+
+.test {
+    background: red;
+}
+
+#mainNavigation {
+    text-align: center;
+    clear: both;
+    overflow: auto;
+    height: 590px;
+}

@@ -1,0 +1,6 @@
+@model Sopheon.Web.App.Models.PanelViewModel
+@using Sopheon.framework;
+@using System.Linq;
+<div id="@Model.Id" class="sopheon-panel left @string.Join(" ", Model.CssClasses.ToArray())" @Model.AttributeMl >
+	@RenderBody()
+</div>

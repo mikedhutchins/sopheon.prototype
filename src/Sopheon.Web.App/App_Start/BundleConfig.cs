@@ -51,7 +51,9 @@ namespace Sopheon.Web.App
 			#endregion
 
 			#region 
-			bundles.Add(new ScriptBundle("~/bundles/my-projects").Include("~/Scripts/my-projects.js"));
+            bundles.Add(new ScriptBundle("~/bundles/sopheon").Include("~/Scripts/sopheon.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/my-projects").Include("~/Scripts/my-projects.js"));
 
 			bundles.Add(new StyleBundle("~/Content/my-projects/css").Include("~/Content/my-projects.css"));
 			#endregion

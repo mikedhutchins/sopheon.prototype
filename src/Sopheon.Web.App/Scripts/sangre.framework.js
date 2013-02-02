@@ -209,17 +209,19 @@
 	window.sangre = {
 		init: function () {
 			sangre.inits.select(function () {
-				var key = this.key !== undefined ? this.key : 'UNKNOWN';
+			    var key = this.key !== undefined ? this.key : 'UNKNOWN';
+                sangre.msg.console('sangre is initializing: {key}'.bind({ key: key }));
 				if ($.isFunction(this.init)) {
 					this.init();
 					sangre.event.fire('INIT-{key}'.bind({ key: key }));
 				}
 				if ($.isArray(this.dependencies)) {
 					this.dependencies.select(function () {
+
 						var name = this;
 						var r = false;
 						var verify = function (val) {
-							sangre.m.getP(sangre.m.getOpState('x{id}'.bind({ id: sangre.util.rnd() })))
+							sangre.m.getP(sangre.m.getOpState('{id}'.bind({ id: key })))
 								.then(function () {
 									var f = eval(val.toString());
 									r = typeof f != 'undefined';
@@ -389,6 +391,7 @@
 				o.key = this;
 				var ea = s.get(o.key);
 				ea.push(o);
+				sangre.msg.console('sangre.event {key} is now being watched by {source} with {func}'.bind(o));
 				return o;
 			});
 		}
@@ -407,6 +410,7 @@
 			if ($.isFunction(sangre.event.debug)) {
 				sangre.event.debug(eventKey, args);
 			}
+			sangre.msg.console("sangre.event {key} is firing: ".bind({ key: eventKey }));
 			$(arr).each(function (idx) {
 				var s = this;
 				var p = sangre.m.getProcessor(sangre.m.getOpState(eventKey));
@@ -446,6 +450,7 @@
 						catch (ex) {
 							opState.crash(ex.message);
 							good = false;
+							sangre.msg.console('sangre-monad crash: key={key} at step={step} with={msg}'.bind({ key: opState.key, step: opState.step, msg: ex.message }));
 							sangre.event.fire('CRASH-' + opState.key, opState);
 							sangre.event.fire(sangre.m.events.CRASH, opState);
 							if ($.isFunction(exH)) { exH(opState); }
@@ -491,12 +496,19 @@
 						var s = this;
 						sangre.m.getProcessor(sangre.m.getOpState('sangre-' + type))
 							.then(function (r) {
-								var f = $(s).attr('data-method');
+							    var f = $(s).attr('data-method');
+							    if (f === undefined) {
+							        throw new Error('missing data method on {key}'.bind(r));
+							    }
+							    sangre.msg.console('sangre-u on {key} call {meth}'.bind({ key: r.key, meth: f }));
 								f.split(' ').select(function () {
 									var t = this;
 									var func = eval(t.toString());
 									if ($.isFunction(func)) {
-										func.call(s, e);
+									    func.call(s, e);
+									}
+									else {
+									    throw new Error("data-method {f} was not a valid function or is empty".bind({ f: t }));
 									}
 								});
 							})
@@ -618,6 +630,18 @@
 		, sendWarning: function (sel, msg) {
 			alert('WARNING {m}'.bind({ m: msg }));
 		}
+        , console: function () {
+            try {
+                var r = [];
+                for (key in arguments) {
+                    r.push(arguments[key]);
+                }
+                console.log(r.join(', '));
+            }
+            catch (ex) {
+
+            }
+        }
 	};
 
 	// ajax
@@ -746,17 +770,17 @@
 		, scroll: function () {
 			return sangre.u.getMeth('sangre-scroll', function (sel) {
 				var config = sangre.util.getAtts(sel, [
-					{ key: 'container', def: 'body' }, { key: 'target', def: '' }
-					, { key: 'duration', def: 1000, transform: 'parseInt' }, { key: 'target', def: '' }
-					, { key: 'meth', def: function () { }, transform: 'eval'}]);
+					{ key: 'scroll-container', def: 'body' }, { key: 'scroll-target', def: '' }
+					, { key: 'scroll-duration', def: 1000, transform: 'parseInt' }
+					, { key: 'scroll-meth', def: function () { }, transform: 'eval' }]);
 				$(sel).click(function () {
 					jQuery.scrollTo.window().queue([]).stop();
 					var s = this;
 					sangre.m.getProcessor(sangre.m.getOpState('scroll'), function (ex) { }, function (ex) { })
 					.then(function (r) {
-						$(config.container).scrollTo(config.target, config.duration, {});
-						if (config.meth !== undefined) {
-							var func = eval(config.meth.toString());
+					    $(config.container).scrollTo(config['scroll-target'], config['scroll-duration'], {});
+					    if (config['scroll-meth'] !== undefined) {
+					        var func = eval(config['scroll-meth'].toString());
 							if ($.isFunction(func)) {
 								func.call(s);
 							}
@@ -914,7 +938,7 @@
 				});
 			});
 		}
-		, dependencies: ['jQuery', { isCritical: false, name: 'jqueryship'}]
+		, dependencies: []
 	};
 	sangre.inits.push(sangre.u.extensions);
 	$(document).ready(function () {

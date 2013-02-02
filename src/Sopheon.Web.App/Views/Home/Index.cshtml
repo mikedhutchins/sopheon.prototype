@@ -1,4 +1,11 @@
 @{
+	Layout = "~/Views/Shared/_Layout.cshtml";	
 }
-
-<a href="/MyProjects">Va</a>
+@using Sopheon.Web.App.Models;
+<div class="w960px" id="sopheon-main">
+    <div id="inner-container">
+        @{ Html.RenderPartial("MainNav", new PanelViewModel { Id = "mainNav", CssClasses = new List<string>() { "" } }); }
+        @{ Html.RenderPartial("MainBody", new PanelViewModel { Id = "mainBody", CssClasses = new List<string>() { "" } }); }
+        <div class="clear"></div>
+    </div>
+</div>

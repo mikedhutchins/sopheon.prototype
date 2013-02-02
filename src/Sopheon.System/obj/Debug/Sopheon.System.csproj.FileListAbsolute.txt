@@ -15,3 +15,8 @@ C:\meat\git\Sopheon\Sopheon.System\bin\Debug\StructureMap.dll
 C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.dll
 C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.pdb
 C:\meat\git\Sopheon\Sopheon.System\obj\Debug\Sopheon.System.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.System\bin\Debug\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.System\bin\Debug\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.System\obj\Debug\Sopheon.System.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.System\obj\Debug\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.System\obj\Debug\Sopheon.System.pdb

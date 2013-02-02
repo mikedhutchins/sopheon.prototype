@@ -33,3 +33,14 @@ C:\meat\git\Sopheon\Sopheon.Repository\bin\Debug\Sopheon.System.pdb
 C:\meat\git\Sopheon\Sopheon.Repository\obj\Debug\Sopheon.Repository.csprojResolveAssemblyReference.cache
 C:\meat\git\Sopheon\Sopheon.Repository\obj\Debug\Sopheon.Repository.dll
 C:\meat\git\Sopheon\Sopheon.Repository\obj\Debug\Sopheon.Repository.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Repository.dll
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Repository.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Data.dll
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Domain.dll
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Data.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Domain.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.dll
+E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.pdb
