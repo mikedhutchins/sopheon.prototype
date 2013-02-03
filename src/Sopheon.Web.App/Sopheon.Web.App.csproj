@@ -297,6 +297,12 @@
     <Content Include="Areas\MyProjects\Views\MyProjects\GateList.cshtml" />
     <Content Include="Areas\ProcessModelAdmin\Views\Web.config" />
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\EditTemplate.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\Nav\MainNav.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\Index.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\Nav\SubNavProcessModels.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\Nav\SubNavMetrics.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\ListProcessTemplates.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\MetricList.cshtml" />
     <None Include="ClassDiagram1.cd" />
     <Content Include="Views\Shared\Templates.cshtml" />
     <Content Include="Views\Templates\Modal.cshtml" />

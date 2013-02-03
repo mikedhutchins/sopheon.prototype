@@ -28,5 +28,10 @@ namespace Sopheon.Domain.Managers
 		{
 			return _context.SimpleOperation<GetTemplateForEditRequest, GetTemplateForEditResponse, IGetTemplateForEditQuery>(request, () => new { request = request });
 		}
-	}
+
+        public GetTemplatesForEditResponse GetTemplatesForEdit(GetTemplatesForEditRequest request)
+        {
+            return _context.SimpleOperation<GetTemplatesForEditRequest, GetTemplatesForEditResponse, IGetTemplatesForEditQuery>(request, () => new { request = request });
+        }
+    }
 }

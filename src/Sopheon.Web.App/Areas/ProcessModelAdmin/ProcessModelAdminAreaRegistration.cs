@@ -14,9 +14,13 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin
 
 		public override void RegisterArea(AreaRegistrationContext context)
 		{
-			context.MapRoute("ProcessModelAdmin_default", "ProcessModelAdmin", new { controller = "ProcessModelAdminController", action = "Index" });
+			context.MapRoute("ProcessModelAdmin_default", "ProcessModelAdmin", new { controller = "ProcessModelAdmin", action = "Index" });
 
-			context.MapRoute("ProcessModelAdmin_edit_template", "ProcessModelAdmin/Template/Edit", new { controller = "ProcessModelAdminController", action = "Edit" });
-		}
+			context.MapRoute("ProcessModelAdmin_edit_template", "ProcessModelAdmin/Template/Edit", new { controller = "ProcessModelAdmin", action = "Edit" });
+
+            context.MapRoute("ProcessModelAdmin_processmodels", "ProcessModelAdmin/ProcessModels", new { controller = "ProcessModelAdmin", action = "ModelList" });
+
+            context.MapRoute("ProcessModelAdmin_metrics", "ProcessModelAdmin/Metrics", new { controller = "ProcessModelAdmin", action = "MetricList" });
+        }
 	}
 }

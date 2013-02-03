@@ -54,6 +54,7 @@
     <Compile Include="Queries\GetMyProjectsByTemplateIdQuery.cs" />
     <Compile Include="Queries\GetMyProcessTemplatesQuery.cs" />
     <Compile Include="Queries\GetTemplateForEditQuery.cs" />
+    <Compile Include="Queries\GetTemplatesForEditQuery.cs" />
     <Compile Include="Registries\RepositoryRegistry.cs" />
     <Compile Include="Repository.cs" />
   </ItemGroup>

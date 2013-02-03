@@ -666,6 +666,7 @@
 				if ($.isFunction(options.errorHandler)) {
 					options.errorHandler.call(scope, data);
 				}
+				sangre.msg.console('{status} {url}'.bind({ status: data.status, url: config.url, c: data.responseText.replace(/[\{\}]+/g, '...') }));
 				sangre.event.fire(sangre.jax.events.EXCEPTION, config.url, data.status);
 			}
 			}, config);
@@ -904,6 +905,14 @@
 				});
 			});
 		}
+        , remove: function () {
+            return sangre.u.getMeth('sangre-remove', function (sel) {
+                var config = sangre.util.getAtts(sel, [{ key: 'target', def: '' }]);
+                $(sel).click(function (e) {
+                    $(config.target).remove();
+                });
+            });
+        }
 		, hover: function () {
 			return sangre.u.getMeth('sangre-hover', function (sel) {
 				var config = sangre.util.getAtts(sel, [{ key: 'subjects', def: '.hoverOnly' }, { key: 'hoverclass', def: 'hover'}]);

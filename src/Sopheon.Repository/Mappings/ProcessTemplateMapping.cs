@@ -17,6 +17,8 @@ namespace Sopheon.Repository.Mappings
 				Id = data.Id,
 
 				Name = data.Name,
+
+                ProjectCount = data.Projects.Count(),
 			};
 		}
 	}

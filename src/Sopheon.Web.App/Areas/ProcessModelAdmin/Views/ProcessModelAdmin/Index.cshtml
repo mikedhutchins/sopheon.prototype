@@ -1,0 +1,18 @@
+﻿@model Sopheon.Domain.Responses.GetTemplatesForEditResponse
+
+<div class="w100 ta-left">
+    <div class="info-tile">
+        <h2>Manage Process Models</h2>
+        <p>
+            From here you may manage how your business process will work.
+        </p>
+    </div>
+    <div id="editProcessModelPanel">
+
+
+    </div>
+    <div class="list-panel">
+      @{ Html.RenderPartial("ListProcessTemplates", Model.Templates); }
+        <div class="clear"></div>
+    </div>
+</div>

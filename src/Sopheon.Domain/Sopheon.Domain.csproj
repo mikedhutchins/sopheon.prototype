@@ -46,6 +46,7 @@
     <Compile Include="Contracts\IGetMyProcessTemplatesQuery.cs" />
     <Compile Include="Contracts\IGetMyProjectsByTemplateIdQuery.cs" />
     <Compile Include="Contracts\IGetTemplateForEditQuery.cs" />
+    <Compile Include="Contracts\IGetTemplatesForEditQuery.cs" />
     <Compile Include="Entities\Gate.cs" />
     <Compile Include="Entities\ProcessTemplate.cs" />
     <Compile Include="Entities\Project.cs" />
@@ -56,10 +57,12 @@
     <Compile Include="Requests\GetMyProcessTemplatesRequest.cs" />
     <Compile Include="Requests\GetMyProjectsByTemplateIdRequest.cs" />
     <Compile Include="Requests\GetTemplateForEditRequest.cs" />
-    <Compile Include="Requests\Responses\GetGatesByProjectResponse.cs" />
-    <Compile Include="Requests\Responses\GetMyProcessTemplatesResponse.cs" />
-    <Compile Include="Requests\Responses\GetMyProjectsByTemplateIdResponse.cs" />
-    <Compile Include="Requests\Responses\GetTemplateForEditResponse.cs" />
+    <Compile Include="Requests\GetTemplatesForEditRequest.cs" />
+    <Compile Include="Responses\GetGatesByProjectResponse.cs" />
+    <Compile Include="Responses\GetMyProcessTemplatesResponse.cs" />
+    <Compile Include="Responses\GetMyProjectsByTemplateIdResponse.cs" />
+    <Compile Include="Responses\GetTemplateForEditResponse.cs" />
+    <Compile Include="Responses\GetTemplatesForEditResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sopheon.System\Sopheon.System.csproj">

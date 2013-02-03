@@ -30,6 +30,8 @@ namespace Sopheon.Repository.Registries
 			For<IGetMyGatesByTemplateIdQuery>().Use<GetMyGatesByTemplateQuery>();
 
 			For<IGetTemplateForEditQuery>().Use<GetTemplateForEditQuery>();
-		}
+
+            For<IGetTemplatesForEditQuery>().Use<GetTemplatesForEditQuery>();
+        }
 	}
 }

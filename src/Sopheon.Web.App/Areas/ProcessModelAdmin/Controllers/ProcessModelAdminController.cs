@@ -24,9 +24,27 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 			_processModelManager = processModelManager;
 		}
 
+        public ActionResult ModelList()
+        {
+            var response = _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { })
+                .ToUi((r) => RenderPartialViewToString("Index", r));
+
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var response = _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { });
+
+            return View(response);
+        }
+
+        public ActionResult MetricList()
+        {
+            var response = new OperationResponse()
+                .ToUi((r) => RenderPartialViewToString("MetricList", r));
+
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
 		public ActionResult Edit(int templateId)

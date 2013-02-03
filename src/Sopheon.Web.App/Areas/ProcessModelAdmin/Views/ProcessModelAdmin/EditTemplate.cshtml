@@ -1,2 +1,10 @@
 ﻿@model Sopheon.Domain.Entities.ProcessTemplate
-@Model.Name
+<div class="edit-panel">
+    <form id="processTemplateForm">
+        <h4>Name</h4>
+        @Html.TextBoxFor(model => model.Name)
+        <hr />
+        <input type="button" class="sub-tile" value="Save" />
+        <input type="button" class="sub-tile sangre-remove" value="Cancel" data-target="#editProcessModelPanel .edit-panel"/>
+    </form>
+</div>

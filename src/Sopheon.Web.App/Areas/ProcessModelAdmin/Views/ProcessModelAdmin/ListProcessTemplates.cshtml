@@ -1,0 +1,12 @@
+﻿@model List<Sopheon.Domain.Entities.ProcessTemplate>
+@foreach (var template in Model)
+{
+    <div class="process-model-item list-item sangre-inject"
+            data-target="#editProcessModelPanel" data-url="/ProcessModelAdmin/Template/Edit?templateId=@template.Id"
+        >
+        <div>
+        <h6>@template.Name</h6>
+        </div>
+        <div>Projects: @template.ProjectCount</div>
+    </div>
+}   

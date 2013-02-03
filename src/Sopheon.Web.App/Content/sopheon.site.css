@@ -1391,14 +1391,51 @@ a:active {
 .primary-panel-nav ul {
     list-style-type: none;
     margin: 0 auto;
+    clear: both;
 }
 .primary-panel-nav li{
-    display: inline
-
+    float: left;
+    margin-left: 5px;
+    white-space: nowrap;
+    margin-bottom: 5px;
 }
 #mainOperationBody {
     clear: both;
     overflow: auto;
     height: 540px;
     margin-top: 10px;
+}
+.sub-tile {
+    background: lime;
+    color: black;
+    border: 1px solid lime;
+    border-radius: 5px;
+}
+.list-panel {
+    background: white ;
+    max-height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.list-item {
+    float: left;
+    width: 150px;
+    height: 100px;
+    background:#1F5685 ;
+    color: white;
+    margin: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+.edit-panel {
+    background: white ;
+    max-height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px;
+    overflow: auto;
+    margin-bottom: 5px;
 }
