@@ -21,5 +21,22 @@ namespace Sopheon.Repository.Mappings
                 ProjectCount = data.Projects.Count(),
 			};
 		}
+
+		public static ProcessTemplate ToDataModel(this d.ProcessTemplate dom)
+		{
+			if (dom == null) return null;
+
+			return new ProcessTemplate
+			{
+				Id = dom.Id,
+
+				Name = dom.Name,
+			};
+		}
+
+		public static void ForUpdate(this ProcessTemplate dest, ProcessTemplate update)
+		{
+			dest.Name = update.Name;
+		}
 	}
 }

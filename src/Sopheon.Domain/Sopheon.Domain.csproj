@@ -74,6 +74,7 @@
     <Compile Include="Responses\GetTemplateForEditResponse.cs" />
     <Compile Include="Responses\GetTemplatesForEditResponse.cs" />
     <Compile Include="Responses\SaveProcessTemplateResponse.cs" />
+    <Compile Include="Validations\ProcessTemplateUniquenessValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sopheon.System\Sopheon.System.csproj">
@@ -85,7 +86,6 @@
     <Folder Include="Contracts\Commands\" />
     <Folder Include="Contracts\Queries\" />
     <Folder Include="Contracts\Repositories\" />
-    <Folder Include="Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

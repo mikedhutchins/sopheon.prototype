@@ -10,6 +10,7 @@ using Sopheon.Repository;
 using Sopheon.Domain;
 using Sopheon.Repository.Queries;
 using Sopheon.Domain.Contracts;
+using Sopheon.Repository.Commands;
 
 namespace Sopheon.Repository.Registries
 {
@@ -32,6 +33,8 @@ namespace Sopheon.Repository.Registries
 			For<IGetTemplateForEditQuery>().Use<GetTemplateForEditQuery>();
 
             For<IGetTemplatesForEditQuery>().Use<GetTemplatesForEditQuery>();
+
+            For<ISaveProcessTemplateCommand>().Use<SaveProcessTemplateCommand>();
         }
 	}
 }

@@ -684,6 +684,7 @@
 					, { key: 'url', def: '' }
 					, { key: 'data', def: '' }
 					, { key: 'type', def: 'GET' }
+					, { key: 'clear', def: '' }
 					, { key: 'before', def: '' }
 					, { key: 'attributes', def: '' }
 					, { key: 'after', def: '' }
@@ -881,10 +882,22 @@
 									}
 									else if (result.State == 0 || result.State == 1) {
 										sangre.ml.html(config.target, result.HtmlResult);
+										if (config.clear != '') {
+											config.clear.split(' ').select(function () {
+												var o = this;
+												$(o.toString()).html('');
+											});
+										}
 										sangre.util.callIf.call(scope, config.after, [result]);
 									}
 									else {
 										sangre.util.callIf.call(scope, config.onfail, [result]);
+										result.Messages.select(function () {
+											sangre.msg.sendError(sel, this.Message);
+											if (this.Exception !== undefined) {
+												sangre.msg.console(this.Exception);
+											}
+										});
 									}
 								}
 								, errorHandler: function (ex) {

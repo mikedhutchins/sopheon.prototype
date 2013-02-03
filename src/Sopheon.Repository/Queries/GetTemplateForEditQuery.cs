@@ -31,6 +31,7 @@ namespace Sopheon.Repository.Queries
 
 		public OperationResponse Execute(ObjectContext context)
 		{
+			d.ProcessTemplate template = null;
 
 			Processor processor = new Processor().SetResponse(_response)
 			#region step #1 get context
@@ -39,11 +40,15 @@ namespace Sopheon.Repository.Queries
 
 			#region step #2 get stuff
 			.Then((p) => {
-				var template = _context.ProcessTemplates.FirstOrDefault(x => x.Id.Equals(_request.TemplateId));
+				template = _context.ProcessTemplates.FirstOrDefault(x => x.Id.Equals(_request.TemplateId) || (_request.TemplateId <= 0 && x.Name.Equals(_request.Name)));
 				
-				p.Evaluate(template != null);
+				p.Evaluate(!(template == null && _request.TemplateId > -1), "Model was not found!");
+			})
+			#endregion
 
-				_response.Subject = template.ToDomainModel();
+			#region step #3
+			.Then((p) => {
+				_response.Subject = template == null ? new Domain.Entities.ProcessTemplate { Id = -1, Name = string.Empty, ProjectCount = 0 } : template.ToDomainModel();
 			})
 			#endregion
 			;

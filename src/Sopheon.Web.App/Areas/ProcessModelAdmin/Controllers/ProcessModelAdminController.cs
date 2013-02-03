@@ -32,11 +32,9 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
                 Template = template
             });
 
-            var uiResponse = response.ToUi((r) => {
-                return r.State == ProcessorState.Succeeded 
-                    ? RenderPartialViewToString("Index", _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { }).Merge(r))
-                    : RenderPartialViewToString(VIEW_ERROR, r);
-            });
+            var uiResponse = response.ToUi((r) =>
+				RenderPartialViewToString("ListProcessTemplates", _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { }).Merge(r).Subject)
+            );
 
             return Json(uiResponse, JsonRequestBehavior.AllowGet);
         }

@@ -11,9 +11,5 @@ namespace Sopheon.system.Validation
         public int Sequence { get; set; }
 
         public bool ShouldFail { get; set; }
-
-        public string FailureMessage { get; set; }
-
-        public string SuccessMessage { get; set; }
     }
 }

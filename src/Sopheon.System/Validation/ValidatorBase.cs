@@ -34,7 +34,7 @@ namespace Sopheon.system.Validation
                     var attribute = meth.GetAttribute<ValidatorAttribute>();
                     proc.Then((p) =>
                     {
-                        meth.Invoke(Subject, new object[] { proc });
+                        meth.Invoke(this, new object [] { p });
 
                         if (proc.Response.State == ProcessorState.Failed && attribute.ShouldFail)
                         {

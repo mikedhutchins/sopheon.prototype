@@ -25,7 +25,7 @@ namespace Sopheon.system.Processor
 
 			target.FinalMessage = !string.IsNullOrEmpty(subject.FinalMessage) ? subject.FinalMessage : target.FinalMessage;
 
-			target.Subject = subject.Subject;
+			target.Subject = subject.Subject != null ? subject.Subject :  target.Subject;
 
 			return target;
 		}

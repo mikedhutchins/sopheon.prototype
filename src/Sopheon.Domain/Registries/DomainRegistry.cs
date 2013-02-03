@@ -18,6 +18,11 @@ namespace Sopheon.Domain.Registries
 		{
             Scan(cfg =>
             {
+				cfg.TheCallingAssembly();
+				cfg.AddAllTypesOf(typeof(IValidator<>));
+				cfg.WithDefaultConventions();
+
+
                 cfg.ConnectImplementationsToTypesClosing(typeof(IValidator<>));
             });
         }

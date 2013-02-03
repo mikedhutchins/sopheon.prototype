@@ -8,5 +8,7 @@ namespace Sopheon.Domain.Requests
 	public class GetTemplateForEditRequest
 	{
 		public int TemplateId { get; set; }
+
+		public string Name { get; set; }
 	}
 }
