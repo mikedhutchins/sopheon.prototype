@@ -31,6 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Sopheon.Repository\bin\Debug\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMapAdapter">
+      <HintPath>..\Sopheon.Web.App\bin\StructureMapAdapter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -47,22 +54,26 @@
     <Compile Include="Contracts\IGetMyProjectsByTemplateIdQuery.cs" />
     <Compile Include="Contracts\IGetTemplateForEditQuery.cs" />
     <Compile Include="Contracts\IGetTemplatesForEditQuery.cs" />
+    <Compile Include="Contracts\ISaveProcessTemplateCommand.cs" />
     <Compile Include="Entities\Gate.cs" />
     <Compile Include="Entities\ProcessTemplate.cs" />
     <Compile Include="Entities\Project.cs" />
     <Compile Include="Managers\MyProjectsManager.cs" />
     <Compile Include="Managers\ProcessModelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registries\DomainRegistry.cs" />
     <Compile Include="Requests\GetGatesByProjectIdRequest.cs" />
     <Compile Include="Requests\GetMyProcessTemplatesRequest.cs" />
     <Compile Include="Requests\GetMyProjectsByTemplateIdRequest.cs" />
     <Compile Include="Requests\GetTemplateForEditRequest.cs" />
     <Compile Include="Requests\GetTemplatesForEditRequest.cs" />
+    <Compile Include="Requests\SaveProcessTemplateRequest.cs" />
     <Compile Include="Responses\GetGatesByProjectResponse.cs" />
     <Compile Include="Responses\GetMyProcessTemplatesResponse.cs" />
     <Compile Include="Responses\GetMyProjectsByTemplateIdResponse.cs" />
     <Compile Include="Responses\GetTemplateForEditResponse.cs" />
     <Compile Include="Responses\GetTemplatesForEditResponse.cs" />
+    <Compile Include="Responses\SaveProcessTemplateResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sopheon.System\Sopheon.System.csproj">
@@ -74,6 +85,7 @@
     <Folder Include="Contracts\Commands\" />
     <Folder Include="Contracts\Queries\" />
     <Folder Include="Contracts\Repositories\" />
+    <Folder Include="Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

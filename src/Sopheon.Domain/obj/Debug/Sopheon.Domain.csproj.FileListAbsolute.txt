@@ -30,3 +30,5 @@ E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Sopheon.System.pdb
 E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.csprojResolveAssemblyReference.cache
 E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.dll
 E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.pdb
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Debug\StructureMapAdapter.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Microsoft.Practices.ServiceLocation.dll

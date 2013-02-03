@@ -8,7 +8,9 @@ using Sopheon.framework;
 using Sopheon.Domain.Requests;
 using Sopheon.Domain.Responses;
 using Sopheon.Domain.Contracts;
-
+using Sopheon.system.Validation;
+using Sopheon.system.Processor;
+using Sopheon.system.Validation;
 namespace Sopheon.Domain.Managers
 {
 	public class ProcessModelManager
@@ -32,6 +34,23 @@ namespace Sopheon.Domain.Managers
         public GetTemplatesForEditResponse GetTemplatesForEdit(GetTemplatesForEditRequest request)
         {
             return _context.SimpleOperation<GetTemplatesForEditRequest, GetTemplatesForEditResponse, IGetTemplatesForEditQuery>(request, () => new { request = request });
+        }
+
+        public SaveProcessTemplateResponse SaveProcessTemplate(SaveProcessTemplateRequest request)
+        {
+            SaveProcessTemplateResponse response = new SaveProcessTemplateResponse ();
+
+            Processor proc = new Processor().SetResponse(response)
+                .Then((p) =>
+                {
+                    p.Response.Merge(request.Template.Validate());
+                })
+                .Then((p) =>
+                {
+                    p.Response.Merge(_context.SimpleOperation<SaveProcessTemplateRequest, SaveProcessTemplateResponse, ISaveProcessTemplateCommand>(request, () => new { request = request }));
+                });
+
+            return response ;
         }
     }
 }

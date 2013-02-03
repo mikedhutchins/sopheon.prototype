@@ -18,7 +18,7 @@ namespace Sopheon.Repository
 			Context = context;
 		}
 
-		public IResponse<T> Execute<T>(ICommand<T> command)
+		public IResponse<T> Execute<T>(ICommand command)
 		{
 			return (IResponse<T>)command.Execute(Context);
 		}

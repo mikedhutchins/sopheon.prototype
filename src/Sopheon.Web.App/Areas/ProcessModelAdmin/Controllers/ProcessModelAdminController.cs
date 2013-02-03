@@ -9,6 +9,7 @@ using Sopheon.Domain.Requests;
 using Sopheon.Domain.Responses;
 using Sopheon.system.UX;
 using Sopheon.system.Processor;
+using Sopheon.Domain.Entities;
 
 namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 {
@@ -23,6 +24,22 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 		{
 			_processModelManager = processModelManager;
 		}
+
+        [HttpPost]
+        public ActionResult SaveModel(ProcessTemplate template)
+        {
+            SaveProcessTemplateResponse response = _processModelManager.SaveProcessTemplate(new SaveProcessTemplateRequest {
+                Template = template
+            });
+
+            var uiResponse = response.ToUi((r) => {
+                return r.State == ProcessorState.Succeeded 
+                    ? RenderPartialViewToString("Index", _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { }).Merge(r))
+                    : RenderPartialViewToString(VIEW_ERROR, r);
+            });
+
+            return Json(uiResponse, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult ModelList()
         {
@@ -52,7 +69,7 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 			var uiresponse = _processModelManager.GetTemplateForEdit(new GetTemplateForEditRequest { TemplateId = templateId })
 				.ToUi((response) =>
 					response.State == ProcessorState.Succeeded
-						? RenderPartialViewToString("EditTemplate", response.Template)
+						? RenderPartialViewToString("EditTemplate", response)
 						: RenderPartialViewToString(VIEW_ERROR, response));
 
 			return Json(uiresponse, JsonRequestBehavior.AllowGet);

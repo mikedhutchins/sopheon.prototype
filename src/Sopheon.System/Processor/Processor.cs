@@ -27,12 +27,13 @@ namespace Sopheon.system.Processor
 				StackTrace stackTrace = new StackTrace();           // get call stack
 
 				name = stackTrace.GetFrames().Skip(2).Take(1).Select(x => x.GetMethod().DeclaringType.Name + " :: " + x.GetMethod().Name).First();
-
 			}
 
 			Response = new OperationResponse() { Name = name };
 		}
 		#endregion
+
+        public bool ContinueOnFailure { get; set; }
 
 		Action<Exception, Processor> _onException;
 
@@ -99,7 +100,7 @@ namespace Sopheon.system.Processor
 		{
 			Response.State = Response.State == ProcessorState.New ? ProcessorState.Succeeded : Response.State;
 
-			if (Response.State == ProcessorState.Succeeded)
+			if (Response.State == ProcessorState.Succeeded || (ContinueOnFailure && Response.State == ProcessorState.Failed))
 			{
 				try
 				{
