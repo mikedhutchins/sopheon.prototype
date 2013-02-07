@@ -34,3 +34,12 @@ E:\working\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.System.pdb
 E:\working\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.csprojResolveAssemblyReference.cache
 E:\working\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.dll
 E:\working\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.Data.dll.config
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.Data.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.Data.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.System.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\StructureMap.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\bin\Debug\Sopheon.System.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.csprojResolveAssemblyReference.cache
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Data\obj\Debug\Sopheon.Data.pdb

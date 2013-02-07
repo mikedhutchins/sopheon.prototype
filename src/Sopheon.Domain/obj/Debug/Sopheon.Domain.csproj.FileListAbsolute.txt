@@ -32,3 +32,13 @@ E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.dll
 E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.pdb
 E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Debug\StructureMapAdapter.dll
 E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Sopheon.Domain.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Sopheon.Domain.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Sopheon.System.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\StructureMap.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\StructureMapAdapter.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\bin\Debug\Sopheon.System.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.csprojResolveAssemblyReference.cache
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Domain\obj\Debug\Sopheon.Domain.pdb
