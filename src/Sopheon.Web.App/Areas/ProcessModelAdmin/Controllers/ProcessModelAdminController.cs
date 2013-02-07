@@ -15,31 +15,44 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 {
     public class ProcessModelAdminController : BaseController
 	{
-
 		#region fields
 		private ProcessModelManager _processModelManager;
 		#endregion
 
+		#region cstor
 		public ProcessModelAdminController(ProcessModelManager processModelManager)
 		{
 			_processModelManager = processModelManager;
 		}
+		#endregion
 
-        [HttpPost]
+		#region OPERATIONS posts / updates and what not
+		ActionResult ProcessSaveOperation(Func<SaveProcessTemplateResponse> responseF)
+		{
+			SaveProcessTemplateResponse response = responseF();
+
+			var uiResponse = response.ToUi((r) =>
+				RenderPartialViewToString("ListProcessTemplates", _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { }).Merge(r).Subject)
+			);
+
+			return Json(uiResponse, JsonRequestBehavior.AllowGet);
+		}
+
+		[HttpPost]
         public ActionResult SaveModel(ProcessTemplate template)
         {
-            SaveProcessTemplateResponse response = _processModelManager.SaveProcessTemplate(new SaveProcessTemplateRequest {
-                Template = template
-            });
-
-            var uiResponse = response.ToUi((r) =>
-				RenderPartialViewToString("ListProcessTemplates", _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { }).Merge(r).Subject)
-            );
-
-            return Json(uiResponse, JsonRequestBehavior.AllowGet);
+			return ProcessSaveOperation(() => _processModelManager.SaveProcessTemplate(new SaveProcessTemplateRequest { Template = template }));
         }
 
-        public ActionResult ModelList()
+		[HttpPost]
+		public ActionResult Delete(int templateId)
+		{
+			return ProcessSaveOperation(() => _processModelManager.DeleteTemplate(new GetTemplateForDeleteConfirmRequest { TemplateId = templateId }));
+		}
+		#endregion
+
+		#region OPERATIONS
+		public ActionResult ModelList()
         {
             var response = _processModelManager.GetTemplatesForEdit(new GetTemplatesForEditRequest { })
                 .ToUi((r) => RenderPartialViewToString("Index", r));
@@ -71,7 +84,18 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin.Controllers
 						: RenderPartialViewToString(VIEW_ERROR, response));
 
 			return Json(uiresponse, JsonRequestBehavior.AllowGet);
-
 		}
-    }
+
+		public ActionResult DeleteConfirm(int templateId)
+		{
+			var uiresponse = _processModelManager.GetTemplateForDeleteConfirm(new GetTemplateForDeleteConfirmRequest { TemplateId = templateId })
+				.ToUi((response) =>
+					response.State == ProcessorState.Succeeded
+						? RenderPartialViewToString("DeleteConfirm", response)
+						: RenderPartialViewToString(VIEW_ERROR, response));
+
+			return Json(uiresponse, JsonRequestBehavior.AllowGet);
+		}
+		#endregion
+	}
 }

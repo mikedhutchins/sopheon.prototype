@@ -20,6 +20,10 @@ namespace Sopheon.Web.App.Areas.ProcessModelAdmin
 
             context.MapRoute("ProcessModelAdmin_save_template", "ProcessModelAdmin/Template/Save", new { controller = "ProcessModelAdmin", action = "SaveModel" });
 
+			context.MapRoute("ProcessModelAdmin_delete_confirm_template", "ProcessModelAdmin/Template/DeleteConfirm", new { controller = "ProcessModelAdmin", action = "DeleteConfirm" });
+
+			context.MapRoute("ProcessModelAdmin_delete_template", "ProcessModelAdmin/Template/Delete", new { controller = "ProcessModelAdmin", action = "Delete" });
+
             context.MapRoute("ProcessModelAdmin_processmodels", "ProcessModelAdmin/ProcessModels", new { controller = "ProcessModelAdmin", action = "ModelList" });
 
             context.MapRoute("ProcessModelAdmin_metrics", "ProcessModelAdmin/Metrics", new { controller = "ProcessModelAdmin", action = "MetricList" });

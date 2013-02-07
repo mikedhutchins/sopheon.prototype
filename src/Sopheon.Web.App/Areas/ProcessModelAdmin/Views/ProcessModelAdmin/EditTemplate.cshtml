@@ -12,6 +12,11 @@
             data-validate="true"
             data-type="POST" data-clear="#editProcessModelPanel"
             />
+        <input type="button" class="sub-tile sangre-inject" value="Delete" 
+            data-target="#editProcessModelPanel"
+            data-url="/ProcessModelAdmin/Template/DeleteConfirm?templateId=@Model.Template.Id"
+            data-form="#processTemplateForm"
+            />
         <input type="button" class="sub-tile sangre-remove" value="Cancel" data-target="#editProcessModelPanel .edit-panel"/>
     </form>
 </div>

@@ -31,26 +31,31 @@ namespace Sopheon.Domain.Managers
 			return _context.SimpleOperation<GetTemplateForEditRequest, GetTemplateForEditResponse, IGetTemplateForEditQuery>(request, () => new { request = request });
 		}
 
-        public GetTemplatesForEditResponse GetTemplatesForEdit(GetTemplatesForEditRequest request)
+		public Responses.GetTemplateForEditResponse GetTemplateForDeleteConfirm(Requests.GetTemplateForDeleteConfirmRequest request)
+		{
+			return _context.SimpleOperation<GetTemplateForDeleteConfirmRequest, GetTemplateForEditResponse, IGetTemplateForEditQuery>(request, () => new { request = request });
+		}
+		
+		public GetTemplatesForEditResponse GetTemplatesForEdit(GetTemplatesForEditRequest request)
         {
             return _context.SimpleOperation<GetTemplatesForEditRequest, GetTemplatesForEditResponse, IGetTemplatesForEditQuery>(request, () => new { request = request });
         }
 
         public SaveProcessTemplateResponse SaveProcessTemplate(SaveProcessTemplateRequest request)
         {
-            SaveProcessTemplateResponse response = new SaveProcessTemplateResponse ();
-
-            Processor proc = new Processor().SetResponse(response)
-                .Then((p) =>
-                {
-                    p.Response.Merge(request.Template.Validate());
-                })
-                .Then((p) =>
-                {
-                    p.Response.Merge(_context.SimpleOperation<SaveProcessTemplateRequest, SaveProcessTemplateResponse, ISaveProcessTemplateCommand>(request, () => new { request = request }));
-                });
-
-            return response ;
+			return _context.SimpleOperation<SaveProcessTemplateRequest, SaveProcessTemplateResponse, ISaveProcessTemplateCommand>(request, () => new { request = request });
         }
-    }
+
+		public SaveProcessTemplateResponse DeleteTemplate(GetTemplateForDeleteConfirmRequest request)
+		{
+			var response = _context.SimpleOperation<GetTemplateForDeleteConfirmRequest, SaveProcessTemplateResponse, IDeleteTemplateCommand>(request, () => new { request = request });
+
+			if (response.State == ProcessorState.Succeeded)
+			{
+				response.Messages.Add(new OperationMessage { Message = "Delete succeeded." });
+			}
+
+			return response;
+		}
+	}
 }

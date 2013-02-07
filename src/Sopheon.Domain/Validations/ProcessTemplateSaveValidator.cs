@@ -1,5 +1,6 @@
 ﻿using Sopheon.Domain.Entities;
 using Sopheon.Domain.Managers;
+using Sopheon.Domain.Requests;
 using Sopheon.system.Processor;
 using Sopheon.system.Validation;
 using System;
@@ -9,14 +10,14 @@ using System.Text;
 
 namespace Sopheon.Domain.Validations
 {
-	public class ProcessTemplateUniquenessValidator : ValidatorBase<ProcessTemplate>
+	public class ProcessTemplateSaveValidator : ValidatorBase<SaveProcessTemplateRequest>
 	{
 		#region fields
 		private ProcessModelManager _manager;
 		#endregion
 
 		#region cstor
-		public ProcessTemplateUniquenessValidator(ProcessModelManager manager)
+		public ProcessTemplateSaveValidator(ProcessModelManager manager)
 		{
 			_manager = manager;
 		}
@@ -26,9 +27,9 @@ namespace Sopheon.Domain.Validations
 		[Validator(Sequence=0)]
 		public void ShouldBeUnique(Processor proc)
 		{
-			var template = _manager.GetTemplateForEdit(new Requests.GetTemplateForEditRequest { Name = Subject.Name }).Template;
+			var template = _manager.GetTemplateForEdit(new Requests.GetTemplateForEditRequest { Name = Subject.Template.Name }).Template;
 
-			if (!(template == null || (template.Name.Equals(Subject.Name) && template.Id.Equals(Subject.Id))))
+			if (!(template == null || (template.Name.Equals(Subject.Template.Name) && template.Id.Equals(Subject.Template.Id))))
 			{
 				proc.Fail("Process Model name was not unique.");
 			}

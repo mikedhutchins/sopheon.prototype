@@ -1,0 +1,11 @@
+﻿@model Sopheon.Domain.Responses.GetTemplateForEditResponse
+<div class="edit-panel">
+	<h6>Are you sure that you would like to delete @Model.Template.Name?</h6>
+    <input type="button" class="sub-tile sangre-inject" value="Save" 
+        data-target="#mainBody .list-panel"
+        data-url="/ProcessModelAdmin/Template/Delete?templateId=@Model.Template.Id"
+        data-form="#processTemplateForm"
+        data-type="POST" data-clear="#editProcessModelPanel"
+        />
+    <input type="button" class="sub-tile sangre-remove" value="Cancel" data-target="#editProcessModelPanel .edit-panel"/>
+</div>

@@ -35,6 +35,8 @@ namespace Sopheon.Repository.Registries
             For<IGetTemplatesForEditQuery>().Use<GetTemplatesForEditQuery>();
 
             For<ISaveProcessTemplateCommand>().Use<SaveProcessTemplateCommand>();
-        }
+
+			For<IDeleteTemplateCommand>().Use<DeleteTemplateCommand>();
+		}
 	}
 }

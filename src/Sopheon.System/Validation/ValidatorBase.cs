@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using Sopheon.framework.Reflection;
 using p = Sopheon.system.Processor;
+using Sopheon.system.Validation;
+using Sopheon.framework;
 
 namespace Sopheon.system.Validation
 {
@@ -12,14 +14,21 @@ namespace Sopheon.system.Validation
     {
         OperationResponse Validate();
 
-        SUBJECTTYPE Subject { get; set; }
+		OperationResponse Validate(ValidatorContexts contexts);
+
+		SUBJECTTYPE Subject { get; set; }
     }
 
     public abstract class ValidatorBase<SUBJECTTYPE> : IValidator<SUBJECTTYPE>
     {
         public SUBJECTTYPE Subject { get; set; }
 
-        public OperationResponse Validate()
+		public OperationResponse Validate()
+		{
+			return Validate(ValidatorContexts.All);
+		}
+
+		public OperationResponse Validate(ValidatorContexts contexts)
         {
             p.Processor proc = new p.Processor()
             {
@@ -27,7 +36,9 @@ namespace Sopheon.system.Validation
             };
 
             this.GetType().GetMethods()
-                .Where(meth => meth.HasAttribute<ValidatorAttribute>())
+                .Where(meth => meth.HasAttribute<ValidatorAttribute>() &&
+					(meth.GetAttribute<ValidatorAttribute>().Context.HasFlag(ValidatorContexts.All)
+					|| meth.GetAttribute<ValidatorAttribute>().Context.ContainsMatch(contexts)))
                 .OrderBy(meth => meth.GetAttribute<ValidatorAttribute>().Sequence)
                 .ToList().ForEach(meth =>
                 {

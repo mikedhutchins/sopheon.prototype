@@ -51,6 +51,7 @@
     <Compile Include="Contracts\IResponse.cs" />
     <Compile Include="Helpers\AttributeHelper.cs" />
     <Compile Include="Helpers\CacheHelper.cs" />
+    <Compile Include="Helpers\EnumHelpers.cs" />
     <Compile Include="Helpers\GameHelper.cs" />
     <Compile Include="Helpers\ManagerHelper.cs" />
     <Compile Include="Helpers\MethodMasher.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Validation\ValidatorAttribute.cs" />
     <Compile Include="Validation\ValidatorBase.cs" />
     <Compile Include="Validation\ValidationHelper.cs" />
+    <Compile Include="Validation\ValidatorContexts.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

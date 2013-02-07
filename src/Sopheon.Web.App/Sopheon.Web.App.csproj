@@ -303,6 +303,7 @@
     <Content Include="Areas\ProcessModelAdmin\Views\Nav\SubNavMetrics.cshtml" />
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\ListProcessTemplates.cshtml" />
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\MetricList.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\DeleteConfirm.cshtml" />
     <None Include="ClassDiagram1.cd" />
     <Content Include="Views\Shared\Templates.cshtml" />
     <Content Include="Views\Templates\Modal.cshtml" />

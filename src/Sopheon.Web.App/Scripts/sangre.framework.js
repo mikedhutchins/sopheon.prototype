@@ -625,34 +625,6 @@
 		}
 	};
 
-	// msg - todo
-	sangre.msg = {
-		send: function (sel, cls, msg) {
-			alert(msg);
-		}
-		, sendInfo: function (sel, msg) {
-			alert('INFO {m}'.bind({ m: msg }));
-		}
-		, sendError: function (sel, msg) {
-			alert('ERROR {m}'.bind({ m: msg }));
-		}
-		, sendWarning: function (sel, msg) {
-			alert('WARNING {m}'.bind({ m: msg }));
-		}
-        , console: function () {
-            try {
-                var r = [];
-                for (key in arguments) {
-                    r.push(arguments[key]);
-                }
-                console.log(r.join(', '));
-            }
-            catch (ex) {
-
-            }
-        }
-	};
-
 	// ajax
 	sangre.jax = {
 		send: function (config) {
@@ -888,21 +860,18 @@
 												$(o.toString()).html('');
 											});
 										}
+										sangre.msg.sendInfo('...', result);
 										sangre.util.callIf.call(scope, config.after, [result]);
 									}
 									else {
 										sangre.util.callIf.call(scope, config.onfail, [result]);
-										result.Messages.select(function () {
-											sangre.msg.sendError(sel, this.Message);
-											if (this.Exception !== undefined) {
-												sangre.msg.console(this.Exception);
-											}
-										});
+										sangre.msg.sendError('...', result);
 									}
 								}
 								, errorHandler: function (ex) {
 									sangre.util.callIf.call(scope, config.onfail, [ex]);
 									sangre.event.fire(sangre.jax.events.EXCEPTION, ex.responseText);
+									sangre.msg.sendError('...', sangre.msg.getMsgC().msgs.SYSTEMERROR);
 								}
 							});
 						}
@@ -982,10 +951,286 @@
 		}
 		, dependencies: []
 	};
+
+	// msg
+	sangre.message =
+		{
+		get: function (context, messageSel, msgs) {
+			sangre.ml.html(messageSel, '');
+			msgs = $.extend(msgs, {
+				SYSTEMERROR: 'A serious error has occurred.  If this continues please contact an administrator.'
+				, GENERALSAVE: 'Save was successful.'
+			});
+			var msgC = {
+				sendInfo: function (msg, stickyUntil) {
+					$(messageSel).removeClass('secondary alert success');
+					msgC.send('New', msg, stickyUntil);
+				}
+			, sendError: function (msg, stickyUntil) {
+				msgC.send('Exception', msg, stickyUntil);
+			}
+			, sendWarning: function (msg, stickyUntil) {
+				msgC.send('Failure', msg, stickyUntil);
+			}
+			, msgs: msgs
+			, qCtrl: new __queueController({})
+			, messageKeys: []
+			, getMsg: function (status, msg, stickyUntil) {
+				var scope = this;
+				var s = msgC.lookupStatus(status);
+				var pid = '{c}_{id}'.bind({ c: context.replace(/[^\w^\d]+/g, '_'), id: msg.replace(/[^\w^\d]+/g, '_') }).toLowerCase();
+				var id = '__msg_{id}'.bind({ id: pid });
+				msgC.messageKeys.push(id);
+				if ($('#' + id).length > 0) {
+					$('#' + id).remove();
+					$('#' + id).remove();
+				}
+				var msgMl = '<div id="{id}" class="alert-box {cls} round">{msg}</div>'.bind({ id: id, cls: s.cls, stat: s.title, msg: msg });
+				return $.isFunction(stickyUntil) ? {
+					send: function () {
+						sangre.ml.append(messageSel, msgMl);
+						(function () { })._while(1000, stickyUntil, function () {
+							$('#' + id).slideUp('fast', function () {
+								$('#' + id).remove();
+							});
+						});
+					}
+					, status: s
+					, msg: msgMl
+				} : {
+					send: function () {
+						sangre.ml.append(messageSel, msgMl);
+						var qI = new __queueInfo({
+							key: '{c}-PAGEMESSAGE'.bind({ c: context })
+							, interval: 200
+							, lifespan: 1500
+							, onComplete: function () {
+								if (s.onFClear) {
+									$('#' + id).slideUp('fast', function () {
+										$('#' + id).remove();
+										$('#' + id).remove();
+									});
+								}
+							}
+						});
+						scope.qCtrl.queue(qI);
+					}
+					, status: s
+					, msg: msgMl
+				};
+				return;
+			}
+			, send: function (status, msg, stickyUntil) {
+				if (msg.Messages === undefined) {
+					var m = msgC.getMsg(status, msg, stickyUntil);
+					m.send();
+				}
+				else {
+					for (key in msg.Messages) {
+						var mx = msg.Messages[key];
+						if (mx.Message !== undefined && mx.Message != '') {
+							var m = msgC.getMsg(mx.State, mx.Message, stickyUntil);
+							m.send();
+						}
+					}
+				}
+			}
+			, clear: function () {
+				msgC.messageKeys.select(function () {
+					$('#' + this).remove();
+				});
+			}
+			, lookupStatus: function (id) {
+				return msgC.statususes[id];
+			}
+			, statususes: {
+				New: { title: 'New', cls: 'alert-success', onFClear: false }
+				, 0: { title: 'Succeeded', cls: 'alert alert-success', onFClear: true }
+				, 2: { title: 'Failed', cls: 'alert alert-error', onFClear: true }
+				, 3: { title: 'Exception', cls: '', onFClear: true }
+				, Exception: { title: 'Exception', cls: 'alert alert-error', onFClear: true }
+			}
+			}
+			return msgC;
+		}
+	, showSystemError: function () {
+		var msg = $(this).find('.bigmessage').html();
+	}
+	}
+
+	sangre.msg = {
+		path: function (hasContainer, noContainer) {
+			if ($('.messageBox').length > 0) {
+				hasContainer(sangre.msg.getMsgC());
+			}
+			else {
+				noContainer();
+			}
+		}
+		, send: function (sel, cls, msg) {
+			alert(msg);
+		}
+	, sendInfo: function (sel, msg) {
+		this.path(function (m) {
+			m.sendInfo(msg, sangre.msg.infoStickyUntil);
+		}, function () {
+			sangre.msg.processMsg(msg, 'INFO {m}');
+		});
+	}
+	, ERRORSTICKYUNTIL: 6000
+	, INFOSTICKYUNTIL: 3000
+	, getMsgC: function () {
+		if (sangre.msg.msgC === undefined) {
+			sangre.msg.msgC = sangre.message.get('global', '.messageBox', []);
+		}
+		return sangre.msg.msgC;
+	}
+	, processMsg: function (msg, template) {
+		msg.Messages.select(function () {
+			alert(template.bind({ m: this.Message }));
+			if (this.Exception !== undefined) {
+				sangre.msg.console(this.Exception);
+			}
+		});
+	}
+	, sendError: function (sel, msg) {
+		this.path(function (m) {
+			m.sendError(msg, sangre.msg.ERRORSTICKYUNTIL);
+		}, function () {
+			sangre.msg.processMsg(msg, 'ERROR {m}');
+		});
+	}
+	, sendWarning: function (sel, msg) {
+		this.path(function (m) {
+			m.sendError(msg, sangre.msg.INFOSTICKYUNTIL);
+		}, function () {
+			sangre.msg.processMsg(msg, 'WARNING {m}');
+		});
+	}
+	, console: function () {
+		try {
+			var r = [];
+			for (key in arguments) {
+				r.push(arguments[key]);
+			}
+			console.log(r.join(', '));
+		}
+		catch (ex) {
+
+		}
+	}
+	};
+
+
+	
 	sangre.inits.push(sangre.u.extensions);
 	$(document).ready(function () {
 		sangre.init();
 		sangre.u.applyFor('body');
 	});
+
+	/*** controller ***/
+	function __base(config) {
+		if (this.init) {
+			this.init(config);
+		}
+	}
+	function __queueInfo(config) { if (this.init) { this.init(config); } }
+	__queueInfo.prototype = {
+		init: function (config) { for (key in config) { this[key] = config[key]; } }
+	, key: null
+	, id: -1
+	, interval: -1
+	, lifespan: 0
+	, onComplete: function () { }
+	, onInterval: function () { }
+	, completedHandlers: []
+	};
+
+	function __queue(config) { if (this.init) { this.init(config); } }
+	__queue.prototype = {
+		init: function (config) { for (key in config) { this[key] = config[key]; } }
+	, qIs: []
+	, qI: null
+	, controller: null
+	, interval: 3000
+	, intervalId: null
+	, finished: false
+	, startTime: null, lifespan: 0, initialized: false, launched: false
+	, initialize: function (qI) { // first pass
+		if (!this.initialized) {
+			if (qI.interval > 1000) {
+				this.interval = qI.interval;
+			}
+			this.qIs = [];
+			this.qI = qI;
+			this.lifespan = qI.lifespan;
+			this.initialized = true;
+		}
+		this.startTime = new Date();
+		this.qIs.push(qI);
+	}
+	, submitQueueInfo: function (qI) {
+		this.initialize(qI);
+		this.launch();
+	}
+	, complete: function () {
+		var s = this;
+		clearInterval(this.intervalId);
+		if ($.isFunction(this.qI.onComplete)) {
+			this.qI.onComplete.call(this, this.qI);
+		}
+		$(this.qIs).each(function (idx) {
+			if (this != s.qI && $.isFunction(this.onComplete)) {
+				this.onComplete.call(s, this);
+			}
+		});
+		this.launched = false;
+	}
+	, processInterval: function () {
+		var s = this;
+		var dif = new Date() - this.startTime;
+		if (dif > this.lifespan) {
+			this.complete();
+		}
+		if ($.isFunction(this.qI.onInterval)) {
+			this.qI.onInterval.call(this, this.qI);
+		}
+		$(this.qIs).each(function (idx) {
+			if (this != s.qI && $.isFunction(this.onInterval)) {
+				this.onInterval.call(s, this);
+			}
+		});
+	}
+	, launch: function () {
+		var s = this;
+
+		if (!this.launched) {
+			this.startTime = new Date();
+			this.intervalId = setInterval(function () {
+				s.processInterval.call(s);
+			}, this.interval);
+			this.launched = true;
+		}
+	}
+	};
+	function __queueController(config) { if (this.init) { this.init(config); } }
+	__queueController.prototype = {
+		init: function (config) { for (key in config) { this[key] = config[key]; } }
+	, queues: []
+	, queue: function (qI) {
+		if (!this.queues[qI.key]) {
+			this.create(qI);
+		}
+		var q = this.queues[qI.key]; // get the queue
+		q.submitQueueInfo(qI); // submit the queue for processing
+		q.launch();
+	}
+	, create: function (qI) {
+		var q = new __queue();
+		this.queues[qI.key] = q;
+	}
+	}
+
 
 })(window);
