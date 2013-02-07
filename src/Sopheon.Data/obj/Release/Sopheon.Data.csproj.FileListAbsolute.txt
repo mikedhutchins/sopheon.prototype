@@ -1,0 +1,9 @@
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\Sopheon.Data.dll.config
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\Sopheon.Data.dll
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\Sopheon.Data.pdb
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\StructureMap.dll
+E:\working\sopheon.prototype\src\Sopheon.Data\bin\Release\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.Data\obj\Release\Sopheon.Data.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.Data\obj\Release\Sopheon.Data.dll
+E:\working\sopheon.prototype\src\Sopheon.Data\obj\Release\Sopheon.Data.pdb

@@ -1,0 +1,10 @@
+E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Release\Sopheon.Domain.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\Sopheon.Domain.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\Sopheon.Domain.pdb
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\StructureMap.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\StructureMapAdapter.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\Microsoft.Practices.ServiceLocation.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\bin\Release\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Release\Sopheon.Domain.dll
+E:\working\sopheon.prototype\src\Sopheon.Domain\obj\Release\Sopheon.Domain.pdb

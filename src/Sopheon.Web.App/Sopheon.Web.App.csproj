@@ -40,8 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="StructureMap">
-      <HintPath>..\..\..\git\gorilla\gorilla.stack.base\gorilla.power.build\gorilla.power.build\bin\Debug\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdPartyDlls\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="StructureMapAdapter">
       <HintPath>..\..\..\git\mma\src\mma\bin\StructureMapAdapter.dll</HintPath>

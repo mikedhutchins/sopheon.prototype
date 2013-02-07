@@ -1,6 +1,5 @@
-
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Data", "..\Sopheon.Data\Sopheon.Data.csproj", "{5D538D82-610C-4F98-AAB8-4E1024C34926}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sopheon.Domain", "..\Sopheon.Domain\Sopheon.Domain.csproj", "{A67FE436-7548-422E-B90A-59C5E307B911}"

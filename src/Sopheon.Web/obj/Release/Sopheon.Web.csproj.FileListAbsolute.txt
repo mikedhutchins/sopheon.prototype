@@ -1,0 +1,10 @@
+E:\working\sopheon.prototype\src\Sopheon.Web\obj\Release\Sopheon.Web.csprojResolveAssemblyReference.cache
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.Web.dll
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.Web.pdb
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.Domain.dll
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\StructureMap.dll
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.Domain.pdb
+E:\working\sopheon.prototype\src\Sopheon.Web\bin\Release\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.Web\obj\Release\Sopheon.Web.dll
+E:\working\sopheon.prototype\src\Sopheon.Web\obj\Release\Sopheon.Web.pdb

@@ -1,0 +1,5 @@
+E:\working\sopheon.prototype\src\Sopheon.System\bin\Release\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.System\bin\Release\Sopheon.System.pdb
+E:\working\sopheon.prototype\src\Sopheon.System\bin\Release\StructureMap.dll
+E:\working\sopheon.prototype\src\Sopheon.System\obj\Release\Sopheon.System.dll
+E:\working\sopheon.prototype\src\Sopheon.System\obj\Release\Sopheon.System.pdb
