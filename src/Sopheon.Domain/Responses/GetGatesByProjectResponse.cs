@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using Sopheon.system.Processor;
 using Sopheon.Domain.Entities;
+using Sopheon.system.Lists;
 
 namespace Sopheon.Domain.Responses
 {
 	public class GetGatesByProjectResponse : OperationResponse
 	{
-		public List<Gate> Gates
+		public PagedList<Gate> Gates
 		{
 			get
 			{
-				return (List<Gate>)Subject;
+				return (PagedList<Gate>)Subject;
 			}
 		}
 	}

@@ -5,26 +5,48 @@
 <h2>Index</h2>
 <h3>This page exists to demo lists</h3>
 <h4>List #1 - The deferred list</h4>
-<p>Loads all rows page by page after load without the user noticing.  We're sleeping for a second to make the loads visible.</p>
+<p>Loads all rows page by page after load without the user noticing.  We're sleeping for a second to make the loads visible.  Finally, we are currently loading 
+	<span class="sangre-event-change" data-event-key="my-deferred-list-postload" data-event-attribute="html" data-event-template="page: {pageIndex} of {totalPages}" ></span></p>
 <div id="my-deferred-list" class="list sangre-list-deferred" data-list-key="my-deferred-list" data-list-url="/lists/deferred" data-list-sleep="1000" data-list-page-size="100"></div>
 <hr />
 <h4>List #2 - The lazy load list</h4>
-<p>Loads page by page as the user scrolls to the bottom of the list.</p>
-<div id="my-paged-list" class="list sangre-list-lazy" data-list-key="my-lazy-list" data-list-url="/lists/lazy" data-list-page-size="20"></div>
+<p>Loads page by page as the user scrolls to the bottom of the list.  <span class="sangre-event-change" data-event-key="my-lazy-list-postload" data-event-attribute="html" data-event-template="record: {list-current-index} of total: {list-total-count}" ></span></p>
+<div id="my-lazy-list" 
+	class="list sangre-list-lazy" 
+	data-list-key="my-lazy-list" 
+	data-list-url="/lists/lazy" 
+	data-list-page-size="20"></div>
+<hr />
+<h4>List #3 - The paged list</h4>
+<p>Loads page by page as the user clicks the 
+<a href="javascript:void(0)" class="sangre-list-previous" data-list-key="my-paged-list">previous</a>
+	 and 
+<a href="javascript:void(0)" class="sangre-list-next" data-list-key="my-paged-list">next</a>
+	 buttons / links.
+	<span class="sangre-event-change" data-event-key="my-paged-list-postload" data-event-attribute="html" data-event-template="Currently on page {pageIndex} of {totalPages}." ></span>
+</p>
+
+<div id="my-paged-list" class="list sangre-list-paged" data-list-key="my-paged-list" data-list-url="/lists/paged" data-list-page-size="20"></div>
 @section styles{
 	<style type="text/css">
 		.list {
 			border: solid 3px red;
 			border-radius: 5px;
-			margin-top: 20px;
+			margin-bottom: 20px;
+			clear: both;
 		}
 		#my-deferred-list {
 			max-height: 200px;
 			overflow: auto;
 		}
-		#my-paged-list {
+		#my-lazy-list {
 			max-height: 200px;
 			border: solid 3px blue;
+			overflow: auto;
+		}
+		#my-paged-list {
+			max-height: 200px;
+			border: solid 3px green;
 			overflow: auto;
 		}
 		.processtemplate {
@@ -33,6 +55,19 @@
 		}
 		.processTemplate:first-child {
 			border-top: none;
+		}
+		#my-deferred-list .processtemplate, #my-paged-list .processtemplate {
+			background-image: url(http://graphichive.net/uploaded/youtoart/b_1243684265824.jpg);
+			box-shadow: 3px 3px 2px rgba(211, 191, 191, 0.82);
+			border: dotted 1px black;
+			border-radius: 5px;
+			color: black;
+			font-weight: bold;
+			margin: 10px;
+			font-size: 14pt;
+			float: left;
+			width: 190px;
+			height: 50px;
 		}
 	</style>
 

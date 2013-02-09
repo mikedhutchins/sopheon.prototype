@@ -57,5 +57,10 @@ namespace Sopheon.Domain.Managers
 
 			return response;
 		}
+
+		public GetGatesPagedListResponse GetGatesPagedList(GetGatesPagedListRequest request)
+		{
+			return _context.SimpleOperation<GetGatesPagedListRequest, GetGatesPagedListResponse, IGetGatesPagedListQuery>(request, () => new { request = request });
+		}
 	}
 }

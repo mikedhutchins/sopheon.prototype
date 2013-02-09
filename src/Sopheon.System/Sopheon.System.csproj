@@ -61,6 +61,7 @@
     <Compile Include="Lists\IPaged.cs" />
     <Compile Include="Lists\PagedList.cs" />
     <Compile Include="Lists\PagedListFilteredBase.cs" />
+    <Compile Include="Lists\PagedListHelper.cs" />
     <Compile Include="Processor\OperationMessage.cs" />
     <Compile Include="Processor\OperationResponse.cs" />
     <Compile Include="Processor\OperationResponseHelper.cs" />

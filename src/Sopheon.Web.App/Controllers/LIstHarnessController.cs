@@ -8,6 +8,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sopheon.framework;
+using Sopheon.Domain.Responses;
+using Sopheon.Domain.Managers;
+using Sopheon.Domain.Requests;
+using Sopheon.system.UX;
 
 namespace Sopheon.Web.App.Controllers
 {
@@ -30,13 +34,11 @@ namespace Sopheon.Web.App.Controllers
     public class LIstHarnessController : BaseController
     {
 		List<ProcessTemplate> _templates = new List<ProcessTemplate>();
+		private ProcessModelManager _manager;
 
-		public LIstHarnessController()
+		public LIstHarnessController(ProcessModelManager manager)
 		{
-			for (int i = 0; i < 1000; i++)
-			{
-				_templates.Add(new ProcessTemplate { Id = i, Name = "PT #{i}".SimpleBind(new { i = i }) });
-			}
+			_manager = manager;
 		}
 
 		public ActionResult Index()
@@ -44,28 +46,16 @@ namespace Sopheon.Web.App.Controllers
             return View();
         }
 
-		DemoResponse GetNextPage(PagedListFilteredBase filter)
+		UiResponse GetPage(PagedListFilteredBase filter)
 		{
-			var items = _templates.Skip(filter.CurrentIndex).Take(filter.PageSize).ToList();
+			var response = _manager.GetGatesPagedList(new GetGatesPagedListRequest { Filter = filter });
 
-			DemoResponse response = new DemoResponse();
-
-			response.Templates.Items.AddRange(items);
-
-			response.Templates.CurrentIndex = filter.CurrentIndex;
-
-			response.Templates.PageSize = filter.PageSize;
-
-			response.Templates.TotalRecords = _templates.Count;
-
-			response.HtmlResult = RenderPartialViewToString("ListOfTemplates", items);
-
-			return response;
+			return response.ToUi((r) => RenderPartialViewToString("ListOfGates", r.Templates.Items));
 		}
 
 		public ActionResult Page(PagedListFilteredBase filter)
 		{
-			return Json(GetNextPage(filter), JsonRequestBehavior.AllowGet);
+			return Json(GetPage(filter), JsonRequestBehavior.AllowGet);
 		}
     }
 }

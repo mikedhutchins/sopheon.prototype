@@ -50,6 +50,7 @@
     <Compile Include="Mappings\ProjectMapping.cs" />
     <Compile Include="Mappings\ProcessTemplateMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\GetGatesPagedListQuery.cs" />
     <Compile Include="Queries\GetMyGatesByTemplateIdQuery.cs" />
     <Compile Include="Queries\GetMyProjectsByTemplateIdQuery.cs" />
     <Compile Include="Queries\GetMyProcessTemplatesQuery.cs" />

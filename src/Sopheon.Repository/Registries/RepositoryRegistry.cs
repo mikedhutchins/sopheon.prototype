@@ -37,6 +37,8 @@ namespace Sopheon.Repository.Registries
             For<ISaveProcessTemplateCommand>().Use<SaveProcessTemplateCommand>();
 
 			For<IDeleteTemplateCommand>().Use<DeleteTemplateCommand>();
+
+			For<IGetGatesPagedListQuery>().Use<GetGatesPagedListQuery>();
 		}
 	}
 }
