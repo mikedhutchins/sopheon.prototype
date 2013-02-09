@@ -1,0 +1,3 @@
+﻿@model Sopheon.Domain.Responses.GetTemplateForEditResponse
+<h4>Name</h4>
+@Html.TextBoxFor(model => ((Sopheon.Domain.Entities.ProcessTemplate)model.Subject).Name, new { @class = "required" })

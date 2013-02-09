@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Index</h2>
+<h3>This page exists to demo lists</h3>
+<h4>List #1 - The deferred list</h4>
+<p>Loads all rows page by page after load without the user noticing.  We're sleeping for a second to make the loads visible.</p>
+<div id="my-deferred-list" class="list sangre-list-deferred" data-list-key="my-deferred-list" data-list-url="/lists/deferred" data-list-sleep="1000" data-list-page-size="100"></div>
+<hr />
+<h4>List #2 - The lazy load list</h4>
+<p>Loads page by page as the user scrolls to the bottom of the list.</p>
+<div id="my-paged-list" class="list sangre-list-lazy" data-list-key="my-lazy-list" data-list-url="/lists/lazy" data-list-page-size="20"></div>
+@section styles{
+	<style type="text/css">
+		.list {
+			border: solid 3px red;
+			border-radius: 5px;
+			margin-top: 20px;
+		}
+		#my-deferred-list {
+			max-height: 200px;
+			overflow: auto;
+		}
+		#my-paged-list {
+			max-height: 200px;
+			border: solid 3px blue;
+			overflow: auto;
+		}
+		.processtemplate {
+			padding: 10px;
+			border-top: dotted 1px red;
+		}
+		.processTemplate:first-child {
+			border-top: none;
+		}
+	</style>
+
+}

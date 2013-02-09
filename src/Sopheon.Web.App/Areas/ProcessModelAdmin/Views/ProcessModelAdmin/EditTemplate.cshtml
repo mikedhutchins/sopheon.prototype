@@ -1,10 +1,22 @@
 ﻿@model Sopheon.Domain.Responses.GetTemplateForEditResponse
 <div class="edit-panel">
+		<ul class="nav nav-tabs" data-toggle="pill" id="processModelEditTabs">
+		  <li class="active"><a href="#generalPanel" data-toggle="tab">General</a></li>
+		  <li><a href="#metricsPanel" data-toggle="tab">Metrics</a></li>
+		  <li><a href="#gatesPanel" data-toggle="tab">Gates</a></li>
+		  <li><a href="#stagesPanel" data-toggle="tab">Stages</a></li>
+		</ul>
     <form id="processTemplateForm" class="sangre-validate">
-        <h4>Name</h4>
 		@Html.HiddenFor(model => ((Sopheon.Domain.Entities.ProcessTemplate)model.Subject).Id)
-        @Html.TextBoxFor(model => ((Sopheon.Domain.Entities.ProcessTemplate)model.Subject).Name, new { @class = "required" })
-        <hr />
+		<div class="tab-content">
+		  <div class="tab-pane active" id="generalPanel">
+			  @{ Html.RenderPartial("TemplateGeneralPanel", Model); }
+		  </div>
+		  <div class="tab-pane" id="profile">...</div>
+		  <div class="tab-pane" id="messages">...</div>
+		  <div class="tab-pane" id="settings">...</div>
+		</div>
+    </form>
         <input type="button" class="sub-tile sangre-inject" value="Save" 
             data-target="#mainBody .list-panel"
             data-url="/ProcessModelAdmin/Template/Save"
@@ -18,5 +30,4 @@
             data-form="#processTemplateForm"
             />
         <input type="button" class="sub-tile sangre-remove" value="Cancel" data-target="#editProcessModelPanel .edit-panel"/>
-    </form>
 </div>

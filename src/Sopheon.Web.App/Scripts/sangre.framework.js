@@ -210,7 +210,7 @@
 		init: function () {
 			sangre.inits.select(function () {
 			    var key = this.key !== undefined ? this.key : 'UNKNOWN';
-                sangre.msg.console('sangre is initializing: {key}'.bind({ key: key }));
+                sangre.msg.console('sangre.framework is initializing: {key}'.bind({ key: key }));
 				if ($.isFunction(this.init)) {
 					this.init();
 					sangre.event.fire('INIT-{key}'.bind({ key: key }));
@@ -251,7 +251,6 @@
 							});
 						}
 					});
-					sangre.event.fire('INIT-{key}'.bind({ key: this.key !== undefined ? this.key : 'UNKNOWN' }));
 				}
 			});
 		}
@@ -411,7 +410,7 @@
 			if ($.isFunction(sangre.event.debug)) {
 				sangre.event.debug(eventKey, args);
 			}
-			sangre.msg.console("sangre.event {key} is firing: ".bind({ key: eventKey }));
+			sangre.msg.console("sangre.event fired: {key}".bind({ key: eventKey }));
 			var f = function (idx) {
 			    var s = this;
 			    var p = sangre.m.getProcessor(sangre.m.getOpState(eventKey));
@@ -537,7 +536,6 @@
 		, key: 'sangre.unobtrusive'
 		, register: function (meth) {
 			sangre.u.methods.push(meth);
-			sangre.event.fire('U-REGISTER', meth);
 		}
 		, applyFor: function (selector) {
 			sangre.u.methods.select(function () {
@@ -739,12 +737,17 @@
 	// general unobtrusive
 	sangre.u.extensions = {
 		init: function () {
-			for (key in this) {
-				if (key != 'init') {
-					if ($.isFunction(this[key])) {
-						var meth = this[key]();
+			this.initPackage.call(this);
+		}
+		, initPackage: function (prefix) {
+			var s = this;
+			for (key in s) {
+				if (key != 'init' && key != 'initPackage') {
+					if ($.isFunction(s[key]) && (prefix === undefined || key.indexOf(prefix) >= 0)) {
+						var meth = s[key]();
+						var methkey = key;
 						sangre.u.register(meth);
-						sangre.event.fire('EXTENSION-ADDED-{ex}'.bind({ ex: key }));
+						sangre.event.fire('EXTENSION-ADDED-{pkg}-{key}'.bind({ pkg: s.key === undefined ? 'no-pkg-key' : s.key, key: methkey }));
 					}
 				}
 			}
@@ -951,6 +954,127 @@
 		}
 		, dependencies: []
 	};
+
+	// lists - heavy metal
+	sangre.lists = {
+		init: function () {
+			sangre.u.extensions.initPackage.call(sangre.lists.extensions);
+		}
+		, getConfig: function(sel, type){
+			var config = sangre.util.getAtts(sel, [
+				{ key: 'list-container', def: sel }, { key: 'list-key', def: 'list{n}'.bind({ n: sangre.util.rnd(1000)}) }
+				, { key: 'list-current-index', def: 0, transform: 'parseInt' }
+				, { key: 'list-total-count', def: 0, transform: 'parseInt' }
+				, { key: 'list-page-size', def: 10, transform: 'parseInt' }
+				, { key: 'list-sleep', def: 0, transform: 'parseInt' }
+				, { key: 'list-filter-form', def: '' }
+				, { key: 'list-url', def: '' }]);
+			config.type = type;
+			config.loading = false;
+			return config
+		}
+
+		, lists: []
+		// return the closure that will manage this instance of the list
+		, getList: function (sel, config) {
+			sangre.msg.console('sangre-lists: found list: {list-key}'.bind(config));
+			config.form = $.isFunction(config.form) ? config.form : function(){
+				return $(config['list-filter-form']).serialize();
+			};
+			config.next = $.isFunction(config.next) ? config.next : function(){
+				var a = parseInt(config['list-current-index']) + parseInt(config['list-page-size']);
+				return a > parseInt(config['list-total-count']) ? parseInt(config['list-current-index']) : a;
+			};
+			config.prev = $.isFunction(config.next) ? config.prev : function(){
+				var a = parseInt(config['list-current-index']) - parseInt(config['list-page-size']);
+				return a < 0 ? 1 : a;
+			};
+			var c = {
+				filter: function () {
+					return '{form}&CurrentIndex={next}&PageSize={list-page-size}'.bind(config);
+				}
+				, canPrev: function () {
+					var a = parseInt(config['list-current-index']) - parseInt(config['list-page-size']);
+					return a < 0;
+				}
+				, canNext: function () {
+					var a = parseInt(config['list-current-index']) + parseInt(config['list-page-size']);
+					return a <= parseInt(config['list-total-count']);
+				}
+				, config: config
+			};
+			sangre.lists.lists[config['list-key']] = c;
+			return c;
+		}
+		, getMeth: function (type, sel, onlistcomplete, after) {
+			return sangre.u.getMeth('sangre-list-' + type, function (sel) {
+				var config = sangre.lists.getConfig(sel, type);
+				var list = sangre.lists.getList(sel, config);
+				config.loading = true;
+				config.get = function () {
+					var data = list.filter();
+					sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} sending!'.bind(config));
+					sangre.jax.send({
+						url: config['list-url']
+						, data: data
+						, successHandler: function (response) {
+							if (response.State == 0) { // it worked
+								sangre.ml.append(config['list-container'], response.HtmlResult);
+								var listE = response.PagedList;
+								config['list-current-index'] = response.Subject.CurrentIndex;
+								config['list-total-count'] = response.Subject.TotalRecords;
+								sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} finished!'.bind(config));
+								if ($.isFunction(onlistcomplete)) {
+									onlistcomplete(config, list);
+								}
+							}
+							config.loading = false;
+						}
+					});
+				};
+				after(config, list);
+			});
+		}
+		, extensions: {
+			deferred: function (sel) {
+				return sangre.lists.getMeth('deferred', sel, function (config, list) {
+					if (list.canNext()) {
+						setTimeout(function () {
+							config.get(config, list);
+						}, config['list-sleep']);
+					}
+				}, function (config, list) {
+					config.get();
+				});
+			}
+			, paged: function (sel) {
+				return sangre.lists.getMeth(sel);
+			}
+			, lazy: function (sel) {
+				return sangre.lists.getMeth('lazy', sel, function (config, list) {
+					
+				}, function (config, list) {
+					var c = config['list-container'];
+					var id = 'lazylistinner{key}'.bind(config);
+					$(c).html('<div id="{id}"></div>'.bind({ id: id }));
+					var inner = '#{i}'.bind({ i: id });
+					config['list-container'] = inner;
+					config.parent = c;
+					$(c).scroll(function (e) {
+						var t = $(c).scrollTop() + $(c).height();
+						if (!config.loading && list.canNext() && t + 20 > $(inner).height()) {
+							config.get();
+						}
+					});
+					config.get();
+				});
+			}
+			, key: 'sangre.lists'
+		}
+		, key: 'sangre.lists'
+	};
+	sangre.inits.push(sangre.lists);
+
 
 	// msg
 	sangre.message =

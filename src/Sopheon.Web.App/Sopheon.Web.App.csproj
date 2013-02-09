@@ -146,6 +146,7 @@
     <Compile Include="Areas\ProcessModelAdmin\ProcessModelAdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LIstHarnessController.cs" />
     <Compile Include="DependencyResolution\SmDependencyResolver.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -305,12 +306,16 @@
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\ListProcessTemplates.cshtml" />
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\MetricList.cshtml" />
     <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\DeleteConfirm.cshtml" />
+    <Content Include="Areas\ProcessModelAdmin\Views\ProcessModelAdmin\TemplateGeneralPanel.cshtml" />
     <None Include="ClassDiagram1.cd" />
     <Content Include="Views\Shared\Templates.cshtml" />
     <Content Include="Views\Templates\Modal.cshtml" />
     <Content Include="Views\Shared\_LayoutPanel.cshtml" />
     <Content Include="Views\Home\MainNav.cshtml" />
     <Content Include="Views\Home\MainBody.cshtml" />
+    <None Include="Properties\PublishProfiles\hutchinsweb.pubxml" />
+    <Content Include="Views\LIstHarness\Index.cshtml" />
+    <Content Include="Views\LIstHarness\ListOfTemplates.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

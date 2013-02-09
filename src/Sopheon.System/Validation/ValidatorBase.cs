@@ -25,7 +25,7 @@ namespace Sopheon.system.Validation
 
 		public OperationResponse Validate()
 		{
-			return Validate(ValidatorContexts.All);
+			return Validate(ValidatorContexts.Natural);
 		}
 
 		public OperationResponse Validate(ValidatorContexts contexts)
@@ -36,9 +36,10 @@ namespace Sopheon.system.Validation
             };
 
             this.GetType().GetMethods()
-                .Where(meth => meth.HasAttribute<ValidatorAttribute>() &&
-					(meth.GetAttribute<ValidatorAttribute>().Context.HasFlag(ValidatorContexts.All)
-					|| meth.GetAttribute<ValidatorAttribute>().Context.ContainsMatch(contexts)))
+                .Where(meth => meth.HasAttribute<ValidatorAttribute>() && //  only methods with validator
+					((meth.GetAttribute<ValidatorAttribute>().Context.HasFlag(ValidatorContexts.All) && contexts.HasFlag(ValidatorContexts.All)) // if the 
+					|| (meth.GetAttribute<ValidatorAttribute>().Context.ContainsMatch(contexts) && 
+							contexts.ContainsMatch(meth.GetAttribute<ValidatorAttribute>().Context))))
                 .OrderBy(meth => meth.GetAttribute<ValidatorAttribute>().Sequence)
                 .ToList().ForEach(meth =>
                 {

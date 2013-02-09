@@ -58,6 +58,9 @@
     <Compile Include="Helpers\ObjectFactoryHelpers.cs" />
     <Compile Include="Helpers\Parsers.cs" />
     <Compile Include="Helpers\PropertyMangler.cs" />
+    <Compile Include="Lists\IPaged.cs" />
+    <Compile Include="Lists\PagedList.cs" />
+    <Compile Include="Lists\PagedListFilteredBase.cs" />
     <Compile Include="Processor\OperationMessage.cs" />
     <Compile Include="Processor\OperationResponse.cs" />
     <Compile Include="Processor\OperationResponseHelper.cs" />

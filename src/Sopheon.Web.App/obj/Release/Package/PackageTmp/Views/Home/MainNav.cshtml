@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+<div id="mainNavigation" class="w100">
+    <div class="main-tile info-tile">
+        <h2>Welcome to Accolade</h2>
+        <p class="info-text">From here you can do anything that you need to.</p>
+        <p class="info-text">Select any of the tiles here to continue.</p>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <div class="main-tile button-tile">
+        <h2>My Settings</h2>
+        <p class="info-text">Manage my personal Accolade settings to customize my experience.</p>
+    </div>
+    <div class="main-tile button-tile sangre-scroll sangre-inject sopheon-nav"
+            data-scroll-container="#sopheon-main" data-scroll-target="#mainBody" data-scroll-duration="400" 
+            data-target="#mainOperationBody" data-url="/ProcessModelAdmin" data-israw="true"
+            data-nav-path="~/Areas/ProcessModelAdmin/Views/Nav/MainNav.cshtml"
+            data-nav-target="#mainBody .primarynavigation"
+        >
+        <h2>Manage My System</h2>
+        <p class="info-text">Manage process models, metrics and other features that drive Accolade.</p>
+    </div>
+    <div class="main-tile button-tile sangre-scroll sangre-inject sopheon-nav" 
+        data-scroll-container="#sopheon-main" data-scroll-target="#mainBody" data-scroll-duration="400" 
+        data-target="#mainOperationBody" data-url="/MyProjects"
+        data-nav-target="#mainBody .primarynavigation"
+        >
+        <h2>Manage My Projects</h2>
+        <p class="info-text">Get right to it and get to work.</p>
+    </div>
+
+@*    			<a href="javascript:void(0)" class="sangre-inject sangre-effect" 
+				id="projectsLink@(item.Id)"
+				data-target="#projectsPanel@(item.Id)" 
+				data-effect-target="#projectsLink@(item.Id) #projectsLinkHide@(item.Id) #projectsPanel@(item.Id)"
+				data-effect-action="hide show slideDown"
+				data-url="/MyProjects/ProjectByTemplate?templateId=@item.Id">Projects</a> 
+*@
+    <div class="main-tile button-tile">
+        <h2>Innovation Planning</h2>
+    </div>
+    <div class="main-tile button-tile">
+        <h2>Calendar</h2>
+        <p class="info-text">Manage events and how they relate to your projects.</p>
+    </div>
+    <div class="main-tile button-tile">
+        <h2>Other thing 1</h2>
+        <p class="info-text">...</p>
+    </div>
+    <div class="main-tile button-tile">
+        <h2>Other thing 2</h2>
+        <p class="info-text">...</p>
+    </div>
+</div>

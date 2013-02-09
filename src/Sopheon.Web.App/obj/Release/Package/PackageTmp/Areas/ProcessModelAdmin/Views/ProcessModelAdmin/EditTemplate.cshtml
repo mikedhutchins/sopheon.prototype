@@ -1,0 +1,22 @@
+﻿@model Sopheon.Domain.Responses.GetTemplateForEditResponse
+<div class="edit-panel">
+    <form id="processTemplateForm" class="sangre-validate">
+        <h4>Name</h4>
+		@Html.HiddenFor(model => ((Sopheon.Domain.Entities.ProcessTemplate)model.Subject).Id)
+        @Html.TextBoxFor(model => ((Sopheon.Domain.Entities.ProcessTemplate)model.Subject).Name, new { @class = "required" })
+        <hr />
+        <input type="button" class="sub-tile sangre-inject" value="Save" 
+            data-target="#mainBody .list-panel"
+            data-url="/ProcessModelAdmin/Template/Save"
+            data-form="#processTemplateForm"
+            data-validate="true"
+            data-type="POST" data-clear="#editProcessModelPanel"
+            />
+        <input type="button" class="sub-tile sangre-inject" value="Delete" 
+            data-target="#editProcessModelPanel"
+            data-url="/ProcessModelAdmin/Template/DeleteConfirm?templateId=@Model.Template.Id"
+            data-form="#processTemplateForm"
+            />
+        <input type="button" class="sub-tile sangre-remove" value="Cancel" data-target="#editProcessModelPanel .edit-panel"/>
+    </form>
+</div>

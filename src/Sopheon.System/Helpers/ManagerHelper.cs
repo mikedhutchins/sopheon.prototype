@@ -21,7 +21,7 @@ namespace Sopheon.framework
 
 			response.Merge(request.Validate());
 
-			if (response.State != ProcessorState.Exception || response.State != ProcessorState.Failed)
+			if (response.State != ProcessorState.Exception && response.State != ProcessorState.Failed)
 			{
 				response.Merge(operation.Exec<RESPONSETYPE>("Execute", new object[] { context }));
 			}

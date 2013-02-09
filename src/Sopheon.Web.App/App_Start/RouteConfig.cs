@@ -18,6 +18,11 @@ namespace Sopheon.Web.App
 
             routes.MapRoute(name: "navloader", url: "nav", defaults: new { controller = "Home", action = "Nav" });
 
+			routes.MapRoute(name: "listharness_index", url: "lists", defaults: new { controller = "ListHarness", action = "Index" });
+
+			routes.MapRoute(name: "listharness_deferred", url: "lists/deferred", defaults: new { controller = "ListHarness", action = "Page" });
+
+			routes.MapRoute(name: "listharness_lazy", url: "lists/lazy", defaults: new { controller = "ListHarness", action = "Page" });
 		}
 	}
 }

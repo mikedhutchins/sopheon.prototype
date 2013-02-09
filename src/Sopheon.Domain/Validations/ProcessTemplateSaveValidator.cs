@@ -24,7 +24,7 @@ namespace Sopheon.Domain.Validations
 		#endregion
 
 		#region validators
-		[Validator(Sequence=0)]
+		[Validator(Sequence=0, ShouldFail=true)]
 		public void ShouldBeUnique(Processor proc)
 		{
 			var template = _manager.GetTemplateForEdit(new Requests.GetTemplateForEditRequest { Name = Subject.Template.Name }).Template;
@@ -33,6 +33,11 @@ namespace Sopheon.Domain.Validations
 			{
 				proc.Fail("Process Model name was not unique.");
 			}
+		}
+		[Validator(Sequence = 1, Context=ValidatorContexts.Web)]
+		public void ShouldSmellGood(Processor proc)
+		{
+			proc.Fail("Process model smelled bad.");
 		}
 		#endregion
 	}

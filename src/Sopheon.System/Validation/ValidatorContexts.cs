@@ -8,6 +8,6 @@ namespace Sopheon.system.Validation
 	[Flags]
 	public enum ValidatorContexts
 	{
-		All = 8, Web = 1, Domain = 2, Repository = 4
+		Natural = 1, All = 2, Web = 4, Domain = 8, Repository = 16
 	}
 }
