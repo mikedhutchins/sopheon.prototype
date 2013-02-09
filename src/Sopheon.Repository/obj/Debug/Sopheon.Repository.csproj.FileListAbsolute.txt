@@ -44,3 +44,15 @@ E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.pdb
 E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.csprojResolveAssemblyReference.cache
 E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.dll
 E:\working\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Repository.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Repository.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Data.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Domain.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\StructureMap.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Data.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.Domain.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.pdb
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.csprojResolveAssemblyReference.cache
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.dll
+C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.pdb

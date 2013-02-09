@@ -9,13 +9,12 @@ namespace Sopheon.Web.App
 		{
 			#region system (e.g.: jquery, jui jval, modern)
 			bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-1.*", "~/Scripts/jquery.scrollTo*"));
+                       "~/Scripts/jquery.scrollTo*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
 						"~/Scripts/jquery-ui*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-						"~/Scripts/jquery.unobtrusive*",
 						"~/Scripts/jquery.validate*"));
 
 			bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
