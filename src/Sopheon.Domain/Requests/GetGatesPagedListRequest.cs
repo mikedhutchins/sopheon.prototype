@@ -1,4 +1,5 @@
-﻿using Sopheon.system.Lists;
+﻿using Sopheon.Domain.Entities.Filters;
+using Sopheon.system.Lists;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,6 @@ namespace Sopheon.Domain.Requests
 {
 	public class GetGatesPagedListRequest
 	{
-		public PagedListFilteredBase Filter { get; set; }
+		public GatesListFilter Filter { get; set; }
 	}
 }

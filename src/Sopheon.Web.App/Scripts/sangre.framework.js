@@ -1053,6 +1053,7 @@
 				};
 				config.get = function () {
 					var data = list.filter();
+					config.data = data;
 					sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} sending!'.bind(config));
 					sangre.event.fire('{list-key}-preload'.bind(config), config);
 					sangre.jax.send({
@@ -1064,8 +1065,8 @@
 								var listE = response.PagedList;
 								config['list-current-index'] = response.Subject.CurrentIndex;
 								config['list-total-count'] = response.Subject.TotalRecords;
-								config.pageIndex = response.Subject.CurrentIndex/ response.Subject.PageSize;
-								config.totalPages = response.Subject.TotalRecords / response.Subject.PageSize;
+								config.pageIndex = Math.ceil(response.Subject.CurrentIndex > response.Subject.PageSize ? response.Subject.CurrentIndex / response.Subject.PageSize : 1);
+								config.totalPages = Math.ceil(response.Subject.TotalRecords > response.Subject.PageSize ? response.Subject.TotalRecords / response.Subject.PageSize : 1);
 								sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} finished!'.bind(config));
 								if ($.isFunction(onlistcomplete)) {
 									onlistcomplete(config, list);
@@ -1134,6 +1135,16 @@
 						list.filter = function () {
 							return '{form}&CurrentIndex={prev}&PageSize={list-page-size}'.bind(list.config);
 						};
+						list.config.get();
+					}
+				});
+			}
+			, restart: function (sel) {
+				return sangre.lists.getNavMeth('restart', sel, function (config, list) {
+					if (!list.config.loading) {
+						sangre.ml.html(list.config['list-container'], '');
+						list.config['list-current-index'] = 0;
+						list.config['list-total-count'] = 0;
 						list.config.get();
 					}
 				});

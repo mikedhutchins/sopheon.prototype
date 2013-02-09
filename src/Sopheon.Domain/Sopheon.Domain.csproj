@@ -56,6 +56,7 @@
     <Compile Include="Contracts\IGetTemplateForEditQuery.cs" />
     <Compile Include="Contracts\IGetTemplatesForEditQuery.cs" />
     <Compile Include="Contracts\ISaveProcessTemplateCommand.cs" />
+    <Compile Include="Entities\Filters\GatesListFilter.cs" />
     <Compile Include="Entities\Gate.cs" />
     <Compile Include="Entities\ProcessTemplate.cs" />
     <Compile Include="Entities\Project.cs" />

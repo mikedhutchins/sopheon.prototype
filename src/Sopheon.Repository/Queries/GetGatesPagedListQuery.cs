@@ -10,6 +10,8 @@ using System.Text;
 using d = Sopheon.Data;
 using Sopheon.Repository.Mappings;
 using Sopheon.system.Lists;
+using Sopheon.framework;
+using Sopheon.Domain.Entities;
 
 namespace Sopheon.Repository.Queries
 {
@@ -34,17 +36,38 @@ namespace Sopheon.Repository.Queries
 
 		public OperationResponse Execute(ObjectContext context)
 		{
+			int [] projectIds = new int[]{};
+
 			Processor processor = new Processor().SetResponse(_response)
 				#region step #1 get context
 				.Then((p) => { _context = (d.SopheonEntities)context; })
 				#endregion
-
-				#region step #2 get the rows
+				#region step #2 
 				.Then((p) => {
-					var items = _context.Gates.OrderBy(x => x.Id).Skip(_request.Filter.CurrentIndex).Take(_request.Filter.PageSize).ToArray()
-						.Select(temp => temp.ToDomainModel()).ToList();
+					projectIds = _request.Filter.ProjectIds == null ? new int[] { } : _request.Filter.ProjectIds.Split(',').Select(x => x.ToInt()).ToArray();
+				})
+				#endregion
+				#region step #3 get the rows
+				.Then((p) => {
+					List<Gate> items = new List<Gate>();
+					if (projectIds.Count() > 0)
+					{
+						var pitems = _context.Gates.Where(x => projectIds.Contains(x.ProjectId))
+							.OrderBy(x => x.Id)
+							.Skip(_request.Filter.CurrentIndex).Take(_request.Filter.PageSize);
 
-					var count = _context.Gates.Count();
+						items = pitems.ToArray()
+							.Select(temp => temp.ToDomainModel()).ToList();
+
+						var sql = ((System.Data.Objects.ObjectQuery)pitems).ToTraceString();
+					}
+					else {
+						items = _context.Gates
+							.OrderBy(x => x.Id)
+							.Skip(_request.Filter.CurrentIndex).Take(_request.Filter.PageSize).ToArray()
+							.Select(temp => temp.ToDomainModel()).ToList();
+					}
+					var count = projectIds.Count() > 0 ? _context.Gates.Count(x => projectIds.Contains(x.ProjectId)) : _context.Gates.Count();
 
 					var list = (new PagedList<Domain.Entities.Gate> {
 						Items = items,

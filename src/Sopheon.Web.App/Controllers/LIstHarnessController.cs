@@ -12,6 +12,7 @@ using Sopheon.Domain.Responses;
 using Sopheon.Domain.Managers;
 using Sopheon.Domain.Requests;
 using Sopheon.system.UX;
+using Sopheon.Domain.Entities.Filters;
 
 namespace Sopheon.Web.App.Controllers
 {
@@ -46,14 +47,14 @@ namespace Sopheon.Web.App.Controllers
             return View();
         }
 
-		UiResponse GetPage(PagedListFilteredBase filter)
+		UiResponse GetPage(GatesListFilter filter)
 		{
 			var response = _manager.GetGatesPagedList(new GetGatesPagedListRequest { Filter = filter });
 
 			return response.ToUi((r) => RenderPartialViewToString("ListOfGates", r.Templates.Items));
 		}
 
-		public ActionResult Page(PagedListFilteredBase filter)
+		public ActionResult Page(GatesListFilter filter)
 		{
 			return Json(GetPage(filter), JsonRequestBehavior.AllowGet);
 		}
