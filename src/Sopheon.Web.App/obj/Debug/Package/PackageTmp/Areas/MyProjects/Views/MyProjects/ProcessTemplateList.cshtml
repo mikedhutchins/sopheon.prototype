@@ -1,0 +1,28 @@
+﻿@using Sopheon.Domain.Responses;
+@using Sopheon.Domain.Entities;
+@model List<ProcessTemplate>
+
+@foreach(var item in Model)
+{
+	<div class="tile p5 bb_dotted">
+		<div class="w30 left cursor sangre-inject" 
+			data-target="projectsPanel@(item.Id)"
+			data-url="/ProcessModelAdmin/Template/Edit?templateId=@item.Id" >
+			@item.Name
+		</div>
+		<div class="w30 right">
+			<a href="javascript:void(0)" class="sangre-inject sangre-effect" 
+				id="projectsLink@(item.Id)"
+				data-target="#projectsPanel@(item.Id)" 
+				data-effect-target="#projectsLink@(item.Id) #projectsLinkHide@(item.Id) #projectsPanel@(item.Id)"
+				data-effect-action="hide show slideDown"
+				data-url="/MyProjects/ProjectByTemplate?templateId=@item.Id">Projects</a> 
+			<a href="javascript:void(0)" class="hide sangre-effect" 
+				id="projectsLinkHide@(item.Id)"
+				data-effect-target="#projectsLinkHide@(item.Id) #projectsPanel@(item.Id) #projectsLink@(item.Id)"
+				data-effect-action="hide slideUp show">Hide Projects</a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="" id="projectsPanel@(item.Id)"></div>
+} 

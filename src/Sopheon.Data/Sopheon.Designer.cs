@@ -21,6 +21,8 @@ using System.Xml.Serialization;
 
 [assembly: EdmRelationshipAttribute("SopheonModel", "FK_Projects_ProcessTemplates", "ProcessTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sopheon.Data.ProcessTemplate), "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sopheon.Data.Project), true)]
 [assembly: EdmRelationshipAttribute("SopheonModel", "FK_Gates_Projects", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sopheon.Data.Project), "Gate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sopheon.Data.Gate), true)]
+[assembly: EdmRelationshipAttribute("SopheonModel", "FK_GateDefinitions_ProcessTemplates", "ProcessTemplate", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sopheon.Data.ProcessTemplate), "GateDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sopheon.Data.GateDefinition), true)]
+[assembly: EdmRelationshipAttribute("SopheonModel", "FK_Gates_GateDefinitions", "GateDefinition", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Sopheon.Data.GateDefinition), "Gate", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Sopheon.Data.Gate), true)]
 
 #endregion
 
@@ -119,6 +121,38 @@ namespace Sopheon.Data
             }
         }
         private ObjectSet<Gate> _Gates;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<GateDefinition> GateDefinitions
+        {
+            get
+            {
+                if ((_GateDefinitions == null))
+                {
+                    _GateDefinitions = base.CreateObjectSet<GateDefinition>("GateDefinitions");
+                }
+                return _GateDefinitions;
+            }
+        }
+        private ObjectSet<GateDefinition> _GateDefinitions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Metric> Metrics
+        {
+            get
+            {
+                if ((_Metrics == null))
+                {
+                    _Metrics = base.CreateObjectSet<Metric>("Metrics");
+                }
+                return _Metrics;
+            }
+        }
+        private ObjectSet<Metric> _Metrics;
 
         #endregion
 
@@ -147,6 +181,22 @@ namespace Sopheon.Data
         {
             base.AddObject("Gates", gate);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the GateDefinitions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToGateDefinitions(GateDefinition gateDefinition)
+        {
+            base.AddObject("GateDefinitions", gateDefinition);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Metrics EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToMetrics(Metric metric)
+        {
+            base.AddObject("Metrics", metric);
+        }
 
         #endregion
 
@@ -173,13 +223,15 @@ namespace Sopheon.Data
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="scheduledCompletion">Initial value of the ScheduledCompletion property.</param>
         /// <param name="projectId">Initial value of the ProjectId property.</param>
-        public static Gate CreateGate(global::System.Int32 id, global::System.String name, global::System.DateTime scheduledCompletion, global::System.Int32 projectId)
+        /// <param name="definitionId">Initial value of the DefinitionId property.</param>
+        public static Gate CreateGate(global::System.Int32 id, global::System.String name, global::System.DateTime scheduledCompletion, global::System.Int32 projectId, global::System.Int32 definitionId)
         {
             Gate gate = new Gate();
             gate.Id = id;
             gate.Name = name;
             gate.ScheduledCompletion = scheduledCompletion;
             gate.ProjectId = projectId;
+            gate.DefinitionId = definitionId;
             return gate;
         }
 
@@ -285,6 +337,30 @@ namespace Sopheon.Data
         private global::System.Int32 _ProjectId;
         partial void OnProjectIdChanging(global::System.Int32 value);
         partial void OnProjectIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DefinitionId
+        {
+            get
+            {
+                return _DefinitionId;
+            }
+            set
+            {
+                OnDefinitionIdChanging(value);
+                ReportPropertyChanging("DefinitionId");
+                _DefinitionId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DefinitionId");
+                OnDefinitionIdChanged();
+            }
+        }
+        private global::System.Int32 _DefinitionId;
+        partial void OnDefinitionIdChanging(global::System.Int32 value);
+        partial void OnDefinitionIdChanged();
 
         #endregion
 
@@ -328,9 +404,303 @@ namespace Sopheon.Data
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SopheonModel", "FK_Gates_GateDefinitions", "GateDefinition")]
+        public GateDefinition GateDefinition
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GateDefinition>("SopheonModel.FK_Gates_GateDefinitions", "GateDefinition").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GateDefinition>("SopheonModel.FK_Gates_GateDefinitions", "GateDefinition").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<GateDefinition> GateDefinitionReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<GateDefinition>("SopheonModel.FK_Gates_GateDefinitions", "GateDefinition");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<GateDefinition>("SopheonModel.FK_Gates_GateDefinitions", "GateDefinition", value);
+                }
+            }
+        }
 
         #endregion
 
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SopheonModel", Name="GateDefinition")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class GateDefinition : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new GateDefinition object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="templateId">Initial value of the TemplateId property.</param>
+        public static GateDefinition CreateGateDefinition(global::System.Int32 id, global::System.String name, global::System.Int32 templateId)
+        {
+            GateDefinition gateDefinition = new GateDefinition();
+            gateDefinition.Id = id;
+            gateDefinition.Name = name;
+            gateDefinition.TemplateId = templateId;
+            return gateDefinition;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TemplateId
+        {
+            get
+            {
+                return _TemplateId;
+            }
+            set
+            {
+                OnTemplateIdChanging(value);
+                ReportPropertyChanging("TemplateId");
+                _TemplateId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TemplateId");
+                OnTemplateIdChanged();
+            }
+        }
+        private global::System.Int32 _TemplateId;
+        partial void OnTemplateIdChanging(global::System.Int32 value);
+        partial void OnTemplateIdChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SopheonModel", "FK_GateDefinitions_ProcessTemplates", "ProcessTemplate")]
+        public ProcessTemplate ProcessTemplate
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProcessTemplate>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "ProcessTemplate").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProcessTemplate>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "ProcessTemplate").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ProcessTemplate> ProcessTemplateReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProcessTemplate>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "ProcessTemplate");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProcessTemplate>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "ProcessTemplate", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SopheonModel", "FK_Gates_GateDefinitions", "Gate")]
+        public EntityCollection<Gate> Gates
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Gate>("SopheonModel.FK_Gates_GateDefinitions", "Gate");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Gate>("SopheonModel.FK_Gates_GateDefinitions", "Gate", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SopheonModel", Name="Metric")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Metric : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Metric object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static Metric CreateMetric(global::System.Int32 id, global::System.String name)
+        {
+            Metric metric = new Metric();
+            metric.Id = id;
+            metric.Name = name;
+            return metric;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+
+    
     }
     
     /// <summary>
@@ -432,6 +802,28 @@ namespace Sopheon.Data
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("SopheonModel.FK_Projects_ProcessTemplates", "Project", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SopheonModel", "FK_GateDefinitions_ProcessTemplates", "GateDefinition")]
+        public EntityCollection<GateDefinition> GateDefinitions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<GateDefinition>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "GateDefinition");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<GateDefinition>("SopheonModel.FK_GateDefinitions_ProcessTemplates", "GateDefinition", value);
                 }
             }
         }

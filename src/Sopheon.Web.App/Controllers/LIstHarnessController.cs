@@ -58,5 +58,10 @@ namespace Sopheon.Web.App.Controllers
 		{
 			return Json(GetPage(filter), JsonRequestBehavior.AllowGet);
 		}
+
+		public ActionResult Gantt()
+		{
+			return View();
+		}
     }
 }

@@ -5,7 +5,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedBuildConfiguration>Debug</LastUsedBuildConfiguration>
     <LastUsedPlatform>Any CPU</LastUsedPlatform>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
@@ -44,7 +44,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/06/2013 21:50:30</publishTime>
     </File>
     <File Include="Areas/ProcessModelAdmin/Views/ProcessModelAdmin/EditTemplate.cshtml">
-      <publishTime>02/06/2013 21:05:36</publishTime>
+      <publishTime>02/09/2013 22:38:06</publishTime>
     </File>
     <File Include="Areas/ProcessModelAdmin/Views/ProcessModelAdmin/Index.cshtml">
       <publishTime>02/02/2013 18:12:34</publishTime>
@@ -54,6 +54,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Areas/ProcessModelAdmin/Views/ProcessModelAdmin/MetricList.cshtml">
       <publishTime>02/02/2013 18:02:16</publishTime>
+    </File>
+    <File Include="Areas/ProcessModelAdmin/Views/ProcessModelAdmin/TemplateGeneralPanel.cshtml">
+      <publishTime>02/09/2013 16:56:47</publishTime>
     </File>
     <File Include="Areas/ProcessModelAdmin/Views/Web.config">
       <publishTime>02/02/2013 10:18:26</publishTime>
@@ -74,22 +77,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2013 10:18:26</publishTime>
     </File>
     <File Include="bin/Sopheon.Data.dll">
-      <publishTime>02/06/2013 22:36:22</publishTime>
+      <publishTime>02/10/2013 23:10:36</publishTime>
+    </File>
+    <File Include="bin/Sopheon.Data.pdb">
+      <publishTime>02/10/2013 23:10:36</publishTime>
     </File>
     <File Include="bin/Sopheon.Domain.dll">
-      <publishTime>02/06/2013 22:36:22</publishTime>
+      <publishTime>02/10/2013 23:10:36</publishTime>
+    </File>
+    <File Include="bin/Sopheon.Domain.pdb">
+      <publishTime>02/10/2013 23:10:36</publishTime>
     </File>
     <File Include="bin/Sopheon.Repository.dll">
-      <publishTime>02/06/2013 22:36:22</publishTime>
+      <publishTime>02/10/2013 23:10:36</publishTime>
+    </File>
+    <File Include="bin/Sopheon.Repository.pdb">
+      <publishTime>02/10/2013 23:10:36</publishTime>
     </File>
     <File Include="bin/Sopheon.System.dll">
-      <publishTime>02/06/2013 22:36:21</publishTime>
+      <publishTime>02/10/2013 23:10:35</publishTime>
+    </File>
+    <File Include="bin/Sopheon.System.pdb">
+      <publishTime>02/10/2013 23:10:35</publishTime>
     </File>
     <File Include="bin/Sopheon.Web.App.dll">
-      <publishTime>02/06/2013 22:41:22</publishTime>
+      <publishTime>02/10/2013 23:10:37</publishTime>
+    </File>
+    <File Include="bin/Sopheon.Web.App.pdb">
+      <publishTime>02/10/2013 23:10:37</publishTime>
     </File>
     <File Include="bin/Sopheon.Web.dll">
-      <publishTime>02/06/2013 22:36:22</publishTime>
+      <publishTime>02/10/2013 23:10:36</publishTime>
+    </File>
+    <File Include="bin/Sopheon.Web.pdb">
+      <publishTime>02/10/2013 23:10:36</publishTime>
     </File>
     <File Include="bin/StructureMap.dll">
       <publishTime>02/02/2013 10:18:27</publishTime>
@@ -167,7 +188,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2013 10:18:26</publishTime>
     </File>
     <File Include="Content/sopheon.site.css">
-      <publishTime>02/02/2013 22:59:39</publishTime>
+      <publishTime>02/09/2013 22:39:56</publishTime>
     </File>
     <File Include="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>02/02/2013 10:18:26</publishTime>
@@ -377,7 +398,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2013 10:18:26</publishTime>
     </File>
     <File Include="Scripts/sangre.framework.js">
-      <publishTime>02/06/2013 20:50:57</publishTime>
+      <publishTime>02/09/2013 21:39:06</publishTime>
     </File>
     <File Include="Scripts/sopheon.js">
       <publishTime>02/02/2013 16:58:07</publishTime>
@@ -410,7 +431,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2013 14:30:53</publishTime>
     </File>
     <File Include="Views/Home/MainNav.cshtml">
-      <publishTime>02/02/2013 16:43:01</publishTime>
+      <publishTime>02/09/2013 22:02:34</publishTime>
+    </File>
+    <File Include="Views/LIstHarness/Gantt.cshtml">
+      <publishTime>02/09/2013 21:59:39</publishTime>
+    </File>
+    <File Include="Views/LIstHarness/Index.cshtml">
+      <publishTime>02/09/2013 16:06:09</publishTime>
+    </File>
+    <File Include="Views/LIstHarness/ListOfGates.cshtml">
+      <publishTime>02/09/2013 15:04:29</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/02/2013 10:18:26</publishTime>
@@ -437,7 +467,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/02/2013 10:18:26</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/06/2013 22:49:05</publishTime>
+      <publishTime>02/10/2013 23:10:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

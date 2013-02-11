@@ -21,8 +21,26 @@
     <EntitySetMapping Name="Gates">
       <EntityTypeMapping TypeName="SopheonModel.Gate">
         <MappingFragment StoreEntitySet="Gates">
+          <ScalarProperty Name="DefinitionId" ColumnName="DefinitionId" />
           <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
           <ScalarProperty Name="ScheduledCompletion" ColumnName="ScheduledCompletion" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GateDefinitions">
+      <EntityTypeMapping TypeName="SopheonModel.GateDefinition">
+        <MappingFragment StoreEntitySet="GateDefinitions">
+          <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metrics">
+      <EntityTypeMapping TypeName="SopheonModel.Metric">
+        <MappingFragment StoreEntitySet="Metrics">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

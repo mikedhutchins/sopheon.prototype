@@ -12,6 +12,16 @@
       <End Role="Project" EntitySet="Projects" />
       <End Role="Gate" EntitySet="Gates" />
     </AssociationSet>
+    <EntitySet Name="GateDefinitions" EntityType="SopheonModel.GateDefinition" />
+    <EntitySet Name="Metrics" EntityType="SopheonModel.Metric" />
+    <AssociationSet Name="FK_GateDefinitions_ProcessTemplates" Association="SopheonModel.FK_GateDefinitions_ProcessTemplates">
+      <End Role="ProcessTemplate" EntitySet="ProcessTemplates" />
+      <End Role="GateDefinition" EntitySet="GateDefinitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gates_GateDefinitions" Association="SopheonModel.FK_Gates_GateDefinitions">
+      <End Role="GateDefinition" EntitySet="GateDefinitions" />
+      <End Role="Gate" EntitySet="Gates" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProcessTemplate">
     <Key>
@@ -20,6 +30,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="Projects" Relationship="SopheonModel.FK_Projects_ProcessTemplates" FromRole="ProcessTemplate" ToRole="Project" />
+    <NavigationProperty Name="GateDefinitions" Relationship="SopheonModel.FK_GateDefinitions_ProcessTemplates" FromRole="ProcessTemplate" ToRole="GateDefinition" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -52,6 +63,8 @@
     <Property Type="DateTime" Name="ScheduledCompletion" Nullable="false" Precision="0" />
     <Property Type="Int32" Name="ProjectId" Nullable="false" />
     <NavigationProperty Name="Project" Relationship="SopheonModel.FK_Gates_Projects" FromRole="Gate" ToRole="Project" />
+    <Property Type="Int32" Name="DefinitionId" Nullable="false" />
+    <NavigationProperty Name="GateDefinition" Relationship="SopheonModel.FK_Gates_GateDefinitions" FromRole="Gate" ToRole="GateDefinition" />
   </EntityType>
   <Association Name="FK_Gates_Projects">
     <End Type="SopheonModel.Project" Role="Project" Multiplicity="1" />
@@ -62,6 +75,47 @@
       </Principal>
       <Dependent Role="Gate">
         <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GateDefinition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="TemplateId" Nullable="false" />
+    <NavigationProperty Name="ProcessTemplate" Relationship="SopheonModel.FK_GateDefinitions_ProcessTemplates" FromRole="GateDefinition" ToRole="ProcessTemplate" />
+    <NavigationProperty Name="Gates" Relationship="SopheonModel.FK_Gates_GateDefinitions" FromRole="GateDefinition" ToRole="Gate" />
+  </EntityType>
+  <EntityType Name="Metric">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_GateDefinitions_ProcessTemplates">
+    <End Type="SopheonModel.ProcessTemplate" Role="ProcessTemplate" Multiplicity="1" />
+    <End Type="SopheonModel.GateDefinition" Role="GateDefinition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessTemplate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GateDefinition">
+        <PropertyRef Name="TemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gates_GateDefinitions">
+    <End Type="SopheonModel.GateDefinition" Role="GateDefinition" Multiplicity="1" />
+    <End Type="SopheonModel.Gate" Role="Gate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GateDefinition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gate">
+        <PropertyRef Name="DefinitionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

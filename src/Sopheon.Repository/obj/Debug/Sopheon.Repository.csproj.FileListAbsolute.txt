@@ -56,3 +56,4 @@ C:\meat\git\sopheon.prototype\src\Sopheon.Repository\bin\Debug\Sopheon.System.pd
 C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.csprojResolveAssemblyReference.cache
 C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.dll
 C:\meat\git\sopheon.prototype\src\Sopheon.Repository\obj\Debug\Sopheon.Repository.pdb
+E:\working\sopheon.prototype\src\Sopheon.Repository\bin\Debug\StructureMap.dll

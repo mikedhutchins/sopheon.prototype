@@ -237,3 +237,4 @@ C:\meat\git\sopheon.prototype\src\Sopheon.Web.App\bin\System.Web.WebPages.Razor.
 C:\meat\git\sopheon.prototype\src\Sopheon.Web.App\obj\Debug\Sopheon.Web.App.csprojResolveAssemblyReference.cache
 C:\meat\git\sopheon.prototype\src\Sopheon.Web.App\obj\Debug\Sopheon.Web.App.dll
 C:\meat\git\sopheon.prototype\src\Sopheon.Web.App\obj\Debug\Sopheon.Web.App.pdb
+E:\working\sopheon.prototype\src\Sopheon.Web.App\bin\StructureMap.dll

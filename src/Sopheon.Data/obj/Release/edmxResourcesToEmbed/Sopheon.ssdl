@@ -1,9 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SopheonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="SopheonModelStoreContainer">
+    <EntitySet Name="GateDefinitions" EntityType="SopheonModel.Store.GateDefinitions" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Gates" EntityType="SopheonModel.Store.Gates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Metrics" EntityType="SopheonModel.Store.Metrics" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProcessTemplates" EntityType="SopheonModel.Store.ProcessTemplates" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Projects" EntityType="SopheonModel.Store.Projects" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_GateDefinitions_ProcessTemplates" Association="SopheonModel.Store.FK_GateDefinitions_ProcessTemplates">
+      <End Role="ProcessTemplates" EntitySet="ProcessTemplates" />
+      <End Role="GateDefinitions" EntitySet="GateDefinitions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gates_GateDefinitions" Association="SopheonModel.Store.FK_Gates_GateDefinitions">
+      <End Role="GateDefinitions" EntitySet="GateDefinitions" />
+      <End Role="Gates" EntitySet="Gates" />
+    </AssociationSet>
     <AssociationSet Name="FK_Gates_Projects" Association="SopheonModel.Store.FK_Gates_Projects">
       <End Role="Projects" EntitySet="Projects" />
       <End Role="Gates" EntitySet="Gates" />
@@ -13,6 +23,14 @@
       <End Role="Projects" EntitySet="Projects" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="GateDefinitions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="TemplateId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Gates">
     <Key>
       <PropertyRef Name="Id" />
@@ -21,6 +39,14 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="ScheduledCompletion" Type="date" Nullable="false" />
     <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="DefinitionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Metrics">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <EntityType Name="ProcessTemplates">
     <Key>
@@ -37,6 +63,30 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
     <Property Name="TemplateId" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_GateDefinitions_ProcessTemplates">
+    <End Role="ProcessTemplates" Type="SopheonModel.Store.ProcessTemplates" Multiplicity="1" />
+    <End Role="GateDefinitions" Type="SopheonModel.Store.GateDefinitions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessTemplates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GateDefinitions">
+        <PropertyRef Name="TemplateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gates_GateDefinitions">
+    <End Role="GateDefinitions" Type="SopheonModel.Store.GateDefinitions" Multiplicity="1" />
+    <End Role="Gates" Type="SopheonModel.Store.Gates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GateDefinitions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gates">
+        <PropertyRef Name="DefinitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Gates_Projects">
     <End Role="Projects" Type="SopheonModel.Store.Projects" Multiplicity="1" />
     <End Role="Gates" Type="SopheonModel.Store.Gates" Multiplicity="*" />

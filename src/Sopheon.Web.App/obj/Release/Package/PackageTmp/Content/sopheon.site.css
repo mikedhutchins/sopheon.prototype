@@ -1218,35 +1218,6 @@ td.addToSelectedIcon
 	background: #C6EAED !important; 
 	border: solid 1px #96b1b3;
 }
-.navWin
-{
-    border: black groove 1px;
-    position: absolute;
-    background: yellow;
-    cursor: crosshair;
-    opacity:0.4;
-    box-shadow: 3px 3px 3px black;
-    overflow: hidden;
- 
-}
-.nav
-{
-    background: black;
-    cursor: pointer;
-    position: absolute;
-    border-radius: 5px;
-    opacity:0.4;
-}
-.navShield
-{
-    background: yellow;
-    opacity:0.2;
-     width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0px;
-    left: 0px;
-}
 .dirtyField
 {
 	color: #660000;
@@ -1439,4 +1410,8 @@ a:active {
     padding: 5px;
     overflow: auto;
     margin-bottom: 5px;
+}
+
+.main-edit-panel {
+	height: 200px;
 }

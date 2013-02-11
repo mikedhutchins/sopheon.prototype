@@ -61,7 +61,7 @@
 						val = e === 'function' ? e() : e;
 					}
 					catch (ex) {
-						throw new Error('Badly named binding ' + ref);
+						sangre.msg.console('Badly named binding ' + ref);
 					}
 				}
 				s = s.replace(r, val);
@@ -210,7 +210,7 @@
 		init: function () {
 			sangre.inits.select(function () {
 			    var key = this.key !== undefined ? this.key : 'UNKNOWN';
-                sangre.msg.console('sangre is initializing: {key}'.bind({ key: key }));
+                sangre.msg.console('sangre.framework is initializing: {key}'.bind({ key: key }));
 				if ($.isFunction(this.init)) {
 					this.init();
 					sangre.event.fire('INIT-{key}'.bind({ key: key }));
@@ -251,7 +251,6 @@
 							});
 						}
 					});
-					sangre.event.fire('INIT-{key}'.bind({ key: this.key !== undefined ? this.key : 'UNKNOWN' }));
 				}
 			});
 		}
@@ -411,7 +410,7 @@
 			if ($.isFunction(sangre.event.debug)) {
 				sangre.event.debug(eventKey, args);
 			}
-			sangre.msg.console("sangre.event {key} is firing: ".bind({ key: eventKey }));
+			sangre.msg.console("sangre.event fired: {key}".bind({ key: eventKey }));
 			var f = function (idx) {
 			    var s = this;
 			    var p = sangre.m.getProcessor(sangre.m.getOpState(eventKey));
@@ -537,7 +536,6 @@
 		, key: 'sangre.unobtrusive'
 		, register: function (meth) {
 			sangre.u.methods.push(meth);
-			sangre.event.fire('U-REGISTER', meth);
 		}
 		, applyFor: function (selector) {
 			sangre.u.methods.select(function () {
@@ -739,12 +737,17 @@
 	// general unobtrusive
 	sangre.u.extensions = {
 		init: function () {
-			for (key in this) {
-				if (key != 'init') {
-					if ($.isFunction(this[key])) {
-						var meth = this[key]();
+			this.initPackage.call(this);
+		}
+		, initPackage: function (prefix) {
+			var s = this;
+			for (key in s) {
+				if (key != 'init' && key != 'initPackage') {
+					if ($.isFunction(s[key]) && (prefix === undefined || key.indexOf(prefix) >= 0)) {
+						var meth = s[key]();
+						var methkey = key;
 						sangre.u.register(meth);
-						sangre.event.fire('EXTENSION-ADDED-{ex}'.bind({ ex: key }));
+						sangre.event.fire('EXTENSION-ADDED-{pkg}-{key}'.bind({ pkg: s.key === undefined ? 'no-pkg-key' : s.key, key: methkey }));
 					}
 				}
 			}
@@ -769,6 +772,18 @@
 							}
 						}
 					});
+				});
+			});
+		}
+		, clickNav: function () {
+			return sangre.u.getMeth('sangre-click-nav', function (sel) {
+				var config = sangre.util.getAtts(sel, [
+					{ key: 'nav-url', def: '' }
+					]);
+				$(sel).click(function(e){
+					if (config['nav-url'] != '') {
+						document.location = config['nav-url'];
+					}
 				});
 			});
 		}
@@ -913,44 +928,237 @@
 			return sangre.u.getMeth('sangre-event-change', function (sel) {
 				var config = sangre.util.getAtts(sel,
 					[
-						{ key: 'eventkey', def: '*' }
-						, { key: 'selector', def: '' }
-						, { key: 'attribute', def: 'html' }
-						, { key: 'processor', def: function (val) { return val; }, transform: 'eval' }
-						, { key: 'method', def: function () { } }
+						{ key: 'event-key', def: '*' }
+						, { key: 'event-selector', def: '' }
+						, { key: 'event-attribute', def: 'html' }
+						, { key: 'event-template', def: '' }
+						, { key: 'event-processor', def: function (val) { return val; }, transform: 'eval' }
+						, { key: 'event-method', def: function () { } }
 					]);
 
-				sangre.event.on({ key: config.eventkey
+				sangre.event.on({ key: config['event-key']
 					, func: function (value) {
 						if ($(sel).length == 0) return;
-						value = config.processor.call($(sel)[0], value);
-						var stringValue = '';
+						value = config['event-processor'].call($(sel)[0], value);
+						if (config['event-template'] != '') {
+							value = config['event-template'].bind(value);
+						}
+						var stringValue = value;
 						if (value.messages !== undefined) {
 						    stringValue = value.getString();
 						}
 						var el = $(sel);
-						if (config.selector != '') {
-							el = $(sel).find(config.selector);
+						if (config['event-selector'] != '') {
+							el = $(sel).find(config['event-selector']);
 						}
-						if (config.attribute == 'prepend') {
+						if (config['event-attribute'] == 'prepend') {
 						    sangre.ml.prepend(el, stringValue);
 						}
-						if (config.attribute == 'append') {
+						if (config['event-attribute'] == 'append') {
 						    sangre.ml.append(el, stringValue);
 						}
-						if (config.attribute == 'html') {
+						if (config['event-attribute'] == 'html') {
 						    sangre.ml.html(el, stringValue);
 						}
 						else {
-							el.attr(config.attribute, value);
+							el.attr(config['event-attribute'], value);
 						}
-						config.method(value, config);
+						config['event-method'](value, config);
 					}
 				});
 			});
 		}
 		, dependencies: []
 	};
+
+	// lists - heavy metal
+	sangre.lists = {
+		init: function () {
+			sangre.u.extensions.initPackage.call(sangre.lists.extensions);
+		}
+		, getNavConfig: function (sel) {
+			var config = sangre.util.getAtts(sel, [
+				{ key: 'list-key', def: '' }
+				, { key: 'list-pages', def: 1 }
+			, { key: 'list-event-trigger', def: 'click' }]);
+			config.key = config['list-key'];
+			return config;
+		}
+		, getConfig: function(sel, type){
+			var config = sangre.util.getAtts(sel, [
+				{ key: 'list-container', def: sel }, { key: 'list-key', def: 'list{n}'.bind({ n: sangre.util.rnd(1000)}) }
+				, { key: 'list-current-index', def: 0, transform: 'parseInt' }
+				, { key: 'list-total-count', def: 0, transform: 'parseInt' }
+				, { key: 'list-horizontal', def: false, transform: 'parseBool' }
+				, { key: 'list-page-size', def: 10, transform: 'parseInt' }
+				, { key: 'list-sleep', def: 0, transform: 'parseInt' }
+				, { key: 'list-filter-form', def: '' }
+				, { key: 'list-url', def: '' }]);
+			config.type = type;
+			config.populateMethod = 'append';
+			config.loading = false;
+			return config
+		}
+
+		, lists: []
+		// return the closure that will manage this instance of the list
+		, getList: function (sel, config) {
+			sangre.msg.console('sangre-lists: found list: {list-key}'.bind(config));
+			config.form = $.isFunction(config.form) ? config.form : function(){
+				return $(config['list-filter-form']).serialize();
+			};
+			config.next = $.isFunction(config.next) ? config.next : function(){
+				var a = parseInt(config['list-current-index']) + parseInt(config['list-page-size']);
+				return a > parseInt(config['list-total-count']) ? parseInt(config['list-current-index']) : a;
+			};
+			config.prev = $.isFunction(config.prev) ? config.prev : function(){
+				var a = parseInt(config['list-current-index']) - parseInt(config['list-page-size']);
+				return a < 0 ? 1 : a;
+			};
+			var c = {
+				filter: function () {
+					return '{form}&CurrentIndex={next}&PageSize={list-page-size}'.bind(config);
+				}
+				, canPrev: function () {
+					var a = parseInt(config['list-current-index']) - parseInt(config['list-page-size']);
+					return a >= 0;
+				}
+				, canNext: function () {
+					var a = parseInt(config['list-current-index']) + parseInt(config['list-page-size']);
+					return a <= parseInt(config['list-total-count']);
+				}
+				, config: config
+			};
+			sangre.lists.lists[config['list-key']] = c;
+			return c;
+		}
+		, getNavMeth: function (type, sel, ontrigger) {
+			return sangre.u.getMeth('sangre-list-' + type, function (sel) {
+				var config = sangre.lists.getNavConfig(sel);
+				sangre.msg.console('sangre-lists: found nav method: {list-key}'.bind(config));
+				$(sel)[config['list-event-trigger']](function (e) {
+					var list = sangre.lists.lists[config.key];
+					ontrigger(config, list);
+				});
+			});
+		}
+		, getMeth: function (type, sel, onlistcomplete, after) {
+			return sangre.u.getMeth('sangre-list-' + type, function (sel) {
+				var config = sangre.lists.getConfig(sel, type);
+				var list = sangre.lists.getList(sel, config);
+				config.loading = true;
+				config.validate = function (resp) {
+					if (config.Subject.TotalRecords == 0) {
+						sangre.msg.console('sangre.lists.{type} validation failed because total records was 0.'.bind(config));
+					}
+				};
+				config.get = function () {
+					var data = list.filter();
+					config.data = data;
+					sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} sending!'.bind(config));
+					sangre.event.fire('{list-key}-preload'.bind(config), config);
+					sangre.jax.send({
+						url: config['list-url']
+						, data: data
+						, successHandler: function (response) {
+							if (response.State == 0 || response.State == 1) { // it worked
+								sangre.ml[config.populateMethod](config['list-container'], response.HtmlResult);
+								var listE = response.PagedList;
+								config['list-current-index'] = response.Subject.CurrentIndex;
+								config['list-total-count'] = response.Subject.TotalRecords;
+								config.pageIndex = Math.ceil(response.Subject.CurrentIndex > response.Subject.PageSize ? response.Subject.CurrentIndex / response.Subject.PageSize : 1);
+								config.totalPages = Math.ceil(response.Subject.TotalRecords > response.Subject.PageSize ? response.Subject.TotalRecords / response.Subject.PageSize : 1);
+								sangre.msg.console('sangre.lists.{type}.paging: {list-key} {list-current-index} finished!'.bind(config));
+								if ($.isFunction(onlistcomplete)) {
+									onlistcomplete(config, list);
+								}
+								sangre.event.fire('{list-key}-postload'.bind(config), config);
+							}
+							config.loading = false;
+						}
+					});
+				};
+				after(config, list);
+			});
+		}
+		, extensions: {
+			deferred: function (sel) {
+				return sangre.lists.getMeth('deferred', sel, function (config, list) {
+					if (list.canNext()) {
+						setTimeout(function () {
+							config.get(config, list);
+						}, config['list-sleep']);
+					}
+				}, function (config, list) {
+					config.get();
+				});
+			}
+			, paged: function (sel) {
+				return sangre.lists.getMeth('paged', sel, function (config, list) {
+
+				}, function (config, list) {
+					config.populateMethod = 'html';
+					config.get();
+				});
+			}
+			, lazy: function (sel) {
+				return sangre.lists.getMeth('lazy', sel, function (config, list) {
+					
+				}, function (config, list) {
+					var c = config['list-container'];
+					var id = 'lazylistinner{key}'.bind(config);
+					$(c).html('<div id="{id}"></div>'.bind({ id: id }));
+					var inner = '#{i}'.bind({ i: id });
+					config['list-container'] = inner;
+					config.parent = c;
+					$(c).scroll(function (e) {
+						var t = $(c).scrollTop() + $(c).height();
+						if (!config.loading && list.canNext() && t + 20 > $(inner).height()) {
+							config.get();
+						}
+					});
+					config.get();
+				});
+			}
+			, next: function (sel) {
+				return sangre.lists.getNavMeth('next', sel, function (config, list) {
+					if (list.canNext()) {
+						list.filter = function () {
+							return '{form}&CurrentIndex={next}&PageSize={list-page-size}'.bind(list.config);
+						};
+						list.config.get();
+					}
+				});
+			}
+			, previous: function (sel) {
+				return sangre.lists.getNavMeth('previous', sel, function (config, list) {
+					if (list.canPrev()) {
+						list.filter = function () {
+							return '{form}&CurrentIndex={prev}&PageSize={list-page-size}'.bind(list.config);
+						};
+						list.config.get();
+					}
+				});
+			}
+			, restart: function (sel) {
+				return sangre.lists.getNavMeth('restart', sel, function (config, list) {
+					if (!list.config.loading) {
+						sangre.ml.html(list.config['list-container'], '');
+						list.config['list-current-index'] = 0;
+						list.config['list-total-count'] = 0;
+						list.config.get();
+					}
+				});
+			}
+			, clear: function (sel) {
+
+			}
+			, key: 'sangre.lists'
+		}
+		, key: 'sangre.lists'
+	};
+	sangre.inits.push(sangre.lists);
+
 
 	// msg
 	sangre.message =

@@ -12,5 +12,7 @@ namespace Sopheon.Domain.Entities
 		public string Name { get; set; }
 
         public int ProjectCount { get; set; }
+
+		public List<GateDefinition> GateDefinitions { get; set; }
 	}
 }

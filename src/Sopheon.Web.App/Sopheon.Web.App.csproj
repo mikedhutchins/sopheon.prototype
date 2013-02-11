@@ -316,6 +316,7 @@
     <None Include="Properties\PublishProfiles\hutchinsweb.pubxml" />
     <Content Include="Views\LIstHarness\Index.cshtml" />
     <Content Include="Views\LIstHarness\ListOfGates.cshtml" />
+    <Content Include="Views\LIstHarness\Gantt.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

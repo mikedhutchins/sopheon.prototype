@@ -1,0 +1,7 @@
+﻿@model List<Sopheon.Domain.Entities.Gate>
+@{ foreach (var item in Model){
+	 <div class="processtemplate">
+		 <h6>@item.Name </h6>
+		 <p>@item.ScheduledCompletion.ToShortDateString()</p>
+	 </div>  
+}}

@@ -25,6 +25,8 @@ namespace Sopheon.Web.App
 			routes.MapRoute(name: "listharness_lazy", url: "lists/lazy", defaults: new { controller = "ListHarness", action = "Page" });
 
 			routes.MapRoute(name: "listharness_paged", url: "lists/paged", defaults: new { controller = "ListHarness", action = "Page" });
+
+			routes.MapRoute(name: "listharness_gantt", url: "lists/gantt", defaults: new { controller = "ListHarness", action = "Gantt" });			
 		}
 	}
 }

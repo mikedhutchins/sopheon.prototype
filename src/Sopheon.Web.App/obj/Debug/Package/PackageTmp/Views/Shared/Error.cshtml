@@ -1,0 +1,11 @@
+@model Sopheon.system.Processor.OperationResponse
+
+<h1>An error has occurred.</h1>
+<ul>
+@{
+	foreach (var message in Model.Messages)
+{
+	<li>@message.Message</li>
+}
+}
+</ul>
